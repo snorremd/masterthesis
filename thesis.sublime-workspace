@@ -1,0 +1,246 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"exists",
+				"existsErr"
+			],
+			[
+				"json",
+				"formatJsonResponse"
+			],
+			[
+				"for",
+				"formatJsonResponse"
+			],
+			[
+				"yeast",
+				"yeastsRoute"
+			],
+			[
+				"con",
+				"contentType"
+			],
+			[
+				"write",
+				"writeHead"
+			],
+			[
+				"params",
+				"params"
+			],
+			[
+				"password",
+				"passwordcheck"
+			],
+			[
+				"pass",
+				"passwordCheck"
+			],
+			[
+				"locat",
+				"location"
+			],
+			[
+				"say",
+				"say_not_found"
+			],
+			[
+				"http_",
+				"http_handler"
+			],
+			[
+				"hello",
+				"hello_handler_code"
+			],
+			[
+				"http",
+				"http_handler"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 138.0,
+		"selected_items":
+		[
+			[
+				"indent",
+				"Indent XML"
+			],
+			[
+				"indent ",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/snorre/workspaces/masterthesis/distributed-clustering/corpusfiles/klimauken/klimaukenSnippets2.xml",
+		"/home/snorre/workspaces/masterthesis/distributed-clustering/corpusfiles/klimauken/klimaukenSnippets.xml",
+		"/home/snorre/PycharmProjects/Ratebeer-scraper/beers.txt",
+		"/home/snorre/PycharmProjects/Ratebeer-scraper/beers.json",
+		"/var/www/login.html",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/app/config/index.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/routes/ingredients.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/app/ingredients/yeasts.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/app/ingredients/index.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/routes/yeasts.js",
+		"/home/snorre/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/app/user/index.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/routes/user.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/routes/brewery.js",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/package.json",
+		"/home/snorre/workspaces/microbrewit/brewingOntology/brewing.owl",
+		"/home/snorre/workspaces/microbrewit/microbrew-it/routes/beer.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"this.id",
+			"console.log",
+			".',\n",
+			"req.session",
+			"req.sessions",
+			"utils.formatJsonResponse(params, response, function (cbResponse) {\n				res.end(cbResponse);\n			});",
+			"utils.formatJsonResponse(params, response, function (cbResponse) {\n			res.end(cbResponse);\n	});",
+			"header.code",
+			"console.log(\"Res end called now\");",
+			"param",
+			"});\n",
+			"psql",
+			"user"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"id",
+			"response = utils.formatJsonResponse(params, response);",
+			"header.statuscode",
+			"",
+			"params",
+			"postgresql",
+			"params",
+			"postgresql"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 214.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 128.0,
+	"status_bar_visible": true
+}
