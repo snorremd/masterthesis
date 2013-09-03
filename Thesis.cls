@@ -179,7 +179,7 @@
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Metadata made easy - Adding metadata by means of natural language} % Your thesis title - this is used in the title and abstract
+\thesistitle{Optimal Compact Trie Clustering - A genetic approach} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------
 \supervisor{ \textsc{Richard Elling Moe}} % You supervisor's name - this is used in the title page
 %-------------------------------------------------
@@ -211,12 +211,12 @@
                 {DEPARTMENT OF INFORMATION SCIENCE AND MEDIA STUDIES}} % Your department's name in capitals - this is not currently used anywhere in the template, cite it with \DEPTNAME if you want it
                 {}}
 %-------------------------------------------------
-\group{\texorpdfstring{\href{http://www.uib.no/fg/ssis} % Your research group's URL
-                {Semantic and Social Information Systems}} % Your research group's name - this is currently used in the title page
+\group{\texorpdfstring{\href{} % Your research group's URL
+                {}} % Your research group's name - this is currently used in the title page
                 {}}
 %-------------------------------------------------
-\GROUP{\texorpdfstring{\href{http://www.uib.no/fg/ssis)} % Your research group's URL
-                {SEMANTIC AND SOCIAL INFORMATION SYSTEMS}} % Your research group's name in capitals - this is not currently used anywhere in the template, cite it with \GROUPNAME if you want it
+\GROUP{\texorpdfstring{\href{} % Your research group's URL
+                {}} % Your research group's name in capitals - this is not currently used anywhere in the template, cite it with \GROUPNAME if you want it
                 {}}
 %-------------------------------------------------
 \faculty{\texorpdfstring{\href{http://www.uib.no/svf/en} % Your faculty's URL

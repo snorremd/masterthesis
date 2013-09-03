@@ -1,28 +1,28 @@
-\begin{thenomenclature} 
+% \begin{thenomenclature} 
 
- \nomgroup{A}
+%  \nomgroup{A}
 
-  \item [{\makefirstuc {CSS}}]\begingroup Cascading Style Sheets\nomeqref {5.0}
-		\nompageref{57}
-  \item [{\makefirstuc {HTML}}]\begingroup HyperText Markup Language\nomeqref {4.0}
-		\nompageref{32}
-  \item [{\makefirstuc {IRI}}]\begingroup Internationalized Resource Identifier\nomeqref {2.0}
-		\nompageref{8}
-  \item [{\makefirstuc {OWL}}]\begingroup Web Ontology Language\nomeqref {2.0}
-		\nompageref{15}
-  \item [{\makefirstuc {RDF/XML}}]\begingroup An XML representation of RDF\nomeqref {4.0}
-		\nompageref{35}
-  \item [{\makefirstuc {RDFa}}]\begingroup Resource Description Framework in attributes\nomeqref {1.0}
-		\nompageref{2}
-  \item [{\makefirstuc {RDF}}]\begingroup Resource Description Framework\nomeqref {2.0}
-		\nompageref{8}
-  \item [{\makefirstuc {SUMO}}]\begingroup Suggested upper merged ontology\nomeqref {2.0}
-		\nompageref{15}
-  \item [{\makefirstuc {SUO}}]\begingroup Standard Upper Ontology\nomeqref {2.0}
-		\nompageref{15}
-  \item [{\makefirstuc {synset}}]\begingroup A set of words with similar meanings.\nomeqref {2.0}
-		\nompageref{10}
-  \item [{\makefirstuc {URL}}]\begingroup Uniform Resource Locator\nomeqref {2.0}
-		\nompageref{8}
+%   \item [{\makefirstuc {CSS}}]\begingroup Cascading Style Sheets\nomeqref {5.0}
+% 		\nompageref{57}
+%   \item [{\makefirstuc {HTML}}]\begingroup HyperText Markup Language\nomeqref {4.0}
+% 		\nompageref{32}
+%   \item [{\makefirstuc {IRI}}]\begingroup Internationalized Resource Identifier\nomeqref {2.0}
+% 		\nompageref{8}
+%   \item [{\makefirstuc {OWL}}]\begingroup Web Ontology Language\nomeqref {2.0}
+% 		\nompageref{15}
+%   \item [{\makefirstuc {RDF/XML}}]\begingroup An XML representation of RDF\nomeqref {4.0}
+% 		\nompageref{35}
+%   \item [{\makefirstuc {RDFa}}]\begingroup Resource Description Framework in attributes\nomeqref {1.0}
+% 		\nompageref{2}
+%   \item [{\makefirstuc {RDF}}]\begingroup Resource Description Framework\nomeqref {2.0}
+% 		\nompageref{8}
+%   \item [{\makefirstuc {SUMO}}]\begingroup Suggested upper merged ontology\nomeqref {2.0}
+% 		\nompageref{15}
+%   \item [{\makefirstuc {SUO}}]\begingroup Standard Upper Ontology\nomeqref {2.0}
+% 		\nompageref{15}
+%   \item [{\makefirstuc {synset}}]\begingroup A set of words with similar meanings.\nomeqref {2.0}
+% 		\nompageref{10}
+%   \item [{\makefirstuc {URL}}]\begingroup Uniform Resource Locator\nomeqref {2.0}
+% 		\nompageref{8}
 
-\end{thenomenclature}
+% \end{thenomenclature}
