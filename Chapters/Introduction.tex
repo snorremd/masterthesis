@@ -1,5 +1,6 @@
-% Chapter Template
+%!TEX root = ../Thesis.tex
 
+% Chapter Template
 \chapter{Introduction} % Main chapter title
 
 \label{Introduction}
@@ -12,23 +13,23 @@
 %----------------------------------------------------------------------------------------
 
 % \section{Background} Should this be used as the main introduction before the motivation? ala Aleksander Larsen
-Introduce the background for the master thesis work. What is information retrieval, why is it used. Shortly talk about clustering and classification and how it is used to help make order in large document collections. What kind of problems might clustering solve?
+Information Retrieval is a field in information, informatics and computer science that revolves around retrieving and classifying information in order to make information more accessible. Theories and practices developed in this field drives many of the information retrieval systems we use in our every day lives such as Google Search, TinEye (an image search engine), and many more. One major area of information retrieval is classification and grouping (or clustering) of text documents or other information artifacts. Clustering will be the subject of this master thesis.
 
-Introduce the Klimauken project, and the compact trie clustering algorithm.
+This master thesis started as a master thesis proposal by my supervisor \supervisor. The proposal suggested that work be put into optimizing the \STC algorithm. The \STC algorithm was presented by \textcite{Oren1998} in the paper \citetitle{Oren1998}. The algorithm is a clustering algorithm which extracts phrases from text documents and finds clusters by inserting these phrases into a suffix tree. \supervisor has worked with the \STC algorithm in relation to a research project at the \deptname. The project is described in the paper \citetitle{Elgesem2009}, \parencite{Elgesem2009}.
 
+In this work he experimented with the \STC algorithm and implemented the \CTC algorithm which does not limit itself to suffixes. The original \STC algorithm proposed by \textcite{Oren1998} is demonstrated in use on search engine results and showed good results. In his work with the Klimauken corpus, a corpus comprising articles from several big Norwegian newspapers, \supervisor found that the \STC algorithm yielded poorer results. This can be explained as search engine results have been pre-filtered by the search engine. The Klimauken documents are quite varied in content and as such the default implementation and parameters of the \STC algorithm was not sufficient to get good results. This is the background for this master thesis were an approach to finding a near optimal parameter set for a specific corpus will be explored.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2: Motivation
 %----------------------------------------------------------------------------------------
 
 \section{Motivation}
-Academic motivations:
+\subsection{Academic motivations}
 
-The Compact Trie Clustering algorithm has some benefits (being computationally fast, supporting phrases), but performs poorly on data sets which have not been pre-filtered by say a search engine. How can this master thesis work contribute to the performance/effectivity of the algorithm. Why is this a interesting area to research.
+The \STC algorithm has some benefits over many of the traditional clustering algorithms. It is computationally fast having a \begin{math}O(n)\end{math} computation time where \(n\) is the number of documents. It is also phrase based which means it takes into account the position of words when comparing the similarity of documents. Traditional clustering algorithms often use the bag of words model where each document is only a set of words with positional data disregarded. The drawback is however that the \STC algorithm has shown poor performance on unfiltered text corpora. It is of interest to see if the algorithms performance can be improved. There are evidence to suggest that changing parameters for the algorithm might improve results. This master will propose an automated way in which to find better optimized parameter sets for different corpora. This method of improvement could benefit researchers who use the algorithm as part of their work to identify text clusters.
 
-Other motivations:
-
-Information retrieval an interesting field. Genetic algorithms an interesting means to the optimization of large parameter sets. Computing fitness with genetic algorithm a challenging and exiting task. The opportunity to learn a new programming language (Python).
+\subsection{Other motivations}
+I had previously taken two courses about information retrieval and web intelligence. This area of research is very interesting and this master thesis provided an opportunity to learn more about it. I also wanted to use previous knowledge in my master thesis, so I proposed to use the \GA to identify good parameter sets as genetic algorithms are well suited to the task of exploring large feature spaces. I also got the opportunity to learn a new programming language, Python, as this was already used by \supervisor.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3: Research Questions
@@ -39,18 +40,14 @@ The main research question of this thesis is:
 
 \emph{"What are the optimal parameter values for Compact Trie Clustering with regard to the news corpus?"}
 
-Explanation of research question here...
+The main goal of this master thesis is to identify an optimized parameter set for the \CTC algorithm. The number of possible parameter sets are extremely big, so there is no realistic way to computationally prove that the most optimal parameter set has been found. Instead the thesis will identify an optimized parameter set that is significantly better than the default, and an approach to finding such optimized parameter sets. An experiment will be performed to verify the results.
 
-A list of subsidiary goals here:
-
+The thesis has two subsidiary goals:
 \begin{itemize}
-	\item Develop a  method/software for determining optimal parameters for the Compact Trie Clustering algorithm.
-	\item Apply the method/software to determine recommended parameter values for news documents.
+	\item Develop a method for determining optimal parameters for the Compact Trie Clustering algorithm.
+	\item Apply the method to determine recommended parameter values for news documents.
 \end{itemize}
 
-Why is this an interesting research question, and how does it relate to the motivation.
+This thesis is for researchers and users of the \STC algorithm. With the optimization approach discussed in this thesis they will be able to find better parameter sets for their corpora. The thesis is also very much aimed at the research group working with the project discussed in \citetitle{Elgesem2009} and other information retrieval researchers.
 
-Target audience:
-Researchers and users of the suffix tree/compact trie clustering algorithm in general, and the research group working with Klimauken and other information retrieval research in particular.
-
-What are the limitations imposed upon the research. I.e. scope of research, tests performed, number of corpora used etc.
+This research is performed as part of a master thesis. As such certain temporal and economic constraints are imposed upon the scope and detail of the research. There was not enough time to test more than two different corpora. I also opted to only use corpora that were free of charge as this would negate the need for funds. The tests were run on personal machines which made time efficiency comparisons between parameter sets difficult.
