@@ -18,7 +18,7 @@ The \(K\) variable can either be pre-determined and given to the clustering algo
 The \STC and \CTC algorithms conform to this definition of clustering. Examples of other clustering algorithms that fall under this definition include the previously mentioned K-Mean algorithm and the Hierarchical Clustering algorithm.
 
 \subsection{Suffix Trees and Suffix Tree Clustering}
-The \STC algorithm was first introduced by \textcite{Oren1997} in the paper \citetitle{Oren1997}. This article discuss how suffix tree clustering can be used on search engine results to improve the results. Later an improved version of the algorithm was presented in the paper \citetitle{Oren1998} \parencite{Oren1998}. In this later paper \citeauthor{Oren1998} describes the requirements for the \STC algorithm and the stages involved in \STC. They also compare the effectiveness (i.e. performance) of the algorithm compared to other clustering algorithms.
+The \STC algorithm was first introduced by \textcite{Oren1997} in the paper \citetitle{Oren1997}. This article discuss how suffix tree clustering can be used on search engine results to improve the results. Later an improved version of the algorithm was presented in the paper \citetitle{Oren1998} \cite{Oren1998}. In this later paper \citeauthor{Oren1998} describes the requirements for the \STC algorithm and the stages involved in \STC. They also compare the effectiveness (i.e. performance) of the algorithm compared to other clustering algorithms.
 
 The \STC algorithm has three basic steps:
 \begin{enumerate}
@@ -35,12 +35,9 @@ Document cleaning involves cleaning the strings representing each document. This
 
 To make the concept Suffix Trees a bit clearer a short explanation of the trie data structure and suffixes will be provided.
 
-The \STC algorithm use a trie data structure. 
+The \STC algorithm use a trie data structure. Trie data structures, also known as digital search trees, are multi-way trees that store sets of strings. The trie data structure is capable of retrieving any string encoded within it in time proportional to the string's length, \cite{Baeza-Yates2011c}. \textcite{Baeza-Yates2011c} describe a trie as a tree-shaped DFA (deterministic finite automaton). In a finitite automaton a term or pattern can be modelled as a directed graph containing circular vertices as states and directed arrows (labeled with one or more characters) as transitions between these states. A string can be matched to a NFA if and only if there are some path, iterating over the string, from the initial state to the final state. In the suffix trie the root node denotes the initial state and each leaf node works as a final state. In essence the suffix trie describes a DFA over all the suffixes of all phrases in a document collection.
 
-!TODO:
-\color{red}INSERT TRIE DEFINITION HERE!\color{black}
-
-In context of a term \(t = [c_{1}, ..., c_{n}]\) a suffix is a subterm \(s = [t[m], ..., t[n]]\) where \(m\) is smaller than or equal to (in which case only one character is selected) \(n\). To exemplify this definition the term suffix itself can be used. The suffixes of the term ``suffix'' are
+In context of a term \(t = [c_{1}, ..., c_{n}]\) a suffix is a sub-term \(s = [t[m], ..., t[n]]\) where \(m\) is smaller than or equal to (in which case only one character is selected) \(n\). To exemplify this definition the term suffix itself can be used. The suffixes of the term ``suffix'' are
 \begin{inparaenum}[\itshape 1\upshape)]
 \item suffix;
 \item uffix;
@@ -79,7 +76,7 @@ share the phrase ``cat ate''. This is represented in the graph (Figure~\ref{fig:
   \begin{center}
     \includegraphics[totalheight=0.3\textheight]{Figures/suffixtree}
   \end{center}
-  \caption{A suffix tree generated from the strings “cat ate cheese”, “mouse ate cheese too” and “cat ate mouse too”. From \citetitle{Oren1998} \protect \parencite[p. 48]{Oren1998}}
+  \caption{A suffix tree generated from the strings “cat ate cheese”, “mouse ate cheese too” and “cat ate mouse too”. From \citetitle{Oren1998} \protect \parencite[][48]{Oren1998}}
   \label{fig:suffixtree}
 \end{figure}
 
@@ -114,7 +111,7 @@ J_{n}(B_{m},B_{n}) =
 \frac{\vert B_{m} \cap B_{n} \vert} {\vert B_{n} \vert}
 \end{displaymath}
 
-Iff \(J_{m} > 0.5\) and \(J_{n} > 0.5 \) then the similarity of the two clusters \(m\) and \(n\) is equal to one. All base cluster pairs with a similarity of 1 is connected in a base cluster graph. This results in a set of connected components in the graph. Each connected component is considered a cluster in the final clustering result. In this last step two parameters can be identified. One could adjust the number of base clusters used to create the final clusters. The lowest scoring base clusters might not be relevant for the final results as the documents in these clusters share few of their phrases with each-other. On the other hand it might hurt the results if the algorithm use too few of the base clusters resulting in a lower number of merged clusters, or even less accurate merged clusters.
+If and only if \(J_{m} > 0.5\) and \(J_{n} > 0.5 \) then the similarity of the two clusters \(m\) and \(n\) is equal to one. All base cluster pairs with a similarity of 1 is connected in a base cluster graph. This results in a set of connected components in the graph. Each connected component is considered a cluster in the final clustering result. In this last step two parameters can be identified. One could adjust the number of base clusters used to create the final clusters. The lowest scoring base clusters might not be relevant for the final results as the documents in these clusters share few of their phrases with each-other. On the other hand it might hurt the results if the algorithm use too few of the base clusters resulting in a lower number of merged clusters, or even less accurate merged clusters.
 
 It is also possible to adjust the similarity threshold used by the Jaccard coefficient, or use another similarity measure all together. One such similarity measure is the cosine similarity measure that can be used when documents are represented in a vector space model. This similarity measure is used by \cite{Chim2007}, albeit with phrases in a hierarchical clustering algorithm. The cosine similarity formula returns a value between -1 and 1, where -1 denotes that the vectors being compared are completely dissimilar, 1 that they are identical, and 0 that they are somewhere in between. The cosine similarity value can easily be applied as a similarity measure when combining clusters.
 
@@ -134,10 +131,43 @@ The \CTC algorithm is a slightly modified version of the \STC algorithm, develop
 Tests performed by the LLI research group indicate that using k-grams in the expansion phase may yield better time performance when compared with suffix expansion. Because speed is one of the requirements set by \cite{Oren1998} for web document clustering it is interesting to investigate the use of k-grams for snippet expansion.
 
 \subsection{Performance measures}
-What kind of performance measures are used for clustering...
+My thesis will evaluate the performance of the clustering algorithm in two ways. A measurement of the performance will be used as a fitness-function in the Genetic Algorithm and the performance of the system with the initial parameters will be compared to the performance of the system with optimized parameters as part of an experiment that will be described in more detail later. As such there is a need for a clear definition of the effectiveness and performance of the \CTC algorithm given the different parameter sets.
+
+\cite[131]{Baeza-Yates2011b} define retrieval evaluation as a \begin{quote} 
+[\dots] process of systematically associating a quantitative metric to the results produced by an IR system in response to a set of user queries. This metric should be directly associated with the relevance of the results to the user. A common approach to compute such a metric is to compare the results produced by the system with results suggested by humans for that same set of queries.
+\end{quote}
+Retrieval evaluation thus requires a ground truth, i.e. a human assigned, relevance for a set of documents for a given query, or in context of text clustering a user defined classification of a document.
+
+There are multiple metrics for retrieval results in information retrieval. Two common, and among the most basic, are \textit{precision} and \textit{recall}. \cite{Sebastiani2002} provide algorithms for calculating many of the retrieval measurements for text classifiers.
+
+Precision with regards to a \(Cluster_{i}\) can be calculated with the formula:
+\begin{displaymath}
+Precision_{i} = 
+\frac{TP_{i}}{TP_{i} + FP_{i}}
+\end{displaymath}
+where \(TP\) (i.e. True Positive) is the number of correctly classified documents and \(FP\) (i.e. False Positive) is the number of falsely classified documents in the cluster. Precision thus express the ratio of correctly classified documents to wrongly classified documents. A value of 1 means there are no wrongly classified documents.
+
+Recall with regards to a \(Cluster_{i}\) can be calculated with the formula: 
+\begin{displaymath}
+Recall_{i} = 
+\frac{TP_{i}}{TP_{i} + FN_{i}}
+\end{displaymath}
+where \(FN\) (i.e. False Negatives) is the number of documents wrongly not classified into the cluster. Recall express the number of correct clusters retrieved to the number of clusters retrieved in total. A value of 1 signifies that 100\% of the clusters recalled (retrieved) are ground truth clusters. A value of 0.5 would signify that only half of the clusters retrieved are ground truth clusters.
+
+An article by \cite{Yang1999} describe a comparative evaluation of different text classifiers that measure how well the classifiers perform on different versions of the Reuters corpus. The article also provides formulas for precision, recall and F-score in context of text classifiers. They also describe how the 11-point system can be used to find the overall performance of the system.
+
 
 \subsection{Available corpora}
-Which corpora are used in clustering and/or classification research? Which ones are suited to clustering? Which ones are used in this master thesis research? Explain scope...
+TODO: TREC reference....
+There are different corpora used in information retrieval research. TREC describes a number of corpora, but most of these are created for the benefit of search algorithms and are not very suitable for testing clustering algorithms. \citeasnoun{Baeza-Yates2011a} describe some of the most used benchmark collections in text classification research: Reuters-21578, RCV: Reuters Corpus Volumes, OHSUMED reference collection, and 20 NewsGroups. Some of them are desribed in greater detail below.
+
+Reuters, an international news agency have made several corpora that are available trough different sources. One Reuters corpus that have been much used in the text classification community is the \textit{Reuters 21578} corpus \cite{Lewis2004a}. The documents in this collection was collected from documents appearing on the Reuters newswire in 1987. The corpus was assembled and categorized by personnel from Reuters and Carnegie Group in 1987. This corpus thus resembles that used in the ``Recycling of news in the news papers 1999 - 2000'' research project.
+
+Reuters have since made a new corpus that is likely to replace the Reuters 21578 corpus. This new corpus is divided into three volumes RCV1, RCV2 and TRC2. The first two volumes contain news stories from 96 - 97, and the last volume contains news stories from 08 to 09. RCV1 and TRC2 contain English news stories only, while RCV2 is multilingual \cite{NationalInstituteofStandardsandTechnology2004}. An article on the use of the RCV1 corpus provide more details about how the data set can be used in evaluation of text categorization systems. ``\textit{Reuters CorpusVolume I (RCV1) is an archive of over 800,000 manually categorized newswire stories recently made available by Reuters, Ltd. for research purposes. Use of this data for research on text categorization requires a detailed understanding of the real world constraints under which the data was produced.}'' \cite{Lewis2004}. 
+
+Time constraints prevents all relevant corpora to be used in this thesis research. The focus of the research will be on the ``Klimauken'' and ``Reuters 21578'' corpora. 
+
+TODO: Because the Reuters and Klimauken corpora use different ways of tagging the articles (single tags vs multiple tags)... Should perhaps add additional corpus...
 
 
 \section{Genetic Algorithms}
