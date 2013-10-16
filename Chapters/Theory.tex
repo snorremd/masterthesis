@@ -159,7 +159,7 @@ An article by \cite{Yang1999} describe a comparative evaluation of different tex
 
 \subsection{Available corpora}
 TODO: TREC reference....
-There are different corpora used in information retrieval research. TREC describes a number of corpora, but most of these are created for the benefit of search algorithms and are not very suitable for testing clustering algorithms. \citeasnoun{Baeza-Yates2011a} describe some of the most used benchmark collections in text classification research: Reuters-21578, RCV: Reuters Corpus Volumes, OHSUMED reference collection, and 20 NewsGroups. Some of them are desribed in greater detail below.
+There are different corpora used in information retrieval research. TREC describes a number of corpora, but most of these are created for the benefit of search algorithms and are not very suitable for testing clustering algorithms. \citeauthor{Baeza-Yates2011a} describe some of the most used benchmark collections in text classification research: Reuters-21578, RCV: Reuters Corpus Volumes, OHSUMED reference collection, and 20 NewsGroups. Some of them are desribed in greater detail below.
 
 Reuters, an international news agency have made several corpora that are available trough different sources. One Reuters corpus that have been much used in the text classification community is the \textit{Reuters 21578} corpus \cite{Lewis2004a}. The documents in this collection was collected from documents appearing on the Reuters newswire in 1987. The corpus was assembled and categorized by personnel from Reuters and Carnegie Group in 1987. This corpus thus resembles that used in the ``Recycling of news in the news papers 1999 - 2000'' research project.
 
@@ -172,7 +172,17 @@ TODO: Because the Reuters and Klimauken corpora use different ways of tagging th
 
 \section{Genetic Algorithms}
 \label{GeneticAlgorithm}
-General overview of a genetic algorithm here.
+In the book \citetitle{Haupt2004} by \cite{Haupt2004} optimization is defined as ``\textit{[\dots] the process of adjusting the inputs to or characteristics of a device, mathematical process, or experiment to find the minimum or maximum output or result }''. Variables are provided as input to the optimization problem, the output is the cost of the given input. In genetic algorithms the cost is also known as fitness. Examples of local optimization algorithms are Exhaustive Search, Nelder-Mead Downhill Simplex Method, Hill Climbing and so forth. These algorithms are most suited to finding local optimums (lowest cost) and will as such not be considered in this thesis work, \parencite{Haupt2004}.
+
+Because the cost surface of the optimization problem for the optimal \CTC cluster parameters features several cost tops and bottoms it is necessary to use global optimization algorithms. Two examples of these are the Genetic Algorithm and the Swarm Optimization algorithm. In this thesis only the Genetic Algorithm will be considered as a result of time constraints and familiarity with the algorithm.
+
+The genetic algorithm is inspired by natural selection and genetics. It is used to solve search and optimization problems. According to \citeauthor[23]{Haupt2004} the genetic algorithm has several advantages namely that it:
+\begin{inparaenum}[\itshape 1\upshape)]
+\item Optimizes with continuous or discrete variables;
+\item Searches a wide sampling of the cost surface simultaneously;
+\item Works on optimization problems with complex cost surfaces and
+\item Provides a list of optimum values (the final population) 
+\end{inparaenum}
 
 
 \section{Related Work}
