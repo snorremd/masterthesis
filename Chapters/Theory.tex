@@ -184,6 +184,15 @@ The genetic algorithm is inspired by natural selection and genetics. It is used 
 \item Provides a list of optimum values (the final population) 
 \end{inparaenum}
 
+The Genetic Algorithm can be divided into two main categories, binary and literal values. Binary genetic algorithms use binary code as the genetic markup of the chromosomes whilst literal value genetic algorithms instead use literal values such as numbers and characters. \citeauthor{Haupt2004a} use the binary algorithm as a base to describe genetic algorithms. A \textit{chromosome} is a vector of variables or parameters: \(Chromosome = [p_{1},p_{2},p_{3},\dots,p_{n}]\). The fitness-function takes as input the \textit{chromosome} and outputs the fitness of that chromosome according to some fitness evaluation function. Each parameter \(p_{n}\) represents a \textit{gene}, and can be encoded as a binary sequence or as a literal value. \citeauthor[p. 93]{Brownlee2011} note that, ``\textit{Problem specific representations and customized genetic operators should be adopted, incorporating as much prior information about the problem domain as possible}''. Both because it would be difficult to encode the parameter sets of the \CTC algorithm and to retain the beneficial values in a binary system, it seems literal values would be better suited for the optimization problem.
+
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[totalheight=0.175\textheight]{figures/crossover}
+  \end{center}
+  \caption{Two parent chromosomes produce two offspring. The offspring chromosomes inherit the genes according to the position of the crossover point. From The Binary Genetic Algorithm \protect \cite[p. 42]{Haupt2004a}.}
+  \label{crossover}
+\end{figure}
 
 \section{Related Work}
 \label{RelatedWork}
