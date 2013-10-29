@@ -1,3 +1,4 @@
+%!TEX root = ../Thesis.tex
 % Chapter Template
 
 \chapter{Development and Testing} % Main chapter title
@@ -10,32 +11,180 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-Chapter introduction. Describe the development process in some detail. I.e. The learning phase (learning Python and familiarizing myself with the algorithm). The second stage (modifying the algorithm slightly, refactoring). Third stage (implementing a genetic algorithm with which to test different parameter sets). Fourth stage (making a distributed version of the algorithm to make testing of larger parameter sets feasible/possible). Fifth stage (final touches on the algorithm, implementing support for converting other corpora to the snippet file format). (Sixth stage) Storing results in a database and developing a method of extracting statistical numbers. Overview of system?
+This chapter will with brevity describe the development process of the genetic and clustering algorithms. It will also go into some detail about the design of the algorithm so that the reader may better understand the code and how the algorithms works. This chapter will also be of benefit to those who wish to use the algorithm or even modify it.
+
+Overview of system?
 
 Describe how the algorithm and parameters where tested. I.e. how data and results were gathered. Write about different testing stages. First stage (testing individual parameter options to determine usable value ranges. Are results correct, why?). Testing of non-distributed genetic algorithm (does the small test-case give indication of viability?). Testing distributed algorithm (larger parameter sets tested show better results?). Final testing (testing hypotheses, include two corpora?).
 
 \section{Stages of development}
-This section will outline the main sequence in which work on was done.
-The overview of the iterations will explain when the initial development of
-the different parts were started to give an short explanation of the development process.
 
-\subsection{Learning stage}
-Familiarize with algorithm ...
+As earlier mentioned this master thesis builds on a project proposal work suggested by \supervisor. The proposal suggested work be put into optimizing the parameters of the \STC algorithm. \supervisor had also written the algorithm in Python, a programming language I was not familiar with. The first stage of my master thesis work was then to learn both Python programming and how the \STC algorithm was implemnted in practice.
 
-\subsection{Modification of algorithm}
-Modified so and so ...
+\supervisor had implemented the algorithm so that it could easily be run with a given parameter set hardcoded in the algorithm. This approach is suitable if one wants to test one or a few parameter sets. The approach, however, becomes very cumbersome when one needs to test large quantities of parameter sets. This is true for incremental testing. To find optimal parameter sets by using a genetic algorithm it is also necessary to be able to automatically generate parameter sets. It was thus necessary to modify the algorithm to better suite these requirements. The algorithm was modified to accept any parameter set.
 
-\subsection{Genetic algorithm}
-Explain how and why it was developed as it was ...
+Once incremental tests had been performed a genetic algorithm was developed following the description outlined in the theory chapter. Because the ultimate goal of the thesis is to identify optimal parameters for the \CTC algorithm, little work has been put into finding good parameters for the genetic algoritm itself. Values used for keep size, mutation rate and the kind of selection process used might not be the very best for this problem space.
 
-\subsection{Distribution of genetic algorithm}
-Why distribute? How? Possible problems...
+Informal, unstructured tests suggested that the genetic algorithm was indeed capable of finding improved parameter sets. However, the computation time of each chromosome (i.e. parameter set) was so high, ranging up to one minute, that running a proper test on one computer was implausible. A distributed version of the genetic algorithm was therefore created.
 
-\subsection{Results storage and corpus processing}
-Storing results, tracking top chromosomes over generations, extracting averages for graphs etc.
+The original \CTC algorithm implemented by \supervisor logs results to the terminal. The amount of results produced by the genetic algorithm during the optimization process requires more structured target so a database based storage solution was implemented. The \CTC algorithm has only been used on two Norwegian news corpora. A corpus processor was implemented to convert the Reuters corpus to a format accepted by the \CTC algorithm. The algorithm is structured in such a way that it is easy to implement additional corpus processors for other corpora.
 
-\subsection{Overview of the completed system}
-Give a short overview of the system ...
+
+\section{Overview of system}
+This section will cover the implementation of the \CTC algorithm and the Genetic Algorithm used to optimize its parameters. The whole codebase of the project is too big to be shown here. The code is open source and available at \href{http://github.com/snorremd/distributed-clustering}{GitHub - http://github.com/snorremd/distributed-clustering}. Readers interested in a detailed look at the implementation is encouraged to take a look there. The code can be used freely and redistributed in accordance with the lisence used.
+
+\subsection{\CTC}
+The original implementation of the \CTC algorithm was done by \supervisor. The implementation used in this thesis is more or less the same, but adapted to accept different parameter sets in the form of chromosomes. The algorithm is implemented by the \textit{CompactTrieClusterer} class. The class initializer receives a corpus object with details about the corpus it should cluster and a cluster settings object that tells it wether to drop singleton ground truth clusters or not, and what kind of alfabeta-score to use for the f-measure calculations. Singleton ground truth clusters are those ground truth clusters containing only one document. In cases where a ground truth cluster set contains a lot of singleton clusters, a clustering result with a lot of singleton clusters might artificially increase results by giving a high recall value. The alfabeta value can be tuned to determine which kind of results the genetic algorithm optimize for. Low values for alfabeta makes the F-Measure a measure of precision. Conversly, high values make it a recall measure. With a value of 1, precision and recall is weighted equally, creating a harmonic mean.
+
+The initializer reads a snippet file which contains an XML-encoded list (see Listing~\ref{lst:snippetfile}) of all documents in the collection. Each document is divided into snippets falling into a text type category: frontpage title, frontpage introduction, article title, article byline, article introduction, and article text. Each snippet is stored under a given text type in the algorithm to facilitate snippet filtering during the clustering process. The initializer also extracts the ground truth clusters from the snippet file (using the tags attribute in the XML elements), creates a tag index and extract word frequencies that are used by the similarity measures in the base cluster merging step.
+
+The CompactTrieClusterer object then calls the cluster method to initiate the cluster algorithm. The cluster method takes a single argument, a chromosome. The chromosome object consists of properties each corresponding to a parameter in the clustering algorithm:
+\begin{inparaenum}[\itshape 1\upshape)]
+\item tree type;
+\item top base clusters amount;
+\item min term occurence in collection;
+\item max term ratio in collection;
+\item min limit for base cluster score
+\item max limit for base cluster score
+\item should drop singleton base clusters
+\item should drop one word clusters
+\item text types
+\item text amount; and
+\item similarity measure
+\end{inparaenum}.
+
+\begin{lstlisting}[float=t, language=python, label=lst:chromosome, caption={An example chromosome}]
+fitness = 0
+id = 1
+idCounter = 2
+results = ## Ommitted
+tree_type = (0,0,0)
+top_base_clusters_amount = 992
+min_term_occurence_in_collection = 23
+max_term_ratio_in_collection = 0.72
+min_limit_for_base_cluster_score = 3
+max_limit_for_base_cluster_score = 7
+should_drop_singleton_base_clusters= 0
+should_drop_one_word_clusters = 1
+text_amount = 0.73
+text_types = {
+  "FrontpageIntroduction": 1,
+  "FrontpageHeading": 0,
+  "ArticleHeading": 1,
+  "ArticleByline": 1,
+  "ArticleIntroduction": 0,
+  "ArticleText": 1
+}
+similarity_measure = {
+  similarity_method: 2,
+  params: (0.5, 10, 1)
+}
+\end{lstlisting}
+
+\subsubsection{Snippet filtering}
+The clustering method first filters the snippet list in accordance with the text types parameter which specify which parameters are to be included. In those cases where the chromosome specifies not to include any text an empty result is returned (i.e. a result giving zero score for all measures).
+
+\subsubsection{Snippet expansion}
+The algorithm then moves on to the snippet expansion part of the \CTC algorithm. It selects the expansion technique given by the tree type parameter in the chromosome: suffix, n-slice, mid-slice or range slice. Here the word slice is used in place of gram. Each expansion technique will be explained with an example for clarity's sake. Take the following snippet: ``mouse run trough house order find cheese is disovered cat chase away''. Given the definition of the snippet as \(S = t_{1} \dots t_{n}\) we can expand it using each of the four expansion techniques as follows:
+
+Each suffix phrase \(P\)  of \(S\) are defined as: \(P = t_{n-m+1} \dots t_{n}\) where \(0 \le m < n\). This gives us the following suffixes for the snippet:
+\begin{inparaenum}[\itshape 1\upshape)]
+\item ``mouse run through house order find cheese is discovered cat chase away,''
+\item ``run through house order find cheese is discovered cat chase away,''
+\item ``through house order find cheese is discovered cat chase away,''
+\item ``house order find cheese is discovered cat chase away,''
+\item ...
+\item ``chase away, and''
+\item ``way''
+\end{inparaenum}
+
+
+An n-slice phrase \(P\) for slice length \(l\) is defined as \(P = t_{m} \dots t_{m+l}\) where \(0 \le m \le n - l\). This definition gives us the following n-slices of the snippet:
+\begin{inparaenum}[\itshape 1\upshape)]
+\item ``mouse run through house order find,''
+\item ``run through house order find cheese,''
+\item ``through house order find cheese is,''
+\item ..., and
+\item ``cheese is discovered cat chase away''
+\end{inparaenum}
+
+Midslices are n-slices where the length \(l\) of the slices is given by the function \(l = round(\frac{phraselength}{2})\). For the example snippet the midslices would simply be 6-slices as examplified above. The last type of expansion is range slices. Range slices are simply put all the n-slices in the range \(r_{min} \dots r_{max}\). Min is calculated using the function \(n = floor(snippet length * min~ratio)\). Max is calculated using a similar function: \(max = ceil(snippet length * max~ratio)\).  Min and max ratio are values where \(0 < ratio <= 1\). The range slices of the example snippet given the range 0.4 and 0.8 would thus be all n-slices in the range \(4 \dots 10\), i.e. 4-slices, 5-slices, ..., 9-slices, and 10-slices.
+
+\subsubsection{Tree building}
+The expanded phrases are stored in a list as phrase -> source pairs. The compact trie is then built by iterating over this list and inserting each phrase source pair into the compact trie data structure. The datastructure is implemented by storing compact trie node objects in a tree structure. A compact trie node object has a phrase, a parent (unless root), a list of sources in which it occurs, a list of sources, and a map  of subtrees. The phrase field represents the edge going into that node whilst the map subtrees are all the child nodes of that node. Each subtree is assigned to a key which is the first word in that subtree's phrase. Thus it is possible to detect existing phrases or common start segments of phrases when inserting a new phrase into the trie data structure.
+
+\subsubsection{Base clusters}
+
+The \CTC algorithm generates base clusters with a simple recursive function (see Listing~\ref{lst:baseclustergeneration}). The function is called and applied to the root node of the compact trie. The function then creates new base clusters for each subtree in the root, and the subtrees of those subtrees etc. When all subtrees have been explored, the function iteratively adds the sources of each subtree to their parent base cluster as the function climbs out of the recursion. This way each base cluster's sources (given a node in the compact trie) is the union of all the sources in the decendant nodes.
+
+The algorithm then scores and rank the base clusters according to their score. Recall the function for calculating the effective length of a base cluster label \(f(\vert P \vert)\) where \(f(\vert P \vert) = 0\) for \(\vert P \vert < 2\), \(f(\vert P \vert) = \vert P \vert\) for \(2 \le \vert P \vert < 7\), and \(f(\vert P \vert) = 7\) for \(7 < \vert P \vert\). Here the value 2 and 7 have been replaced by dynamic parameters min and max limits for base cluster scores. The min limit is a number in the range 1 \dots 5; the max limit a number in the range 3 \dots 9. If a corpus yields base clusters with generally longer labels, this will allow labels of longer lengths to be scored differently. A higher min limit will reduce the number of base clusters with short labels that might else wise be used in cluster creation.
+
+TODO: Run analysis on base clusters produced to determine more optimal ranges.
+
+The effective length of a label is dependent on the document frequency of each word in that label. A word contributes to a labels length if it satisfies two document frequency constraints. It should, according to \cite{Oren1998} have a document frequency of at least 4, and occur in no more than 40\% of the collection's documents. The optimal value of each can vary for a given corpus because document frequencies might vary for different collections. The min word occurrence and max ratio have been set to dynamic values. The first value ranges from 1 to 500, and the second from 0.1 to 1 with increments of 0.01.
+
+\subsubsection{Base cluster merging and clusters}
+Recall that \cite{Oren1998} merge base clusters using the Jaccard Coefficient on the number of shared documents, and each base clusters number of documents. This implementation is fairly naive because it only considers the amount of sources the base clusters share. This produces bigger clusters with good source overlap (number of shared sources), but runs the risk of producing clusters with low label overlap (few shared label words). In his research work \supervisor has implemented two new similarity functions which in addition to standard Jaccard Similarity on the sources considers the similarity of the labels. 
+
+One uses the vector space model and the notion of cosine similarity to find the similarity of base cluster labels. Two base cluster labels are said to be similar if they are applied to the function:
+
+\begin{displaymath}
+\frac{\sum_{w}\vec{v}(w) * \vec{v}'(w)}
+{\sqrt{\sum_{w}\vec{v}(w)^2} * \sqrt{\sum_{w}\vec{v}'(w)^2}}
+\ge \theta_{cos}
+\end{displaymath}
+
+TODO: Insert better explanation of tfidf calculation.
+
+TODO: Insert explanation of last measure.
+
+Explain choice of value ranges...
+
+%\begin{lstlisting}[float=t, language=python, label=lst:clusteringcode, caption={Code}]
+%
+%\end{lstlisting}
+
+\begin{lstlisting}[float=f, language=xml, breaklines=true, label=lst:snippetfile, caption={Snippet file encoded in XML}]
+<?xml version='1.0' encoding='ascii'?>
+<snippetcollection source="klimaukenOBT.xml">
+    <snippet id="2009-12-07-aa-01" source="http://www.adressa.no/nyheter/trondheim/article1419658.ece" tags="Innenriks-ulykker-trafikk-utforkj&#248;ring-trondheim">
+        <ArticleIntroduction>
+            <snip> bil havne bokstavelig tale hel kant Nedre Elvehavn mandag ettermiddag</snip>
+        </ArticleIntroduction>
+        <ArticleText>
+            <snip> bil havne hel kant Nedre Elvehavn mandag ettermiddag</snip>
+            <snip> bil tom</snip>
+            <snip> If&#248;lge politi S&#248;r-Tr&#248;ndealg skulle bil tom komme sted</snip>
+            <snip> menneske bil politi komme</snip>
+            <snip> brannvesen sikre bil Falck rekvirere berging fortelle Curt Ivar R&#248;hmen operasjonsleder S&#248;r-Tr&#248;ndelag politidistrikt</snip>
+            <snip> st&#229; fri</snip>
+            <snip> If&#248;lge Tr&#248;ndelag redningstjeneste skulle bil begynne rulle h&#229;nd</snip>
+            <snip> forst&#229; bil st&#229; fri begynne trille stoppe kant</snip>
+            <snip> sikre bil Falck berge fortelle Trond Reitan vaktleder 110-sentral</snip>
+            <snip> bileier dukke</snip><snip> bare telefon bil vei elv si Tore Lagesen</snip>
+            <snip> Han parkere meter kaikant overbevise bil st&#229; h&#229;ndbrekk</snip>
+            <snip> n&#229; skulle bare sette godstol slappe si bileier hvilepuls</snip>
+        </ArticleText>
+        <ArticleByline>
+            <snip> Tore Lagesen helle bil nesten ende vann Nedre Elvehavn</snip>
+        </ArticleByline>
+        <ArticleHeading>
+            <snip> Biltur hel kant</snip>
+        </ArticleHeading>
+        <FrontPageIntroduction>
+            <snip> En bileier Trondheim flaks side bil ta tur h&#229;nd mandag ettermiddag</snip>
+            <snip> le mye</snip>
+        </FrontPageIntroduction>
+        <FrontPageHeading>
+            <snip> telefon bil tur elv</snip>
+        </FrontPageHeading>
+    </snippet>
+    <snippet>
+      ...
+    </snippet>
+    ...
+  </snippetcollection>
+\end{lstlisting}
 
 \section{Testing}
 \label{Testing}
@@ -51,4 +200,4 @@ Describe first test with about 200 individuals and 50 generations.
 Describe distributed test with more individuals and more generations
 
 \subsection{Final testing}
-Describe final test and how it answers resesearch question
+Describe final test and how it answers resesearch question.

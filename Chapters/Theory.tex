@@ -37,7 +37,7 @@ To make the concept Suffix Trees a bit clearer a short explanation of the trie d
 
 The \STC algorithm use a trie data structure. Trie data structures, also known as digital search trees, are multi-way trees that store sets of strings. The trie data structure is capable of retrieving any string encoded within it in time proportional to the string's length, \cite{Baeza-Yates2011c}. \textcite{Baeza-Yates2011c} describe a trie as a tree-shaped DFA (deterministic finite automaton). In a finitite automaton a term or pattern can be modelled as a directed graph containing circular vertices as states and directed arrows (labeled with one or more characters) as transitions between these states. A string can be matched to a NFA if and only if there are some path, iterating over the string, from the initial state to the final state. In the suffix trie the root node denotes the initial state and each leaf node works as a final state. In essence the suffix trie describes a DFA over all the suffixes of all phrases in a document collection.
 
-In context of a term \(t = [c_{1}, ..., c_{n}]\) a suffix is a sub-term \(s = [t[m], ..., t[n]]\) where \(m\) is smaller than or equal to (in which case only one character is selected) \(n\). To exemplify this definition the term suffix itself can be used. The suffixes of the term ``suffix'' are
+In context of a term \(T = [c_{1}, ..., c_{n}]\) a suffix is a sub-term \(s = [t[n-m] \dots t[n]]\) where \(0 \le m < n\). To exemplify this definition the term suffix itself can be used. The suffixes of the term ``suffix'' are
 \begin{inparaenum}[\itshape 1\upshape)]
 \item suffix;
 \item uffix;
@@ -63,7 +63,6 @@ By combining the concepts of suffixes and trie structures you can build a suffix
 \item Edges from the same node can not have the same edge-labels (sub-phrases)
 \item For each suffix of the string \textit{S} there is a suffix node which is equal to that suffix.
 \end{itemize}
-
 
 Following these requirements, a suffix tree can then be understood to be a tree wherein edges are sub-phrases of or whole suffixes and the nodes connected by these are the documents (or sources) from which these suffixes come. The internal nodes in the tree are phrase clusters made up of all those documents that share that sub-phrase. An example of a suffix tree can be seen in Figure~\ref{fig:suffixtree}. Here three phrases each comprising a document are split into suffixes and then put into the suffix tree structure. As an example one can see that the two phrases
 \begin{inparaenum}[\itshape 1\upshape)]
@@ -115,6 +114,26 @@ J_{n}(B_{m},B_{n}) =
 If and only if \(J_{m} > 0.5\) and \(J_{n} > 0.5 \) then the similarity of the two clusters \(m\) and \(n\) is equal to one. All base cluster pairs with a similarity of 1 is connected in a base cluster graph. This results in a set of connected components in the graph. Each connected component is considered a cluster in the final clustering result. In this last step two parameters can be identified. One could adjust the number of base clusters used to create the final clusters. The lowest scoring base clusters might not be relevant for the final results as the documents in these clusters share few of their phrases with each-other. On the other hand it might hurt the results if the algorithm use too few of the base clusters resulting in a lower number of merged clusters, or even less accurate merged clusters.
 
 It is also possible to adjust the similarity threshold used by the Jaccard coefficient, or use another similarity measure all together. One such similarity measure is the cosine similarity measure that can be used when documents are represented in a vector space model. This similarity measure is used by \cite{Chim2007}, albeit with phrases in a hierarchical clustering algorithm. The cosine similarity formula returns a value between -1 and 1, where -1 denotes that the vectors being compared are completely dissimilar, 1 that they are identical, and 0 that they are somewhere in between. The cosine similarity value can easily be applied as a similarity measure when combining clusters.
+
+How exactly is the cosine similarity of two documents computed? Usually the cosine similarity is computed using the vector space model \cite{Manning2009a}. In this model there are some key elements. There is a document \textit{corpus} consisting of \(N\) number of text documents. From this corpus one can compute a \textit{dictionary} comprising all the terms in the corpus and their frequency. A term's corpus frequency is thus the number of times it occurs in the corpus. The \textit{term frequency} (tf) of a term is the number of times it occurs in a document. The \textit{document frequency} (df) of a term is the number of documents it occurs in. A terms weight can be measured by it's tf-idf score \cite{Manning2009a}. The tf-idf score of a given term can be calculated given the functions:
+
+
+\begin{displaymath}
+idf{t} = log \frac{N}{df_{t}} 
+\end{displaymath}
+
+\begin{displaymath}
+tf-idf_{t,d} = tf * idf
+\end{displaymath}
+
+The cosine similarity of two documents are calculated by calculating the dot product of their two vectors and then dividing that by the product of their Euclidian length to length-normalize the result \cite{Manning2009a}. It can be expressed mathematically as follows:
+
+\begin{displaymath}
+sim(d1, d2) = \frac{\vec{V}(d1) * \vec{V}(d2)}
+{\sqrt{\sum_{i = 1}^M\vec{v}_{i}^2(d1)} * \sqrt{\sum_{i = 1}^M\vec{v}_{i}^2(d2)}}
+\end{displaymath}
+
+The vector representation of each document consist of one component for each term in the corpus dictionary. The components can be derived by different means, but it is common to use the tf-idf score of a term as components for a document vector. The vector representation \(\vec{V}(d)\) is thus the tf-idf score for each term \(t\) in document \(d\) given a corpus. The tf-idf weighing scheme and cosine similarity function can be adapted to work within the base cluster context. This will be explained later in Chapter~\ref{Development}.
 
 \subsection{Compact Trie Clustering}
 The \CTC algorithm is a slightly modified version of the \STC algorithm, developed by \supervisor. The algorithm is so named because it use k-grams instead of suffixes, and because it also follows the compact tree structure. A k-gram is a subsequence of \(k\) number of characters occurring in a sequence of characters (a word or term). In the word ``mouse'' all the 3-grams would be 
