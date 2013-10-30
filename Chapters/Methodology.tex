@@ -1,3 +1,4 @@
+%!TEX root = ../Thesis.tex
 % Chapter Template
 
 \chapter{Methodology} % Main chapter title
@@ -6,18 +7,47 @@
 
 \lhead{Chapter \ref{Methodology}. \emph{Methodology}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-An introduction to the chapter.
+Research methodologies and standards used to test search and classification algorithms will make the foundation of this thesis' research methodology. While experiments in the information retrieval field not necessarily directly involves human subjects, there are still standards and methodologies in place to ensure that experimental results are valid. This chapter will describe the scientific approach used in the scientific field of information retrieval, and how this approach will be applied to this thesis work.
 
 \section{Experimental Evaluation}
 \label{ExperimentalEvaluation}
-Will rewrite and use the corresponding section from the project proposal.
+The configuration and parameter sets for the \CTC algorithm will be evaluated experimentally rather than analytically for reasons explained by \cite[p. 32]{Sebastiani2002}:
+\begin{quote}The reason is that, in order to evaluate a system analytically (e.g., proving that the system is correct and complete), we would need a formal specification of the problem that the system is trying to solve (e.g., with respect to what correctness and completeness are defined), and the central notion of TC [Text Classification] (namely, that of membership of a document in a category) is, due to its subjective character, inherently nonformalizable. The experimental evaluation of a classifier usually measures its effectiveness (rather than its efficiency), that is, its ability to take the right classification decisions.
+\end{quote}
 
-\subsection{Evaluation Measures}
-Provide info about the two forms of evaluation measures used (one from Improved suffix tree clustering article and one used by Richard). How do they work, what are the differences...
+Experimental evaluation have long been used and discussed in the field of information retrieval. One of the first experimental paradigms in information retrieval research, one that is still in use today, is the test collection evaluation paradigm introduced by The Cranfield research projects during the 60s \cite{Cleverdon1966}. The experimental methodology formed during these experiments are nicely summarized by \cite[p. 564]{Voorhees2005} who writes that:
+
+\begin{quote}
+At the core of this experimental methodology was the idea that live users could be removed from the evaluation loop, thus simplifying the evaluation and allowing researchers to run in vitro–style experiments in a laboratory with just their retrieval engine, a set of queries, a test collection, and a set of judgments (i.e., a list of relevant documents).
+\end{quote}.
+
+\cite[p. 33]{Cleverdon1966} give three requirements for using measurements of performance in experimental tests of information retrieval systems:
+\begin{enumerate}
+\item A document collection of known size to be used in the test;
+\item A set of questions, together with decisions as to exactly which documents are relevant to each question;
+\item A set of results of searches made in the test; these usually give the numbers of documents retrieved in the searches, divided into the relevant and non-relevant documents.
+\end{enumerate}
+These questions should be asked with regards to information retrieval experiments done on text search via queries, but can inspire similar questions for experiments done on text classification and clustering algorithms. Instead of forming questions and determining which documents are relevant to those question, one can form a set of categories and then decide which documents fall into which categories. Then clustering results can be divided into clusters, each cluster correct or incorrect.
 
 \section{Corpora}
 \label{Corpora}
-Write a bit about the corpora used in the research (most likely just Klimauken and the reuters set). If time permits it could be feasible to use an additional news corpus.
+
+When performing experimental research on information retrieval systems it is customary to use standard document collections or corpora as they are also known. There are several corpora available for text classification and clustering research. \cite{Baeza-Yates2011a} describe some of the corpora available for text classification research among them: Reuters-21578, RCV: Reuters Corpus Volumes, the OHSUMED reference collection and 20 NewsGroups. Some of them are briefly explained below.
+
+Reuters, an international news agency have made several corpora that are available trough different sources. One Reuters corpus that have been much used in the text classification community is the \textit{Reuters 21578} corpus \cite{Lewis2004a}. The documents in this collection was collected from documents appearing on the Reuters newswire in 1987. The corpus was assembled and categorized by personnel from Reuters and Carnegie Group in 1987. This corpus thus resembles that used in the ``Recycling of news in the news papers 1999 - 2000'' research project.
+
+Reuters have since made a new corpus that is likely to replace the Reuters 21578 corpus. This new corpus is divided into three volumes RCV1, RCV2 and TRC2. The first two volumes contain news stories from 96 - 97, and the last volume contains news stories from 08 to 09. RCV1 and TRC2 contain english news stories only, while RCV2 is multilingual \cite{NationalInstituteofStandardsandTechnology2004}. An article on use of the RCV1 corpus provide more details about how the data set can be used in evaluation text categorization systems. ``\textit{Reuters CorpusVolume I (RCV1) is an archive of over 800,000 manually categorized newswire stories recently made available by Reuters, Ltd. for research purposes. Use of this data for research on text categorization requires a detailed understanding of the real world constraints under which the data was produced.}'' \cite{Lewis2004}. 
+
+This thesis will mainly focus on news corpora, but the LLI research group will also look at the blogosphere. With this in mind it would be interesting to use a standard blog collection for evaluation of the algorithm in future research. Two blog collections are used in the blog track in the TREC conference, the Blogs06 and Blogs08 collections.\begin{quote}
+The TREC Blogs06 collection is a big sample of the blogosphere, and contains spam as well as possibly non-blogs, e.g. RSS feeds from news broadcasters. It was crawled over an eleven week period from 6th December 2005 until the 21st February 2006. The collection is 148GB in size [\dots] The collection was used in TREC 2006, 2007 and 2008 \cite{Macdonald2011}.
+\end{quote} 
+The Blogs08 dataset is even bigger.
+
+These corpora form a solid foundation for experimental evaluations and make it possible to replicate and compare results between research projects and researchers. But for this to be possible, it is necessary to use some formal evaluation measures that are employed by a majority of the research in the area of study. This will be the focus of the next section (Section~\ref{EvaluationMeasures}.
+
+\section{Evaluation Measures}
+\label{EvaluationMeasures}
+Provide info about the two forms of evaluation measures used (one from Improved suffix tree clustering article and one used by Richard). How do they work, what are the differences...
 
 \section{Experimental Research}
 \label{ExperimentalResearch}

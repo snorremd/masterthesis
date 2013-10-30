@@ -115,7 +115,7 @@ The expanded phrases are stored in a list as phrase -> source pairs. The compact
 
 \subsubsection{Base clusters}
 
-The \CTC algorithm generates base clusters with a simple recursive function (see Listing~\ref{lst:baseclustergeneration}). The function is called and applied to the root node of the compact trie. The function then creates new base clusters for each subtree in the root, and the subtrees of those subtrees etc. When all subtrees have been explored, the function iteratively adds the sources of each subtree to their parent base cluster as the function climbs out of the recursion. This way each base cluster's sources (given a node in the compact trie) is the union of all the sources in the decendant nodes.
+The \CTC algorithm generates base clusters with a simple recursive function. The function is called and applied to the root node of the compact trie. The function then creates new base clusters for each subtree in the root, and the subtrees of those subtrees etc. When all subtrees have been explored, the function iteratively adds the sources of each subtree to their parent base cluster as the function climbs out of the recursion. This way each base cluster's sources (given a node in the compact trie) is the union of all the sources in the decendant nodes.
 
 The algorithm then scores and rank the base clusters according to their score. Recall the function for calculating the effective length of a base cluster label \(f(\vert P \vert)\) where \(f(\vert P \vert) = 0\) for \(\vert P \vert < 2\), \(f(\vert P \vert) = \vert P \vert\) for \(2 \le \vert P \vert < 7\), and \(f(\vert P \vert) = 7\) for \(7 < \vert P \vert\). Here the value 2 and 7 have been replaced by dynamic parameters min and max limits for base cluster scores. The min limit is a number in the range 1 \dots 5; the max limit a number in the range 3 \dots 9. If a corpus yields base clusters with generally longer labels, this will allow labels of longer lengths to be scored differently. A higher min limit will reduce the number of base clusters with short labels that might else wise be used in cluster creation.
 
@@ -126,19 +126,31 @@ The effective length of a label is dependent on the document frequency of each w
 \subsubsection{Base cluster merging and clusters}
 Recall that \cite{Oren1998} merge base clusters using the Jaccard Coefficient on the number of shared documents, and each base clusters number of documents. This implementation is fairly naive because it only considers the amount of sources the base clusters share. This produces bigger clusters with good source overlap (number of shared sources), but runs the risk of producing clusters with low label overlap (few shared label words). In his research work \supervisor has implemented two new similarity functions which in addition to standard Jaccard Similarity on the sources considers the similarity of the labels. 
 
-One uses the vector space model and the notion of cosine similarity to find the similarity of base cluster labels. Two base cluster labels are said to be similar if they are applied to the function:
+One uses the vector space model and the cosine similarity function to find the similarity of base cluster labels. In this context a term's weight (tf-idf) is calculated not using it's document frequencies, but rather their base cluster frequencies. Given a base cluster \(b\), the concatenation \(S^+\) of \(b\)'s documents, and the corpus collection \(C\) the tf-idf score of a given term \(t\) in \(b\)'s label can be calculated with the function (insert cite to Richard's working paper?):
 
 \begin{displaymath}
-\frac{\sum_{w}\vec{v}(w) * \vec{v}'(w)}
-{\sqrt{\sum_{w}\vec{v}(w)^2} * \sqrt{\sum_{w}\vec{v}'(w)^2}}
+\vec{v}(t) = \left\{
+  \begin{array}{l l}
+    tf-idf(t, S^+, C) & \quad \text{if $t \in b$}\\
+    0 & \quad \text{otherwise}
+  \end{array} \right.
+\end{displaymath}
+
+Two base cluster labels are said to be similar if they satisfy the condition:
+
+\begin{displaymath}
+\frac{\sum_{t}\vec{v}(t) * \vec{v}'(t)}
+{\sqrt{\sum_{t}\vec{v}(t)^2} * \sqrt{\sum_{t}\vec{v}'(t)^2}}
 \ge \theta_{cos}
 \end{displaymath}
 
-TODO: Insert better explanation of tfidf calculation.
+where \(\theta_{cos}\) is the threshold with which similarity is determined. A \(\theta_{cos}\) close to 1 will prevent base clusters from being merged, whilst a value close to 0 would allow close to all Jaccard similar base clusters to be merged. Finding the right \(\theta_{cos}\) should therefore be part of the optimization task.
 
-TODO: Insert explanation of last measure.
+The second similarity measure used in \supervisor working paper is one of several amendments to the original Jaccard similarity measure used by \citeauthor{Oren1998}. Under this new similarity measure two base clusters are similar if: they are Jaccard similar, the average corpus frequency (\(cf(w)\)) of their label words are below some threshold (\(\theta avg\)), and that they share at minimum (\(\theta min\)) a number of label words. This amendment can be expressed mathematically as:
 
-Explain choice of value ranges...
+\begin{displaymath}
+\frac{\sum\limits_{w \in b \cup b'} cf(w)}{\vert b \cup b' \vert} < \theta avg \quad \text{and} \quad \vert b \cap b' \vert > \theta min
+\end{displaymath}
 
 %\begin{lstlisting}[float=t, language=python, label=lst:clusteringcode, caption={Code}]
 %
@@ -188,7 +200,7 @@ Explain choice of value ranges...
 
 \section{Testing}
 \label{Testing}
-Give overview of testing process
+During the thesis work, tests have been performed at various stages in order to justify the parameters selected and the value ranges for those parameters. Tests have also been performed to test the TODO: FIND TERM HERE of the genetic algorithm, distribution of computation and finally in the form of a scientific experiment to test the hypotheses posed in the thesis. This section will present a short overview of the informal tests and then go into some details about how the experiment was conducted and what kind of results were obtained. 
 
 \subsection{Value Range Tests}
 Describe tests to discover reasonable parameter ranges ...

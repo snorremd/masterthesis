@@ -126,7 +126,9 @@ idf{t} = log \frac{N}{df_{t}}
 tf-idf_{t,d} = tf * idf
 \end{displaymath}
 
-The cosine similarity of two documents are calculated by calculating the dot product of their two vectors and then dividing that by the product of their Euclidian length to length-normalize the result \cite{Manning2009a}. It can be expressed mathematically as follows:
+The inverse document frequency measures the relative uniqueness of a term in the collection by giving terms occurring in fewer documents higher scores than those occuring in most documents. Given a document a term will then receive a high tf-idf weight if it occurs frequently in that document, but in few documents in the collection. Converesly, if the term occurs a small amount of times in a document, but in all documents it will be given a very low weight.
+
+The cosine similarity of two documents are found by calculating the dot product of their two magnitude vectors and then dividing that by the product of their Euclidian length to length-normalize the result \cite{Manning2009a}. It can be expressed mathematically as follows:
 
 \begin{displaymath}
 sim(d1, d2) = \frac{\vec{V}(d1) * \vec{V}(d2)}
