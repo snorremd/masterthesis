@@ -40,3 +40,7 @@ Thesis.bcf
 Thesis.pdf
 
 Thesis.pdf
+
+*.sublime-project
+
+*.sublime-workspace
