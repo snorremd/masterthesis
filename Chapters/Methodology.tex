@@ -48,7 +48,9 @@ These corpora form a solid foundation for experimental evaluations and make it p
 \label{EvaluationMeasures}
 There are some considerations to take when choosing evaluation measures. When performing experimental research it is important to use the same evaluation measures as those used in related research works to make the results comparable. In much of information retrieval research, text classification included, there are agreed upon measures that can be used while performing research. Such measures does not exist to the same extent for clustering algorithms. There seems to be a community of practice with regards to evaluation measures used for the \STC algorithm. An alternative evaluation measure used by the LLI group in their research will be compared to the other measures.
 
-\cite{Chim2007} detail how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical clustering algorithm. The results from hierarchical clustering algorithms and the \CTC algorithm are however similar in nature. and it will be possible to use measurement formulas described in their article when calculating the various effectiveness measurements. These formulas have also been used by \cite{Rafi2011}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
+\subsection{Chim and Deng}
+
+\cite{Chim2007} detail how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical clustering algorithm. The results from hierarchical clustering algorithms and the \CTC algorithm are however similar in nature. and it will be possible to use measurement formulas described in their article when calculating the various performance measurements. These formulas have also been used by \cite{Rafi2011} when they compare the standard suffix tree clustering algorithm of \citeauthor{Oren1998} with the algorithm formulated by \citeauthor{Chim2008}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
 
 If you have the sets
 
@@ -68,12 +70,27 @@ where \(C\) is the clusters produced by the algorithms on document set \(D\), an
 recall(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_i^* \vert}
 \end{displaymath}
 \begin{displaymath}
-precision(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_{i} \vert}
+precision(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_{j} \vert}
 \end{displaymath}
 \begin{displaymath}
 F-Measure(i,j) = \frac{2 \cdot precision(i,j) \cdot recall(i,j)}{precision(i,j) + recall(i,j)}
 \end{displaymath}
 
+\cite{Chim2007} do not provide any information as to whether the category set \(C^*\) is disjoint (i.e. whether one document can occur in several categories). The category set is therefore most likely not disjoint, or it depends on the collection. As was explained in the literature section recall aims to capture the fraction of positive results to the total number of correct results. In this context recall expresses the fraction of a category's documents the cluster contains. Precision shows the fraction of documents in a cluster that is correctly clustered given a category to the amount of documents in a cluster. Because precision and recall is not good measures by themselves (recall could be a 100\%, but often precision would then be very low) an F-Measure is often used in evaluation of text classifiers \cite{Baeza-Yates2011a}. The F-Measure is the harmonic mean between recall and precision and is high when both precision and recall is high \cite{Baeza-Yates2011b}. 
+
+The precision, recall, and F-Measure measurements defined above are applied to one cluster and class at a time. In other words the F-Measure of a cluster j with regards to a class i might not be any good, but its F-Measure with regards to another class i' might be very good. \cite{Chim2007} define an overall F-Measure function that captures the F-Measures for all the correct classes defined for the document set. For this function only those clusters j which maximize the F-Measure score for class i are considered in the overall F-Measure score. The overall F-Measure is calculated using the function:
+
+Given the formulas the overall F-Measure of the clusters \(C\) can be calculated using the formula:
+\begin{displaymath}
+F := \sum_{i=1}^{l} \frac{\vert C_i^* \vert}{\vert D \vert} \cdot \max_{j=1,\dots,k} \{F-Measure(i,j)\}
+\end{displaymath}
+
+\subsection{LII research group}
+Write about Richards performance measures here
+
+
+\subsection{Measurement comparison}
+Compare the measurements here
 
 \section{Experimental Research}
 \label{ExperimentalResearch}
