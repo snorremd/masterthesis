@@ -34,17 +34,9 @@
 *.bfc
 *.run.xml
 Thesis.run.xml
-
 Thesis.bcf
-
 Thesis.pdf
-
-Thesis.pdf
-
 Thesis.pyg
 *.lol
 *.sublime-project
-
 *.sublime-workspace
-
-thesis.sublime-project
