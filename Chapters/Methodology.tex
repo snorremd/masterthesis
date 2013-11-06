@@ -41,13 +41,39 @@ Reuters have since made a new corpus that is likely to replace the Reuters 21578
 This thesis will mainly focus on news corpora, but the LLI research group will also look at the blogosphere. With this in mind it would be interesting to use a standard blog collection for evaluation of the algorithm in future research. Two blog collections are used in the blog track in the TREC conference, the Blogs06 and Blogs08 collections.\begin{quote}
 The TREC Blogs06 collection is a big sample of the blogosphere, and contains spam as well as possibly non-blogs, e.g. RSS feeds from news broadcasters. It was crawled over an eleven week period from 6th December 2005 until the 21st February 2006. The collection is 148GB in size [\dots] The collection was used in TREC 2006, 2007 and 2008 \cite{Macdonald2011}.
 \end{quote} 
-The Blogs08 dataset is even bigger.
 
-These corpora form a solid foundation for experimental evaluations and make it possible to replicate and compare results between research projects and researchers. But for this to be possible, it is necessary to use some formal evaluation measures that are employed by a majority of the research in the area of study. This will be the focus of the next section (Section~\ref{EvaluationMeasures}.
+These corpora form a solid foundation for experimental evaluations and make it possible to replicate and compare results between research projects and researchers. But for this to be possible, it is necessary to use some formal evaluation measures that are employed by a majority of the research in the area of study. This will be the focus of the next section (Section~\ref{EvaluationMeasures}).
 
 \section{Evaluation Measures}
 \label{EvaluationMeasures}
-Provide info about the two forms of evaluation measures used (one from Improved suffix tree clustering article and one used by Richard). How do they work, what are the differences...
+There are some considerations to take when choosing evaluation measures. When performing experimental research it is important to use the same evaluation measures as those used in related research works to make the results comparable. In much of information retrieval research, text classification included, there are agreed upon measures that can be used while performing research. Such measures does not exist to the same extent for clustering algorithms. There seems to be a community of practice with regards to evaluation measures used for the \STC algorithm. An alternative evaluation measure used by the LLI group in their research will be compared to the other measures.
+
+\cite{Chim2007} detail how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical clustering algorithm. The results from hierarchical clustering algorithms and the \CTC algorithm are however similar in nature. and it will be possible to use measurement formulas described in their article when calculating the various effectiveness measurements. These formulas have also been used by \cite{Rafi2011}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
+
+If you have the sets
+
+\begin{displaymath}
+C = \{C_{1}, C_{2}, \dots, C_{k}\}
+\end{displaymath}
+\begin{displaymath}
+C^* = \{C_1^*, C_2^*, \dots, C_l^*\}
+\end{displaymath}
+\begin{displaymath}
+D = \{D_{1}, D_{2}, \dots, D_{k}\}
+\end{displaymath}
+
+where \(C\) is the clusters produced by the algorithms on document set \(D\), and \(C^*\) is the ``correct'' classes of document set \(D\), then the recall, precision and F-measure of cluster \(j\) with respect to class \(i\) can be calculated as:
+
+\begin{displaymath}
+recall(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_i^* \vert}
+\end{displaymath}
+\begin{displaymath}
+precision(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_{i} \vert}
+\end{displaymath}
+\begin{displaymath}
+F-Measure(i,j) = \frac{2 \cdot precision(i,j) \cdot recall(i,j)}{precision(i,j) + recall(i,j)}
+\end{displaymath}
+
 
 \section{Experimental Research}
 \label{ExperimentalResearch}
