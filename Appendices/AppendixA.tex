@@ -1,9 +1,471 @@
+%!TEX root = ../Thesis.tex
 % Appendix A
 
-\chapter{Appendix Title Here} % Main appendix title
+\chapter{Incremental test results} % Main appendix title
 
 \label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-\lhead{Appendix A. \emph{Appendix Title Here}} % This is for the header on each page - perhaps a shortened title
+\lhead{Appendix A. \emph{Incremental Test Results}} % This is for the header on each page - perhaps a shortened title
 
-Write your Appendix content here.
+This appendix contains diagrams of all incremental test results. It serves as a reference for discussion and descriptions in section~\ref{Testing}. The appendix is divided into two main sections. The first contains results from incremental tests using the parameters specified by \cite{Oren1998} as base values. The second section contains results using the parameters suggested by \supervisor as base values.
+
+\section{Oren \& Etzioni parameters}
+
+% Define bar chart colors
+%
+\definecolor{bblue}{HTML}{3366CC}
+\definecolor{rred}{HTML}{DC3912}
+\definecolor{oorange}{HTML}{FF9900}
+\definecolor{ggreen}{HTML}{109618}
+\definecolor{ppurple}{HTML}{990099}
+\definecolor{tteal}{HTML}{0099C6}
+
+% TREE TYPE TESTS
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={Suffix,Midslice,Rangeslice 0.1-1.0,5-slice},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/testTrees.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/testTrees.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/testTrees.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/testTrees.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/testTrees.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/testTrees.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different expansion techniques}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% N-SLICE
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {N-Slice length},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=n-slice] {Diagrams/testNSlices.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=n-slice] {Diagrams/testNSlices.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=n-slice] {Diagrams/testNSlices.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=n-slice] {Diagrams/testNSlices.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=n-slice] {Diagrams/testNSlices.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=n-slice] {Diagrams/testNSlices.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different n values of n-slice expansion}
+  \label{diag:nslicesetzioni}
+\end{figure}
+
+% RANGE SLICE TEST
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+     width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=5pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0.0-1.0,0.1-0.9,0.2-0.8,0.3-0.7,0.4-0.6,0.5-0.5},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.10,
+    ymin=0,
+    ymax=0.25,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/testRangeSlices.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/testRangeSlices.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/testRangeSlices.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/testRangeSlices.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/testRangeSlices.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/testRangeSlices.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different ranges of range-slice expansion}
+  \label{diag:rangeliceetzioni}
+\end{figure}
+
+% NUMBER OF TOP BASE CLUSTERS
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {Base cluster amount},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Basecluster-amount] {Diagrams/testBaseClusterAmounts.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Basecluster-amount] {Diagrams/testBaseClusterAmounts.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Basecluster-amount] {Diagrams/testBaseClusterAmounts.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Basecluster-amount] {Diagrams/testBaseClusterAmounts.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Basecluster-amount] {Diagrams/testBaseClusterAmounts.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Basecluster-amount] {Diagrams/testBaseClusterAmounts.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different limits on top base clusters amount}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% MIN TERM OCCURRENCE
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {Min term occurrence},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min Term Occurrence] {Diagrams/testMinTermOccurrence.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min Term Occurrence] {Diagrams/testMinTermOccurrence.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min Term Occurrence] {Diagrams/testMinTermOccurrence.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min Term Occurrence] {Diagrams/testMinTermOccurrence.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Term Occurrence] {Diagrams/testMinTermOccurrence.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min Term Occurrence] {Diagrams/testMinTermOccurrence.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for minimal term occurrence in collection.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% MAX TERM RATIO
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {Max term ratio},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Max Term Ratio] {Diagrams/testMaxTermRatio.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Max Term Ratio] {Diagrams/testMaxTermRatio.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Max Term Ratio] {Diagrams/testMaxTermRatio.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Max Term Ratio] {Diagrams/testMaxTermRatio.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Term Ratio] {Diagrams/testMaxTermRatio.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Max Term Ratio] {Diagrams/testMaxTermRatio.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for max term ratio in collection.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Min Limit BC Score
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {Min Limit},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min Limit] {Diagrams/testMinLimitBC.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min Limit] {Diagrams/testMinLimitBC.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min Limit] {Diagrams/testMinLimitBC.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min Limit] {Diagrams/testMinLimitBC.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Limit] {Diagrams/testMinLimitBC.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min Limit] {Diagrams/testMinLimitBC.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for min limit for base cluster score.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Max Limit BC Score
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {Max Limit},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Max Limit] {Diagrams/testMaxLimitBC.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Max Limit] {Diagrams/testMaxLimitBC.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Max Limit] {Diagrams/testMaxLimitBC.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/testMAxLimitBC.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/testMaxLimitBC.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/testMaxLimitBC.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for max limit for base cluster score.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Drop singleton bc test
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0,1},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/testDropSingletonBC.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/testDropSingletonBC.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/testDropSingletonBC.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/testDropSingletonBC.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/testDropSingletonBC.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/testDropSingletonBC.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for drop singleton base clusters parameter.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% Drop one word clusters test
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0,1},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/testDropOneWordClusters.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/testDropOneWordClusters.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/testDropOneWordClusters.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/testDropOneWordClusters.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/testDropOneWordClusters.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/testDropOneWordClusters.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for drop singleton base clusters parameter.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% Sort descending test
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0,1},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/testSortDescending.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/testSortDescending.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/testSortDescending.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/testSortDescending.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/testSortDescending.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/testSortDescending.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for sort descending parameter.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% Text amount
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.5cm,
+    % major x tick style = transparent,
+    xlabel = {Article Text Amount},
+    xmin=0,
+    xmax=1,
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Article Text Amount] {Diagrams/testArticleTextAmount.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Article Text Amount] {Diagrams/testArticleTextAmount.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Article Text Amount] {Diagrams/testArticleTextAmount.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Article Text Amount] {Diagrams/testArticleTextAmount.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Article Text Amount] {Diagrams/testArticleTextAmount.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Article Text Amount] {Diagrams/testArticleTextAmount.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different amount of article text.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+\section{\supervisor parameters}

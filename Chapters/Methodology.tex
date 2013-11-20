@@ -86,12 +86,160 @@ F := \sum_{i=1}^{l} \frac{\vert C_i^* \vert}{\vert D \vert} \cdot \max_{j=1,\dot
 \end{displaymath}
 
 \subsection{LII research group}
-Write about Richards performance measures here
+The ``Klimauken'' corpus is tagged with five topics (tags or classes) per document rather than a single topic. See the tags attribute in Listing~\ref{lst:snippetfile} for an example of a document in snippet format. In context of this corpus, a ground truth cluster is defined as all those documents that have all five topics in common. But only looking at perfect matches, TODO: CITATION papers says, might exclude those clusters that closely match a ground truth cluster. In thus makes sense to talk about degrees of correctness. 
+
+\subsubsection{Ground truth}
+
+The discrepancy of a cluster \(C\) with regards to a ground truth cluster \(G\) is defined as \(5 - d\) where \(d\) is the number of tags in common in the set \(C_{tags} \cup G_{tags}\). If all documents in the cluster and ground truth cluster have all five topics in common, there is no discrepancy. Further we impose a limit on discrepancy, namely that \(C\) matches ground truth with discrepancy \(d\) if and only if there is a \(G\) such that:
+
+\begin{displaymath}
+\{ G \vert G \subseteq C \textit{ and } G = max(d(G_{1}, \dots, d(G_{n})))
+\end{displaymath}
+
+The discrepancy of a cluster in relation to the ground truth is thus its discrepancy to the best matching ground truth cluster. An example of a cluster is given in Table~\ref{tab:clusterexample}.
+
+With this definition in place we understand that the number of ground truth cluster of zero discrepancy diveded by the number of retrieved clusters act as the standard precision measure. The division of retrieved clusters into levels of discrepancy allows us to relax the original measure and for example allow ground truth clusters of discrepancy zero and one to be used when calculating precision.
+
+\subsubsection{Ground truth represented}
+
+Ground truth clusters represented is esentially a measure of recall. The ground truth represented value, \(GtR\), for ground truth clusters \(G\) of discrepancy \(d\) given \(C\) retrieved clusters is calculated: \(GtR = \frac{\vert G_{d} \vert}{\vert C \vert}\). Again only looking at ground truth clusters with a discrepancy of zero gives us the standard measure. Again one can use the accumulated recall values of discrepancy levels zero and one to include mostly correct clusters as ground truth clusters.
+
+\subsubsection{Tag Accuracy}
+TODO CITATION also introduce a measure called tag accuracy. This measure leaves behind the notion of ground truth all together in favour of measuring the coherency between the tags in the documents in the resulting clusters. \textit{``A cluster has a tag accuracy of 5 - d if and only if d is the number of words common to all tags in it.''} TODO: Citation. Given two documents with the tags 
+\begin{inparaenum}[\itshape 1\upshape)]
+	\item Innenriks-ulykker-akeulykke-8åring-nordkapp, and
+	\item Innenriks-kriminalitet-trafikk-førerkort-kristiansand,
+\end{inparaenum}
+we get a tag accuracy of 4.
+
+
+\begin{table}[htdp]
+\footnotesize
+%\rowcolors{1}{gray!10}{white}
+\begin{center}
+\begin{tabular}{|c|p{10cm} |}
+\hline
+Label &  smører Odd-Bjørn \\
+Topics overlap & 4 \\
+Topics &  Nordmenniutland-sport-langrenn-hjelmeset-slovenia Nordmenniutland-sport-langrenn-hjelmeset-slovenia Nordmenniutland-sport-langrenn-verdenscup-slovenia \\
+No. documents & 3 \\
+Documents & www.vg.no/sport/ski/langrenn/artikkel.php?artid=581044 www.aftenposten.no/nyheter/sport/skisport/article3431048.ece www.adressa.no/sport/article1423419.ece \\
+\hline
+\end{tabular}
+\end{center}
+\caption{A cluster example}
+\label{tab:clusterexample}
+\end{table}
+
+
+\begin{table}[htdp]
+\footnotesize
+%\rowcolors{1}{gray!10}{white}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 -precision & 253 / 457 & 0.554 & 0.554 \\
+1 -precision & 2 / 457 & 0.004 & 0.558 \\
+2 -precision & 1 / 457 & 0.002 & 0.560\\
+3 -precision & 2 / 457 & 0.004 & 0.565\\
+4 -precision & 8 / 457 & 0.018 & 0.582\\
+5 -precision & 191 / 457 & 0.418 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 457 (of  457)
+\end{center}
+\caption{Precision of cluster result}
+\label{tab:clusterprecision}
+\end{table}
 
 
 \subsection{Measurement comparison}
 Compare the measurements here
+TODO: Find out differences...
 
 \section{Experimental Research}
 \label{ExperimentalResearch}
 Rewrite and use corresponding section from project proposal. Try to flesh out the methodology a bit (how did I perform the testing, what where the hypotheses etc). Talk about experimental constraints and data used.
+
+In order to answer the formulated hypotheses a scientific experiment must be formulated. This section will describe scientific experiments in context of algorithm analysis and outline an experiment design to test the hypotheses formulated to test the \CTC algorithm. The experiment will be formed around some of the techniques described in \cite{Bartz-Beielstein2004}, but with significant adjustments. In his article, \citeauthor{Bartz-Beielstein2004} is primarely concerned with the optimization of a partical swarm optimization algorithm. The techniques are non the less relevant as they provide valuable insight into experimental benchmarking of algorithms. The process is summarized in Table~\ref{tab:experimentsequence}.
+
+\subsection{Pre-experimental planning}
+The first step is pre-experimental planning. During the pre-experimental planning tests were performed to find candidate parameters for the algorithm as well as good parameter ranges (see Chapter~\ref{Development}). I also had to process some corpora files to get a suitable format for clustering with different parameters. This included marking everything up with their appropriate text types.
+
+\subsection{Scientific Hypotheses}
+Hypotheses here:
+
+\emph{Optimal parameter set:}
+
+\(H1_{1}\): There is a parameter set \(p_{optimized}\) for the \CTC algorithm that for the ``Klimauken'' corpus give significantly improved results compared to the parameter set \(p_{default}\).
+
+\(H1_{0}\): The parameter set \(p_{optimized}\) does not give significant improvements compared to the parameter set \(p_{default}\) for the ``Klimauken'' corpus.
+
+
+\emph{Optimization algorithm:}
+
+\(H2_{1}\): The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that is significantly better than the default parameter set \(p_{default}\).
+
+\(H2_{0}\): The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is better than the defailt parameter set \(p_{default}\).
+
+Must specify that it only tests this genetic algorithm as other optimization algorithms (or perhaps even another genetic algorithm might be capable of doing it. Thus without constricting the hypothesis to my algorithm it would not be possible to formulate null a hypothesis.)
+
+\emph{Genetic versus incremental search:}
+
+\(H3_{1}\): The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that is significantly better than an iterativly improved parameter set \(p_{iterativ}\).
+
+\(H3_{0}\): The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is better than an iteratively improved parameter set \(p_{iterative}\).
+
+Possible future research:
+Include hypothesis about optimized parameter also optimized for similar corpora?
+
+I need to define what significantly means statistically. I.e. quantifiably how much better does the optimized parameter set have to be?
+
+
+\subsection{Specification of experiment}
+Here I will write an overview of how the experiment were performed.
+
+\subsection{Experiment}
+Experiment results and constraints should be described here. What can the data say and not say.
+
+\subsection{Evaluation and visualization}
+Here I will evaluate results and visualize them (tables and graphs).
+
+
+\begin{table}[htdp]
+\footnotesize
+%\rowcolors{1}{gray!10}{white}
+\caption{``\textit{Sequential approach. This approach combines methods from computational statistics and exploratory data analysis to improve (tune) the performance of direct search algorithms.}'', from \protect \cite[p. 417]{Bartz-Beielstein2004}}
+\label{tab:experimentsequence}
+\begin{center}
+\begin{tabular}{|c|p{10cm}|}
+\hline
+Step & Action\\
+\hline
+(S-1) & Pre–experimental planning\\
+(S-2) & Scientific hypothesis\\
+(S-3) & Statistical hypothesis\\
+(S-4) & Specification\\
+(a) & optimization problem,\\
+(b) & constraints,\\
+(c) & initialization method,\\
+(d) & termination method,\\
+(e) & algorithm (important factors),\\ 
+(f) & initial experimental design,\\ 
+(g) & performance measure\\
+(S-5) & Experimentation\\
+(S-6) & Statistical modeling of data and prediction\\
+(S-7) & Evaluation and visualization\\
+(S-8) & Optimization\\
+(S-9) & Termination: If the obtained solution is good enough, or the maximum number of iterations has
+been reached, go to step (S-11)\\
+(S-10) & Design update and go to step (S-5)\\
+(S-11) & Rejection/acceptance of the statistical hypothesis\\
+(S-12) & Objective interpretation of the results from step (S-11)\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}%

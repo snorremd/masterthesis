@@ -40,11 +40,15 @@
 
 %\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers'
 
+% Package to avoid float
+\usepackage{float}
+
 % Package for hyper references (urls...)
 \usepackage{hyperref}
 
 % Package for writing graph
 \usepackage{pgfplots}
+ \pgfplotsset{width=7cm, compat=1.8}
 
 %Package for inline lists
 \usepackage{paralist}
@@ -269,24 +273,9 @@ Acknowledgements comes here
 \input{./Chapters/Analysis-Discussion}
 \input{./Chapters/Conclusion}
 
-%----------------------------------------------------------------------------------------
-% THESIS CONTENT - APPENDICES
-%----------------------------------------------------------------------------------------
-
-%\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
-
-%\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
-
-% Include the appendices of the thesis as separate files from the Appendices folder
-% Uncomment the lines as you write the Appendices
-
-%\input{./Appendices/AppendixA}
-%\input{./Appendices/AppendixB}
-%\input{./Appendices/AppendixC}
-
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
-\backmatter
+%\backmatter
 
 %----------------------------------------------------------------------------------------
 % BIBLIOGRAPHY
@@ -298,4 +287,20 @@ Acknowledgements comes here
 \printbibliography
 %\bibliographystyle{apalike} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 %\bibliography{bib/library} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+%----------------------------------------------------------------------------------------
+% THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+\input{./Appendices/AppendixA}
+%\input{./Appendices/AppendixB}
+%\input{./Appendices/AppendixC}
+
 \end{document}
