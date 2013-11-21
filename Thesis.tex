@@ -36,7 +36,7 @@
 % Use BibLatex with apa6
 \usepackage[style=apa, backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
-\addbibresource{Master-Thesis.bib}
+\addbibresource{thesis}
 
 %\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers'
 
@@ -275,8 +275,6 @@ Acknowledgements comes here
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
-%\backmatter
-
 %----------------------------------------------------------------------------------------
 % BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
@@ -287,6 +285,8 @@ Acknowledgements comes here
 \printbibliography
 %\bibliographystyle{apalike} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 %\bibliography{bib/library} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+%\backmatter
 
 %----------------------------------------------------------------------------------------
 % THESIS CONTENT - APPENDICES
@@ -299,7 +299,7 @@ Acknowledgements comes here
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-\input{./Appendices/AppendixA}
+%\input{./Appendices/AppendixA}
 %\input{./Appendices/AppendixB}
 %\input{./Appendices/AppendixC}
 

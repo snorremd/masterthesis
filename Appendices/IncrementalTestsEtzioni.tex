@@ -1,0 +1,729 @@
+%!TEX root = ../Thesis.tex
+% Incremental tests using Oren & Etzioni's parameters as base
+
+
+\setstretch{1}
+% Define bar chart colors
+\definecolor{bblue}{HTML}{3366CC}
+\definecolor{rred}{HTML}{DC3912}
+\definecolor{oorange}{HTML}{FF9900}
+\definecolor{ggreen}{HTML}{109618}
+\definecolor{ppurple}{HTML}{990099}
+\definecolor{tteal}{HTML}{0099C6}
+
+% TREE TYPE TESTS
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=6pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={Suffix,Midslice,Rangeslice 0.1-1.0,5-slice},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.15,
+    ymin=0,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testTrees.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different expansion techniques}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% N-SLICE
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {N-Slice length},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different n values of n-slice expansion}
+  \label{diag:nslicesetzioni}
+\end{figure}
+
+% RANGE SLICE TEST
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+     width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=5pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    xlabel = {Range slice length},
+    symbolic x coords={0.0-1.0,0.1-0.9,0.2-0.8,0.3-0.7,0.4-0.6,0.5-0.5},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.10,
+    ymin=0,
+    ymax=0.25,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testRangeSlices.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testRangeSlices.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testRangeSlices.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testRangeSlices.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testRangeSlices.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testRangeSlices.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different ranges of range-slice expansion}
+  \label{diag:rangeliceetzioni}
+\end{figure}
+
+% NUMBER OF TOP BASE CLUSTERS
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Base cluster amount},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different limits on top base clusters amount}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% MIN TERM OCCURRENCE
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Min term occurrence},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=0,
+    xmax=200,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for minimal term occurrence in collection.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% MAX TERM RATIO
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Max term ratio},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=0.1,
+    xmax=1,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for max term ratio in collection.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Min Limit BC Score
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Min Limit},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=0,
+    xmax=15,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for min limit for base cluster score with unbounded max limit.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Max Limit BC Score
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Max Limit},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=3,
+    xmax=15,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for max limit for base cluster score.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Drop singleton bc test
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0,1},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testDropSingletonBC.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testDropSingletonBC.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testDropSingletonBC.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for drop singleton base clusters parameter.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% Drop one word clusters test
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0,1},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for drop singleton base clusters parameter.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% Sort descending test
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={0,1},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.25,
+    ymin=0,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testSortDescending.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testSortDescending.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testSortDescending.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testSortDescending.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testSortDescending.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testSortDescending.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for sort descending parameter.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% Text amount
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Article Text Amount},
+    xmin=0,
+    xmax=1,
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different amount of article text.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% TEXT TYPE TESTS
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=6pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={All,Frontpage,Article sans bread text,Article with bread text,Article text},
+    x tick label style={font=\small,text width=1.7cm,align=center},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.10,
+    ymin=0,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testTextTypes.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testTextTypes.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testTextTypes.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testTextTypes.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testTextTypes.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testTextTypes.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for inclusion of different types of texts.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% SIMILARITY METHODS TESTS
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    ybar=2*\pgflinewidth,
+    bar width=8pt,
+    ymajorgrids = true,
+    ylabel = {Score},
+    symbolic x coords={Jaccard,Cosine,Amendment1C},
+    xtick = data,
+    scaled y ticks = false,
+    enlarge x limits=0.20,
+    ymin=0,
+    nodes near coords,
+    nodes near coords align={horizontal},
+    every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west, /pgf/number format/fixed},
+    enlarge y limits={upper,value=0.5},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testSimilarityMethods.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testSimilarityMethods.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testSimilarityMethods.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different similarity methods.}
+  \label{diag:treetypesetzioni}
+\end{figure}
+
+% JACCARD THRESHOLD
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    % Sizing
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % Data
+    xlabel = {Jaccard Coefficient Threshold},
+    xmin=0,
+    xmax=1,
+    ymin=0,
+    % Labeling
+    ylabel = {Score},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different Jaccard Coefficient Thresholds.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% COSINE THRESHOLD
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    % Sizing
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % Data
+    xlabel = {Cosine Threshold},
+    xmin=0,
+    xmax=1,
+    ymin=0,
+    % Labeling
+    ylabel = {Score},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for different Cosine Similarity Thresholds.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Average corpus frequency limit
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Limit},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=0,
+    xmax=500,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for limit on max average corpus frequency in Amendment1C.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
+
+% Base cluster intersect min limit
+\begin{figure}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Limit},
+    ylabel = {Score},
+    %xtick = data,
+    ymin=0,
+    xmin=0,
+    xmax=50,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+
+  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Incremental results for minimum limit on base cluster label intersect in Amendment1C.}
+  \label{diag:topbaseclustersetzioni}
+\end{figure}
