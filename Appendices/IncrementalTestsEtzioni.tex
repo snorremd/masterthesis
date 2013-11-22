@@ -23,6 +23,7 @@
     bar width=6pt,
     ymajorgrids = true,
     ylabel = {Score},
+    xlabel = {Tree types},
     symbolic x coords={Suffix,Midslice,Rangeslice 0.1-1.0,5-slice},
     xtick = data,
     scaled y ticks = false,
@@ -39,19 +40,19 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testTrees.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testTrees.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testTrees.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testTrees.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testTrees.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Etzioni/testTreesEtzioni.csv};
+  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Etzioni/testTreesEtzioni.csv};
+  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Etzioni/testTreesEtzioni.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testTreesEtzioni.csv};
+  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testTreesEtzioni.csv};
+  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testTreesEtzioni.csv};
 
   \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different expansion techniques}
+  \caption{Performance of the \CTC algorithm for different expansion techniques.}
   \label{diag:treetypesetzioni}
 \end{figure}
 
@@ -86,7 +87,7 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different n values of n-slice expansion}
+  \caption{Performance results of the \CTC algorithm for different lengths of n-slice expansion.}
   \label{diag:nslicesetzioni}
 \end{figure}
 
@@ -95,7 +96,7 @@
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
-     width  = 0.8*\textwidth,
+    width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
     ybar=2*\pgflinewidth,
@@ -132,8 +133,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different ranges of range-slice expansion}
-  \label{diag:rangeliceetzioni}
+  \caption{Performance of the \CTC algorithm for different ranges of range-slice expansion.}
+  \label{diag:rangelicesetzioni}
 \end{figure}
 
 % NUMBER OF TOP BASE CLUSTERS
@@ -168,7 +169,7 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different limits on top base clusters amount}
+  \caption{Performance of the \CTC algorithm fordifferent limits on top base clusters amount.}
   \label{diag:topbaseclustersetzioni}
 \end{figure}
 
@@ -205,8 +206,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for minimal term occurrence in collection.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different limits on minimal term occurrence in collection.}
+  \label{diag:mintermoccurrenceetzioni}
 \end{figure}
 
 % MAX TERM RATIO
@@ -242,8 +243,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for max term ratio in collection.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different limits on max term ratio in collection.}
+  \label{diag:maxtermratioetzioni}
 \end{figure}
 
 % Min Limit BC Score
@@ -254,7 +255,7 @@
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
-    xlabel = {Min Limit},
+    xlabel = {Min Limit BC Score},
     ylabel = {Score},
     %xtick = data,
     ymin=0,
@@ -279,8 +280,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for min limit for base cluster score with unbounded max limit.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).}
+  \label{diag:minlimitbcscoreetzioni}
 \end{figure}
 
 % Max Limit BC Score
@@ -291,9 +292,9 @@
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
-    xlabel = {Max Limit},
+    xlabel = {Max Limit BC Score},
     ylabel = {Score},
-    %xtick = data,
+    xtick = data,
     ymin=0,
     xmin=3,
     xmax=15,
@@ -316,8 +317,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for max limit for base cluster score.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different max limit values for base cluster score. Min limit set to \protect\citeauthor{Oren1998} default.}
+  \label{diag:maxlimitbcscoreetzioni}
 \end{figure}
 
 % Drop singleton bc test
@@ -360,8 +361,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for drop singleton base clusters parameter.}
-  \label{diag:treetypesetzioni}
+  \caption{Performance of the \CTC algorithm for exclusion and inclusion of singleton base clusters.}
+  \label{diag:dropsingletonbcetzioni}
 \end{figure}
 
 % Drop one word clusters test
@@ -404,8 +405,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for drop singleton base clusters parameter.}
-  \label{diag:treetypesetzioni}
+  \caption{Performance of the \CTC algorithm on exclusion and inclusion of one word clusters.}
+  \label{diag:droponewordclustersetzioni}
 \end{figure}
 
 % Sort descending test
@@ -448,8 +449,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for sort descending parameter.}
-  \label{diag:treetypesetzioni}
+  \caption{Performance of the \CTC algorithm when base clusters are sorted in descending and acending order.}
+  \label{diag:sortdescendingetzioni}
 \end{figure}
 
 % Text amount
@@ -485,8 +486,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different amount of article text.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different amounts of article text.}
+  \label{diag:textamountetzioni}
 \end{figure}
 
 % TEXT TYPE TESTS
@@ -504,6 +505,7 @@
     symbolic x coords={All,Frontpage,Article sans bread text,Article with bread text,Article text},
     x tick label style={font=\small,text width=1.7cm,align=center},
     xtick = data,
+    xlabel = {Text types included},
     scaled y ticks = false,
     enlarge x limits=0.10,
     ymin=0,
@@ -530,8 +532,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for inclusion of different types of texts.}
-  \label{diag:treetypesetzioni}
+  \caption{Performance of the \CTC algorithm for inclusion of different types of texts.}
+  \label{diag:texttypesetzioni}
 \end{figure}
 
 % SIMILARITY METHODS TESTS
@@ -546,6 +548,7 @@
     bar width=8pt,
     ymajorgrids = true,
     ylabel = {Score},
+    xlabel = {Similarity methods},
     symbolic x coords={Jaccard,Cosine,Amendment1C},
     xtick = data,
     scaled y ticks = false,
@@ -574,8 +577,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different similarity methods.}
-  \label{diag:treetypesetzioni}
+  \caption{Performance of the \CTC algorithm for different similarity methods.}
+  \label{diag:similaritymethodsetzioni}
 \end{figure}
 
 % JACCARD THRESHOLD
@@ -612,8 +615,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different Jaccard Coefficient Thresholds.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different Jaccard Coefficient thresholds.}
+  \label{diag:jaccardthresholdetzioni}
 \end{figure}
 
 % COSINE THRESHOLD
@@ -650,8 +653,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for different Cosine Similarity Thresholds.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different Cosine Similarity thresholds.}
+  \label{diag:cosinethresholdetzioni}
 \end{figure}
 
 % Average corpus frequency limit
@@ -662,7 +665,7 @@
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
-    xlabel = {Limit},
+    xlabel = {Avg corpus frequency limit},
     ylabel = {Score},
     %xtick = data,
     ymin=0,
@@ -687,8 +690,8 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for limit on max average corpus frequency in Amendment1C.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different limits on max average corpus frequency in Amendment1C.}
+  \label{diag:avgcfamendment1etzioni}
 \end{figure}
 
 % Base cluster intersect min limit
@@ -699,7 +702,7 @@
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
-    xlabel = {Limit},
+    xlabel = {Min label intersect limit},
     ylabel = {Score},
     %xtick = data,
     ymin=0,
@@ -724,6 +727,6 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Incremental results for minimum limit on base cluster label intersect in Amendment1C.}
-  \label{diag:topbaseclustersetzioni}
+  \caption{Performance of the \CTC algorithm for different minimum limits on base cluster label intersect in Amendment1C.}
+  \label{diag:minintersectamendment1cetzioni}
 \end{figure}
