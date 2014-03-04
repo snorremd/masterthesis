@@ -1,0 +1,14 @@
+<parameters>
+    <tree_type>(1,0,0)</tree_type>
+    <top_base_clusters_amount>5000</top_base_clusters_amount>
+    <min_term_occurrence_in_collection>6</min_term_occurrence_in_collection>
+    <max_term_ratio_in_collection>0.6</max_term_ratio_in_collection>
+    <min_limit_for_base_cluster_score>2</min_limit_for_base_cluster_score>
+    <max_limit_for_base_cluster_score>7</max_limit_for_base_cluster_score>
+    <sort_descending>0</sort_descending>
+    <should_drop_singleton_base_clusters>0</should_drop_singleton_base_clusters>
+    <should_drop_one_word_clusters>1</should_drop_one_word_clusters>
+    <text_amount>0.15</text_amount>
+    <text_types>{"FrontPageIntroduction": 0, "FrontPageHeading": 0, "ArticleHeading": 1, "ArticleByline": 1, "ArticleIntroduction": 1, "ArticleText": 0}</text_types>
+    <similarity_measure>{"similarity_method": 3, "params": (0.5, 5, 1)}</similarity_measure>
+</parameters>

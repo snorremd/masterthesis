@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Thesis
 % LaTeX Template
 % Version 1.2 (29/7/12)
@@ -38,17 +38,28 @@
 \DeclareLanguageMapping{american}{american-apa}
 \addbibresource{thesis.bib}
 
+% Add Table coloring
+\usepackage[table]{xcolor}
+
 %\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers'
 
-% Package to avoid float
+% Package to handle floats
 \usepackage{float}
+
+\usepackage{lscape}
+
+% New type of float: Diagram
+% \newcommand*{\listdiagramname}{List of Diagrams}
+\newfloat{diagram}{tbp}{tod}[chapter]
+\floatname{diagram}{Diagram}
 
 % Package for hyper references (urls...)
 \usepackage{hyperref}
 
 % Package for writing graph
 \usepackage{pgfplots}
- \pgfplotsset{width=7cm, compat=1.8}
+\pgfplotsset{width=7cm, compat=1.8}
+\usetikzlibrary{patterns}
 
 %Package for inline lists
 \usepackage{paralist}
@@ -75,7 +86,6 @@
 \usepackage{color}
 \usepackage{setspace}
 \usepackage{listings}
-\renewcommand*{\lstlistlistingname}{List of Listings}
 
 % Package for colors...
 \usepackage{color}
@@ -118,6 +128,8 @@
 \def\CTC{Compact Trie Clustering }
 \def\STC{Suffix Tree Clustering }
 \def\GA{Genetic Algorithm }
+
+% BEGIN DOCUMENT!
 \begin{document}
 
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
@@ -236,9 +248,15 @@ Acknowledgements comes here
 \lhead{\emph{List of Tables}} % Set the left side page header to "List of Tables"
 \listoftables % Write out the List of Tables
 
+\lhead{\emph{List of Diagrams}} % Set the left side page header to "List of Tables"
+% \addcontentsline{tod}{chapter}{List of Diagrams}
+% \listofdiagrams
+\addtotoc{List of Diagrams}
+\listof{diagram}{List of Diagrams} % Write out the List of Diagrams
+
 \lhead{\emph{List of Listings}} % Set the left side page header to "List of Listings"
-\addcontentsline{toc}{chapter}{List of Listings}
-\lstlistoflistings
+\listoflistings
+%\lstlistoflistings
 
 \lhead{\emph{Nomenclature}} % Set the left side page header to "List of Listings"
 \printnomenclature[5em] % Print the page header and list of nomenclature
@@ -268,8 +286,9 @@ Acknowledgements comes here
 
 \input{./Chapters/Introduction}
 \input{./Chapters/Theory}
-\input{./Chapters/Methodology}
 \input{./Chapters/DesignAndDevelopment}
+\input{./Chapters/Methodology}
+\input{./Chapters/EvaluationAndTesting}
 \input{./Chapters/Analysis-Discussion}
 \input{./Chapters/Conclusion}
 

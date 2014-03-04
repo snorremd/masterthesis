@@ -11,11 +11,11 @@ This appendix contains diagrams of all incremental test results. It serves as a 
 
 \section{Oren \& Etzioni parameters}
 
-The following results were obtained by applying the parameters used by Etzioni and Oren as base parameters for the incremental tests. The parameters were collected as closely as possible, but the types of text collected might not be a complete match as different corpora are used.
+The following results were obtained by applying the parameters used by \citeauthor{Oren1998} as base parameters for the incremental tests. The parameters were collected as closely as possible, but the types of text collected might not be a complete match as different corpora are used.
 
 \begin{lstlisting}[float=t, language=python, label=lst:etzioniparams, caption={Parameter set used in Oren and Etzioni.}]
 <parameters>
-    <tree_type>(1,0,0)</tree_type> <!-- Suffix tree -->
+    <tree_type>(0,0,0)</tree_type> <!-- Suffix tree -->
     <top_base_clusters_amount>500</top_base_clusters_amount>
     <min_term_occurrence_in_collection>4</min_term_occurrence_in_collection>
     <max_term_ratio_in_collection>0.4</max_term_ratio_in_collection>
@@ -46,5 +46,32 @@ The following results were obtained by applying the parameters used by Etzioni a
 \section{\supervisor parameters}
 
 The following results were obtained by applying the LII groups parameters as base parameters for the incremental tests.
+
+\begin{lstlisting}[float=t, language=python, label=lst:richardparams, caption={Parameter set used by \protect\supervisor.}]
+<parameters>
+    <tree_type>(1,0,0)</tree_type>
+    <top_base_clusters_amount>5000</top_base_clusters_amount>
+    <min_term_occurrence_in_collection>6</min_term_occurrence_in_collection>
+    <max_term_ratio_in_collection>0.6</max_term_ratio_in_collection>
+    <min_limit_for_base_cluster_score>2</min_limit_for_base_cluster_score>
+    <max_limit_for_base_cluster_score>7</max_limit_for_base_cluster_score>
+    <sort_descending>0</sort_descending>
+    <should_drop_singleton_base_clusters>0</should_drop_singleton_base_clusters>
+    <should_drop_one_word_clusters>1</should_drop_one_word_clusters>
+    <text_amount>0.15</text_amount>
+    <text_types>
+        {"FrontPageIntroduction": 0,
+         "FrontPageHeading": 0,
+         "ArticleHeading": 1,
+         "ArticleByline": 1,
+         "ArticleIntroduction": 1,
+         "ArticleText": 0}
+    </text_types>
+    <similarity_measure>
+        {"similarity_method": 0,
+         "params": (0.5, 0, 0)}
+    </similarity_measure>
+</parameters>
+\end{lstlisting}
 
 \input{./Appendices/IncrementalTestsRichard}

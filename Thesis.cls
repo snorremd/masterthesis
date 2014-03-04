@@ -375,6 +375,44 @@
     \cleardoublepage
 }\end{spacing}
 }
+\renewcommand*{\lstlistlistingname}{List of Listings}
+\newcommand\listoflistings{
+\btypeout{List of Listings}
+\addtotoc{List of Listings}
+\begin{spacing}{1}{
+    \setlength{\parskip}{1pt}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\lstlistlistingname
+      \@mkboth{
+          \MakeUppercase\lstlistlistingname}{\MakeUppercase\lstlistlistingname}}
+    \@starttoc{lol}
+    \if@restonecol\twocolumn\fi
+    \cleardoublepage
+}\end{spacing}
+}
+\newcommand*{\listdiagramname}{List of Diagrams}
+\newcommand\listofdiagrams{
+\btypeout{List of Diagrams}
+\addtotoc{List of Diagrams}
+\begin{spacing}{1}{
+    \setlength{\parskip}{1pt}
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+    \chapter*{\listdiagramname
+      \@mkboth{
+          \MakeUppercase\listdiagramname}{\MakeUppercase\listdiagramname}}
+    \@starttoc{loc}
+    \if@restonecol\twocolumn\fi
+    \cleardoublepage
+}\end{spacing}
+}
 \newcommand\listsymbolname{Abbreviations}
 \usepackage{longtable}
 \newcommand\listofsymbols[2]{

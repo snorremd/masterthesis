@@ -1,0 +1,191 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\moderncvstyle{casual} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage[scale=0.75]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Snorre Magnus} % Your first name
+\familyname{Davøen} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vitae}
+\address{Vilhelm Bjerknes Vei 43}{5098 Bergen}
+\mobile{411 02 653}
+%\phone{(000) 111 1112}
+%\fax{(000) 111 1113}
+\email{snorre.davoen@gmail.com}
+\homepage{snorre.io}
+\social[linkedin]{snorredavoen}     % optional, remove / comment the line if not wanted
+%\social[twitter]{jdoe}                             % optional, remove / comment the line if not wanted
+\social[github]{Snorremd}                              % optional, remove / comment the line if not wanted
+% The first argument is the url for the clickable link, the second argument is the url displayed in the template - this allows special characters to be displayed such as the tilde in this example
+%\extrainfo{additional information}
+\photo[70pt][0.4pt]{portrait} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+%\quote{"A witty and playful quotation" - John Smith}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makecvtitle % Print the CV title
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Utdanning}
+
+\cventry{2012--nå}{Informasjonsvitenskap}{Universitetet i Bergen}{Bergen}{Bachelorgrad}{}
+\cventry{2008--2011}{Informasjonsvitenskap}{Universitetet i Bergen}{Bergen}{Bachelorgrad}{Studiet av data, informasjon og kunnskap, og hvordan informasjonssystemer brukes av individer, organisasjoner og samfunnet.}  % Arguments not required can be left empty
+
+\section{Masteroppgave (under arbeid)}
+
+\cvitem{Tittel}{\emph{Optimal Compact Trie Clustering - A genetic approach} (tentativ)}
+\cvitem{Veileder}{Professor Richard Elling Moe}
+\cvitem{Beskrivelse}{Masteroppgaven undersøker hvor vidt det er mulig å finne en metode for automatisk optimalisering av parametersettet til Compact Trie Clustering-algoritmen, en algoritme for gruppering av tekstdokumenter. Algoritmen er en generalisering av Suffix Trie Clustering-algoritmen. Metoden for optimalisering undersøkt i masteroppgaven er enkel distribuert genetisk algoritme hvor parametersett til algoritmen modelleres som kromosomer og fitnessverdien regnes ut basert på de kvantitative ytelsesmålene brukt innen ``Information Retrieval''-feltet.}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Erfaring}
+
+\subsection{Jobb}
+
+\cventry{2013 Vår}{Studentassistent INFO132}{\textsc{Universitetet i Bergen}}{Bergen}{}{Jeg har i dette kurset jobbet med undervisning, veiledning i forbindelse med programmeringsoppgaver, og evaluering av innleveringer.}
+
+\cventry{2012 Høst/Vår}{Studentassistent INFO100 og INFO221}{\textsc{Universitetet i Bergen}}{Bergen}{}{Jeg har også dette semesteret vært delaktig i utformingen av undervisningsform, pensum og oppgaver i tillegg til de vanlige oppgavene i INFO100. I INFO221 har jeg hatt ansvar for å veilede studentene i diskusjoner om teorier innen multimediehåndtering og informasjonsgjenfinning og i implementasjonen av ulike systemer for håndtering av multimedia og for informasjonsgjenfinning.}
+
+\cventry{2012 Høst/Vår}{Studentassistent INFO100 og INFO221}{\textsc{Universitetet i Bergen}}{Bergen}{}{Jeg har også dette semesteret vært delaktig i utformingen av undervisningsform, pensum og oppgaver i tillegg til de vanlige oppgavene i INFO100. I INFO221 har jeg hatt ansvar for å veilede studentene i diskusjoner om teorier innen multimediehåndtering og informasjonsgjenfinning og i implementasjonen av ulike systemer for håndtering av multimedia og for informasjonsgjenfinning.}
+
+\cventry{2011.6--2011.8}{Sommervikar renholdsassistent}{\textsc{Helse Bergen HF}}{Bergen}{}{}
+
+\cventry{2011 Høst}{Studentassistent INFO100}{\textsc{Universitetet i Bergen}}{Bergen}{}{Har dette semesteret i tillegg vært delaktig i utformingen av undervisningsform, pensum og oppgaver.}
+
+\cventry{2010.6--2010.8}{Sommervikar renholdsassistent}{\textsc{Helse Bergen HF}}{Bergen}{}{}
+
+\cventry{2010 Høst}{Studentassistent INFO100}{\textsc{Universitetet i Bergen}}{Bergen}{}{Har undervist og veiledet studentene i mindre grupper. Har ledet studentene i diskusjoner rundt teoretiske temaer i faget og veiledet studentene i bruk av aktuelle maskin- og programvaretyper, akademisk oppgaveskriving og utforming av personlig nettside. Videre har jeg også hatt ansvar for administrering og evaluering av obligatoriske innleveringer.}
+
+\cventry{2008.2--2008.6}{Elevassistent vikar}{\textsc{Ny Krohnborg Skole}}{Bergen}{}{Jeg har i denne stillingen assistert vanskeligstilte elever og hjulpet lærere med diverse oppgaver under undervisning.}
+
+\subsection{Frivillig}
+
+\cventry{2013--Nå}{Styremedlem}{Kompiler}{Bergen}{}{Har sittet som styremedlem i organisasjonen Kompiler. Dette er en organisasjon med det mål om å være en plattform for samordning og organisering av IT-arrangementer med mål om å skape et bredt felleskap av IT-interesserte. Som styremedlem har jeg vært med på å arrangere arrangementer som for eksempel Nodecopter-demo, hatt lightning talks på Friday Night Lightning, med mer.}
+
+\cventry{2012--Nå}{Frivillig i Webgruppen}{Det Akademiske Kvarter}{Bergen}{}{Jobbet med Det Akademiske Kvarter sin Wordpress-løsning.}
+
+%----------------------------------------------------------------------------------------
+%	AWARDS SECTION
+%----------------------------------------------------------------------------------------
+
+% \section{Awards}
+
+% \cvitem{2011}{School of Business Postgraduate Scholarship}
+% \cvitem{2010}{Top Achiever Award -- Commerce}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Tekniske kunnskaper}
+
+\cvitem{Begynner}{Prolog, CSS, Spring, Maven}
+\cvitem{Viderekommen}{CoffeeScript/Javascript, Node, HTML, \LaTeX, Grunt, git, XML}
+\cvitem{Avansert}{Java, Python}
+% \cvitem{Avansert}{\textsc{Java}, \textsc{Python}}
+
+%----------------------------------------------------------------------------------------
+%	COMMUNICATION SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+% \section{Communication Skills}
+
+% \cvitem{2010}{Oral Presentation at the California Business Conference}
+% \cvitem{2009}{Poster at the Annual Business Conference in Oregon}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Språk}
+
+\cvitemwithcomment{Norsk}{Morsmål}{}
+\cvitemwithcomment{Engelsk}{Viderekommen}{}
+% \cvitemwithcomment{Dutch}{Basic}{Basic words and phrases only}
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{Interests}
+
+\renewcommand{\listitemsymbol}{-~} % Changes the symbol used for lists
+
+\cvlistdoubleitem{Piano}{Ølbrygging}
+\cvlistdoubleitem{IT-arrangementer}{IT-miljø i Bergen}
+\cvlistdoubleitem{IT i samfunnet}{Spill}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+\clearpage
+
+\recipient{Norsk samfunnsvitenskapelig datatjeneste}{Harald Hårfagres gate 29\\5007 Bergen} % Letter recipient
+\date{\today} % Letter date
+\opening{Hei,} % Opening greeting
+\closing{Med vennlig hilsen,} % Closing phrase
+\enclosure[Vedlagt]{curriculum vit\ae{}} % List of enclosed documents
+
+\makelettertitle % Print letter title
+
+Jeg søker med dette på fast stilling som utvikler i NSD som utlyst på Finn.no (referansekode: 45783270). Per idag studerer jeg fortsatt som masterstudent i informasjonsvitenskap ved Universitetet i Bergen og vil være ferdig med denne graden senest i juni 2014. Jeg har også en deltidsstilling som studentassistent som vil pågå frem til slutten av mai.
+
+Med tanke på min utdanning i informasjonsvitenskap og interesse for utvikling av applikasjoner blant annet i Node.js virker stillingen veldig interessant. Jeg har i løpet av mine studier hatt glede av å lære om en rekke fagfelt deriblant interaksjonsdesign, informasjonsgjenfinning (information retrieval), kunstig intelligens, programvareutvikling, med flere. I de programmerings-relaterte kursene har jeg lært mye om programvareutvikling, design patterns, data strukturer og lignende. I informasjonsgjenfinning-kursene har jeg lært om oppbygningen av søkemotorer, indeksering, ulike ``signs'' for relevans, grupperingsalgoritmer og annet. Jeg har ikke direkte erfaring med Solr eller Luscene men tror at en teoretisk forståelse av hvordan søk fungerer vil gjøre det lettere å sette seg inn i disse bibliotekene. Interaksjonsdesign-kursene har lært meg om bra og dårlig interaktivt design for blant annet web-sider og ulike heuristiske mål og evalueringsteknikker for å evaluere design.
+
+Jeg er alltid interessert i å lære om nye teknologier og forsøker å holde meg oppdatert på de utviklinger som skjer. Utenom utdanningen er jeg med i Web-gruppen på Kvarteret hvor jeg har fått være med på å videreutvikle websiden til Det Akademiske Kvarter. Jeg er også styremedlem i en ideell organisasjon, Kompiler, hvis formål er å være en plattform for samordning og organisering av IT-arrangementer med mål om å skape et bredt felleskap av IT-interesserte. Arrangementer som går innunder denne organisasjonen inkluderer blant annet Pils \& Programmering, Friday Night Lightning, og hackathons. Dette miljøet har gitt meg innsikt i de fagfeltene og prosjektene andre IT-studenter og IT-interesserte jobber med. Jeg går ofte på Bergen CodingDojo sine code katas for å bryne meg på små og mellomstore programmeringsutfordringer.
+
+\makeletterclosing % Print letter signature
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

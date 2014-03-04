@@ -1,18 +1,15 @@
 %!TEX root = ../Thesis.tex
-% Incremental tests using Richard's parameters as base
+% Incremental tests using Oren & Richard's parameters as base
 
 
 \setstretch{1}
 % Define bar chart colors
 \definecolor{bblue}{HTML}{3366CC}
 \definecolor{rred}{HTML}{DC3912}
-\definecolor{oorange}{HTML}{FF9900}
 \definecolor{ggreen}{HTML}{109618}
-\definecolor{ppurple}{HTML}{990099}
-\definecolor{tteal}{HTML}{0099C6}
 
 % TREE TYPE TESTS
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -20,9 +17,9 @@
     height = 4.55cm,
     % major x tick style = transparent,
     ybar=2*\pgflinewidth,
-    bar width=6pt,
     ymajorgrids = true,
     ylabel = {Score},
+    xlabel = {Tree types},
     symbolic x coords={Suffix,Midslice,Rangeslice 0.1-1.0,5-slice},
     xtick = data,
     scaled y ticks = false,
@@ -39,24 +36,21 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testTreesRichard.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testTreesRichard.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testTreesRichard.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testTreesRichard.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testTreesRichard.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testTreesRichard.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testTrees.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testTrees.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testTrees.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different expansion techniques.}
   \label{diag:treetypesrichard}
-\end{figure}
+\end{diagram}
 
 % N-SLICE
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -74,24 +68,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance results of the \CTC algorithm for different lengths of n-slice expansion.}
   \label{diag:nslicesrichard}
-\end{figure}
+\end{diagram}
 
 % RANGE SLICE TEST
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -101,14 +92,14 @@
     ybar=2*\pgflinewidth,
     bar width=5pt,
     ymajorgrids = true,
-    ylabel = {Scores},
+    ylabel = {Score},
     xlabel = {Range slice length},
     symbolic x coords={0.0-1.0,0.1-0.9,0.2-0.8,0.3-0.7,0.4-0.6,0.5-0.5},
     xtick = data,
     scaled y ticks = false,
     enlarge x limits=0.10,
     ymin=0,
-    ymax=0.6,
+    ymax=0.25,
     nodes near coords,
     nodes near coords align={horizontal},
     every node near coord/.append style={font=\tiny,rotate=90,color=black,anchor=west,/pgf/number format/fixed},
@@ -120,72 +111,63 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testRangeSlices.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testRangeSlices.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testRangeSlices.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testRangeSlices.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different ranges of range-slice expansion.}
   \label{diag:rangelicesrichard}
-\end{figure}
+\end{diagram}
 
 % NUMBER OF TOP BASE CLUSTERS
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
-  \begin{axis}[
+  \begin{semilogxaxis}[
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
     xlabel = {Base cluster amount},
     ylabel = {Score},
-    %xtick = data,
     ymin=0,
-    xmin=0,
     legend cell align=left,
     legend style={
       cells={anchor=east},
       legend pos=outer north east
     }
   ]
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
-  \end{axis}
+  \end{semilogxaxis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm fordifferent limits on top base clusters amount.}
+  \caption{Performance of the \CTC algorithm for different limits on top base clusters amount.}
   \label{diag:topbaseclustersrichard}
-\end{figure}
+\end{diagram}
 
 % MIN TERM OCCURRENCE
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
-  \begin{axis}[
+  \begin{semilogxaxis}[
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
     xlabel = {Min term occurrence},
     ylabel = {Score},
     %xtick = data,
-    ymin=0,
-    xmin=0,
-    xmax=200,
+    % ymin=0,
+    % xmin=0,
+    % xmax=200,
     legend cell align=left,
     legend style={
       cells={anchor=east},
@@ -193,24 +175,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
-  \end{axis}
+  \end{semilogxaxis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different limits on minimal term occurrence in collection.}
-  \label{diag:mintermoccurrencesrichard}
-\end{figure}
+  \label{diag:mintermoccurrencerichard}
+\end{diagram}
 
 % MAX TERM RATIO
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -230,24 +209,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different limits on max term ratio in collection.}
   \label{diag:maxtermratiorichard}
-\end{figure}
+\end{diagram}
 
 % Min Limit BC Score
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -267,24 +243,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).}
   \label{diag:minlimitbcscorerichard}
-\end{figure}
+\end{diagram}
 
 % Max Limit BC Score
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -293,7 +266,7 @@
     % major x tick style = transparent,
     xlabel = {Max Limit BC Score},
     ylabel = {Score},
-    %xtick = data,
+    xtick = data,
     ymin=0,
     xmin=3,
     xmax=15,
@@ -304,24 +277,55 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different max limit values for base cluster score. Min limit set to \protect\citeauthor{Oren1998} default.}
   \label{diag:maxlimitbcscorerichard}
-\end{figure}
+\end{diagram}
+
+% Max Limit BC Score best min value
+\begin{diagram}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % major x tick style = transparent,
+    xlabel = {Max Limit BC Score},
+    ylabel = {Score},
+    xtick = data,
+    ymin=0,
+    xmin=9,
+    xmax=15,
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
+
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Performance of the \CTC algorithm for different max limit values for base cluster score. Min limit set to 8, the best min limit from incremental test on min limit for base cluster score.}
+  \label{diag:maxlimitbcscorerichard2}
+\end{diagram}
 
 % Drop singleton bc test
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -332,6 +336,7 @@
     bar width=8pt,
     ymajorgrids = true,
     ylabel = {Score},
+    xlabel = {Drop singleton base clusters?},
     symbolic x coords={0,1},
     xtick = data,
     scaled y ticks = false,
@@ -348,24 +353,21 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testDropSingletonBC.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testDropSingletonBC.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testDropSingletonBC.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testDropSingletonBC.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for exclusion and inclusion of singleton base clusters.}
   \label{diag:dropsingletonbcrichard}
-\end{figure}
+\end{diagram}
 
 % Drop one word clusters test
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -376,6 +378,7 @@
     bar width=8pt,
     ymajorgrids = true,
     ylabel = {Score},
+    xlabel = {Drop one word clusters?},
     symbolic x coords={0,1},
     xtick = data,
     scaled y ticks = false,
@@ -392,24 +395,21 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testDropOneWordClusters.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testDropOneWordClusters.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testDropOneWordClusters.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testDropOneWordClusters.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm on exclusion and inclusion of one word clusters.}
   \label{diag:droponewordclustersrichard}
-\end{figure}
+\end{diagram}
 
 % Sort descending test
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -420,6 +420,7 @@
     bar width=8pt,
     ymajorgrids = true,
     ylabel = {Score},
+    xlabel = {Sort descending?},
     symbolic x coords={0,1},
     xtick = data,
     scaled y ticks = false,
@@ -436,24 +437,21 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testSortDescending.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testSortDescending.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testSortDescending.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testSortDescending.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm when base clusters are sorted in descending and acending order.}
   \label{diag:sortdescendingrichard}
-\end{figure}
+\end{diagram}
 
 % Text amount
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -473,24 +471,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different amounts of article text.}
   \label{diag:textamountrichard}
-\end{figure}
+\end{diagram}
 
 % TEXT TYPE TESTS
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -501,10 +496,10 @@
     bar width=6pt,
     ymajorgrids = true,
     ylabel = {Score},
-    xlabel = {Text types included},
     symbolic x coords={All,Frontpage,Article sans bread text,Article with bread text,Article text},
     x tick label style={font=\small,text width=1.7cm,align=center},
     xtick = data,
+    xlabel = {Text types included},
     scaled y ticks = false,
     enlarge x limits=0.10,
     ymin=0,
@@ -519,24 +514,21 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testTextTypes.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testTextTypes.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testTextTypes.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testTextTypes.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for inclusion of different types of texts.}
   \label{diag:texttypesrichard}
-\end{figure}
+\end{diagram}
 
 % SIMILARITY METHODS TESTS
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -548,7 +540,7 @@
     ymajorgrids = true,
     ylabel = {Score},
     xlabel = {Similarity methods},
-    symbolic x coords={Jaccard,Cosine,Amendment1C},
+    symbolic x coords={Etzioni,Jaccard,Cosine,Amendment1C},
     xtick = data,
     scaled y ticks = false,
     enlarge x limits=0.20,
@@ -564,24 +556,57 @@
     }
   ]
 
-  \addplot [style={bblue,fill=bblue,mark=none}] table [col sep=semicolon,y=Precision] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={rred,fill=rred,mark=none}] table [col sep=semicolon,y=Recall] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={oorange,fill=oorange,mark=none}] table [col sep=semicolon,y=F-Measure] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={ppurple,fill=ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={tteal,fill=tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testSimilarityMethods.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testSimilarityMethods.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testSimilarityMethods.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testSimilarityMethods.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different similarity methods.}
   \label{diag:similaritymethodsrichard}
-\end{figure}
+\end{diagram}
+
+% Etzioni THRESHOLD
+\begin{diagram}[H]
+  \begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    % Sizing
+    width  = 0.8*\textwidth,
+    height = 4.55cm,
+    % Data
+    xlabel = {Etzioni Similarity Threshold},
+    xmin=0,
+    xmax=1,
+    ymin=0,
+    % Labeling
+    ylabel = {Score},
+    legend cell align=left,
+    legend style={
+      cells={anchor=east},
+      legend pos=outer north east
+    }
+  ]
+
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
+
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  
+  \end{axis}
+\end{tikzpicture}
+  \end{center}
+  \caption{Performance of the \CTC algorithm for different Etzioni similarity thresholds.}
+  \label{diag:etzionithresholdrichard}
+\end{diagram}
+
 
 % JACCARD THRESHOLD
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -602,24 +627,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different Jaccard Coefficient thresholds.}
   \label{diag:jaccardthresholdrichard}
-\end{figure}
+\end{diagram}
 
 % COSINE THRESHOLD
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -640,24 +662,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different Cosine Similarity thresholds.}
   \label{diag:cosinethresholdrichard}
-\end{figure}
+\end{diagram}
 
 % Average corpus frequency limit
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -677,24 +696,21 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different limits on max average corpus frequency in Amendment1C.}
   \label{diag:avgcfamendment1richard}
-\end{figure}
+\end{diagram}
 
 % Base cluster intersect min limit
-\begin{figure}[H]
+\begin{diagram}[H]
   \begin{center}
 \begin{tikzpicture}
   \begin{axis}[
@@ -714,18 +730,15 @@
     }
   ]
 
-  \addplot [style={bblue,mark=none}] table [col sep=semicolon,y=Precision,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot [style={rred,mark=none}] table [col sep=semicolon,y=Recall,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot [style={oorange,mark=none}] table [col sep=semicolon,y=F-Measure,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot [style={ggreen,mark=none}] table [col sep=semicolon,y=Ground Truth 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot [style={ppurple,mark=none}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot [style={tteal,mark=none}] table [col sep=semicolon,y=fMeasure 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
 
-  \legend{Precision,Recall,F-Measure,Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different minimum limits on base cluster label intersect in Amendment1C.}
   \label{diag:minintersectamendment1crichard}
-\end{figure}
+\end{diagram}

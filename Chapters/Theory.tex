@@ -5,37 +5,37 @@
 \label{Theory} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 \lhead{Chapter \ref{Theory}. \emph{Theory}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-In this chapter the thesis will introduce the basic concept of clustering underpinning all clustering methods. It will formally define clustering and explain how the \STC algorithm fit into this definition. It will then move onto explaining the \STC algorithm itself and the different stages of which it is comprised. It is in these sections that the parameters to be optimzed will be explained. The theory chapter will also go into some detail about the \CTC algorithm, a slightly modified version of the original \STC algorithm. An investigation into performance measures used in information retrieval in general and clustering in particular will provide a foundation for how one can test the \STC and \CTC algorithms. The section will also go shortly into two performance measurements suitable for \CTC. The chapter will also provide a short section about different corpora available for information retrieval research.
+In this chapter the thesis will introduce the basic concept of clustering underpinning all clustering methods. It will formally define clustering and explain how the \STC algorithm fit into this definition. It will then move onto explaining the \STC algorithm itself and its different stages. It is in these sections that the parameters to be optimzed will be explained. The theory chapter will also go into some detail about the \CTC algorithm, a slightly modified version of the original \STC algorithm. An investigation into performance measures used in information retrieval in general and clustering in particular will provide a foundation for how one can test the \STC and \CTC algorithms. The chapter will go shortly into two performance measurements suitable for \CTC. A short section about different corpora available for information retrieval research will also be presented.
 
-In my thesis work a genetic approach to optimization of the parameters was tested. The theory chapter will therefore provide a section about the Genetic Algorithm and how it can be used to optimize parameters.
+In my thesis work a genetic approach to optimization of the parameters was tested. A section about the \GA will be provided to explain how this algorithm can be used for parameter optimization.
 
 \section{Clustering and information retrieval}
 \label{Clustering}
-\citeauthor{Baeza-Yates2011a} defines text clustering as, ``\textit{[\dots]given a collection \(D\) of documents, a text clustering method automatically separates these documents into \(K\) clusters according to some predefined criteria}''. The variable \(K\) here refers to the number of clusters produced by the clustering algorithm given a document set. The variable \(D\) refers to the document set comprising the documents to be clustered. Given a size \(N\) of the document set \(D\) a clustering algorithm might produce a cluster set where \(K \in \left\{1, .., N*N\right\}\). In other words, a clustering algorithm might produce anywhere from a single cluster to as many clusters as there are document combinations.
+\citeauthor{Baeza-Yates2011a} defines text clustering as, ``\textit{[\dots] given a collection \(D\) of documents, a text clustering method automatically separates these documents into \(K\) clusters according to some predefined criteria}''. The variable \(K\) here refers to the number of clusters produced by the clustering algorithm given a document set. The variable \(D\) refers to the document set comprising the documents to be clustered. Given a document set \(D\) of size \(N\) a clustering algorithm might produce a cluster set where \(K \in \left\{1, .., N*N\right\}\). In other words, a clustering algorithm might produce anywhere from a single cluster to as many clusters as there are document combinations.
 
-The \(K\) variable can either be pre-determined and given to the clustering algorithm as a variable as is the case with K-Means Clustering. In other algorithms the \(K\) variable is undefined and varies according to different criteria such as the document collection size, the contents of the documents, the parameters given to the clustering algorithm etc.
+The number of clusters variable \(K\) can either be pre-determined and given to the clustering algorithm as a variable as is the case with K-Mean Clustering. In other algorithms the \(K\) variable is undefined and varies according to different criteria such as the document collection size, the contents of the documents, the parameters given to the clustering algorithm etc.
 
 The \STC and \CTC algorithms conform to this definition of clustering. Examples of other clustering algorithms that fall under this definition include the previously mentioned K-Mean algorithm and the Hierarchical Clustering algorithm.
 
 \subsection{Suffix Trees and Suffix Tree Clustering}
-The \STC algorithm was first introduced by \textcite{Oren1997} in the paper \citetitle{Oren1997}. This article discuss how suffix tree clustering can be used on search engine results to improve the results. Later an improved version of the algorithm was presented in the paper \citetitle{Oren1998} \cite{Oren1998}. In this later paper \citeauthor{Oren1998} describes the requirements for the \STC algorithm and the stages involved in \STC. They also compare the effectiveness (i.e. performance) of the algorithm compared to other clustering algorithms.
+The \STC algorithm was first introduced by \textcite{Oren1997} in the paper \citetitle{Oren1997}. This article discuss how suffix tree clustering can be used on search engine results to improve the results. Later an improved version of the algorithm was presented in the paper \citetitle{Oren1998} \cite{Oren1998}. In this later paper \citeauthor{Oren1998} describes the requirements for the \STC algorithm and the stages involved in \STC. They also compare the effectiveness (i.e. quality of results) of the algorithm compared to other clustering algorithms.
 
 The \STC algorithm has three basic steps:
 \begin{enumerate}
 \item Document cleaning
-\item Suffix tree and Base Cluster creation
-\item Base Cluster merging
+\item Suffix tree and base cluster creation
+\item Base cluster merging
 \end{enumerate}
 
 \subsubsection{Document Cleaning}
 
-Document cleaning involves cleaning the strings representing each document. This is done by stemming each work, marking sentences and removing non-word tokens such as HTML tags, numbers and punctuation. The strings comprise the document snippets. Each snippet is cleaned string from the original document. There are some possible algorithmic parameters that can be identified here. For example, which parts of the documents should be extracted? Using more of the text document for snippet extraction gives the algorithm more data to work with which could yield more accurate results. There is also the question of which parts of the documents that are the best signifier of the content of that document. A nice parameter to think of here would thus be which parts of, say a news document, should be included such as titles/headings, image captions, article introductions, article contents etc. Other possible parameters that has not been investigated are possible stemming techniques (lemmatisation vs. stemming) and differing stop word lists.
+Document cleaning involves cleaning the strings representing each document. This is done by stemming each word, marking sentences, and removing non-word tokens such as HTML tags, numbers, and punctuation. The strings comprise the document snippets. Each snippet is a cleaned string from the original document. There are some possible algorithmic parameters that can be identified here. For example, which parts of the documents should be extracted? Using more of the text document for snippet extraction gives the algorithm more data to work with which could yield more accurate results. There is also the question of which parts of the documents that are the best signifier of the content of that document. A nice parameter to think of here would thus be which parts of, say a news document, should be included such as titles/headings, image captions, article introductions, article contents etc. Other possible parameters that has not been investigated are possible stemming techniques (lemmatisation vs. stemming) and differing stop word lists.
 
 \subsubsection{Suffix Tree and Base Cluster Creation}
 
 To make the concept Suffix Trees a bit clearer a short explanation of the trie data structure and suffixes will be provided.
 
-The \STC algorithm use a trie data structure. Trie data structures, also known as digital search trees, are multi-way trees that store sets of strings. The trie data structure is capable of retrieving any string encoded within it in time proportional to the string's length, \cite{Baeza-Yates2011c}. \textcite{Baeza-Yates2011c} describe a trie as a tree-shaped DFA (deterministic finite automaton). In a finitite automaton a term or pattern can be modelled as a directed graph containing circular vertices as states and directed arrows (labeled with one or more characters) as transitions between these states. A string can be matched to a NFA if and only if there are some path, iterating over the string, from the initial state to the final state. In the suffix trie the root node denotes the initial state and each leaf node works as a final state. In essence the suffix trie describes a DFA over all the suffixes of all phrases in a document collection.
+The \STC algorithm use a trie data structure. Trie data structures, also known as digital search trees, are multi-way trees that store sets of strings. The trie data structure is capable of retrieving any string encoded within it in time proportional to the string's length, \cite{Baeza-Yates2011c}. \textcite{Baeza-Yates2011c} describe a trie as a tree-shaped DFA (deterministic finite automaton). In a finitite automaton a term or pattern can be modelled as a directed graph containing circular vertices as states and directed arrows (labeled with one or more characters) as transitions between these states. A string can be matched to a DFA if and only if there are some path, iterating over the string, from the initial state to the final state. In the suffix trie the root node denotes the initial state and each leaf node works as a final state. In essence the suffix trie describes a DFA over all suffixes of all phrases in a document collection.
 
 In context of a term \(T = [c_{1}, ..., c_{n}]\) a suffix is a sub-term \(s = [t[n-m] \dots t[n]]\) where \(0 \le m < n\). To exemplify this definition the term suffix itself can be used. The suffixes of the term ``suffix'' are
 \begin{inparaenum}[\itshape 1\upshape)]
@@ -49,8 +49,8 @@ In context of a term \(T = [c_{1}, ..., c_{n}]\) a suffix is a sub-term \(s = [t
 
 \cite{Oren1998} treat documents as a collection of snippets where each snippet is a normalized sentence from a document. Each snippet contains a sequence of words. The \STC algorithm extracts its suffixes from phrases (snippets) rather than single terms. A suffix in this context would thus be defined as all the sub-phrases of a given phrase. Following the same rules as apply for the example above the phrase ``clustering is fun'' therefore has the following suffixes:
 \begin{inparaenum}[\itshape 1\upshape)]
-\item clustering is fun;
-\item is fun; and
+\item clustering is fun,
+\item is fun, and
 \item fun
 \end{inparaenum}.
 
@@ -64,7 +64,7 @@ By combining the concepts of suffixes and trie structures you can build a suffix
 \item For each suffix of the string \textit{S} there is a suffix node which is equal to that suffix.
 \end{itemize}
 
-Following these requirements, a suffix tree can then be understood to be a tree wherein edges are sub-phrases of or whole suffixes and the nodes connected by these are the documents (or sources) from which these suffixes come. The internal nodes in the tree are phrase clusters made up of all those documents that share that sub-phrase. An example of a suffix tree can be seen in Figure~\ref{fig:suffixtree}. Here three phrases each comprising a document are split into suffixes and then put into the suffix tree structure. As an example one can see that the two phrases
+Following these requirements, a suffix tree can then be understood to be a tree wherein edges are sub-phrases (suffixes) of or whole phrases and the nodes connected by these are the documents (or sources) from which these suffixes come. The internal nodes in the tree are phrase clusters made up of all documents that share that sub-phrase. An example of a suffix tree can be seen in Figure~\ref{fig:suffixtree}. Here three phrases each comprising a document are split into suffixes and then put into the suffix tree structure. As an example one can see that the two phrases
 \begin{inparaenum}[\itshape 1\upshape)]
 \item ``cat ate cheese'' and
 \item ``cat ate mouse too''
@@ -79,27 +79,21 @@ share the phrase ``cat ate''. This is represented in the graph (Figure~\ref{fig:
   \label{fig:suffixtree}
 \end{figure}
 
-Each internal node is a phrase cluster made up of all the documents that share that phrase (i.e the union of the documents in it's descendant nodes). Each node makes up a base cluster \cite{Oren1998}. The base clusters are scored according to the scoring function: 
+Each internal node is a phrase cluster made up of all the documents that share that phrase (i.e the union of the documents in its descendant nodes). Each node makes up a base cluster \cite{Oren1998}. The base clusters are scored according to the scoring function: 
 %Math formula
 \begin{displaymath}s(B) = 
 \vert B \vert \cdot f(\vert P \vert)
 \end{displaymath} 
 where \(\vert B \vert\) 
-is the number of documents in the cluster \(B\) and  \(f(\vert P \vert)\) is a function on the length of the cluster phrase \(P\) (excluding stop words) which penalizes short phrases (\( \vert P \vert < 2\)), gives a linear score for regular phrases (\(\vert P \vert = {2,\dots,6}\)) and a constant score to longer phrases (\( \vert P \vert > 6\)). Clusters with many documents and/or long phrases receive higher scores than clusters with few documents and/or short phrases. A promising parameter identified in this step would be the score-threshold used by the \(f(\vert P \vert)\)-function. The scoring-threshold determines which of the terms in a phrase that contributes to that phrase's length.If a term is contained within 3 or less documents or more than 40\% of the documents in the collection, then the term receives a score of zero and does not contribute to the phrase's length. This could influence the scores of base clusters as some base clusters could become longer or shorter. The base cluster score is used to sort the base clusters for the final step in the \STC algorithm.
+is the number of documents in the cluster \(B\) and  \(f(\vert P \vert)\) is a function on the length of the cluster phrase \(P\) (excluding stop words) which penalizes short phrases (\( \vert P \vert < 2\)), gives a linear score for regular phrases (\(\vert P \vert = {2,\dots,6}\)) and a constant score to longer phrases (\( \vert P \vert > 6\)). Clusters with many documents and/or long phrases receive higher scores than clusters with few documents and/or short phrases. A promising parameter identified in this step would be the score-threshold used by the \(f(\vert P \vert)\)-function. The scoring-threshold determines which of the terms in a phrase that contributes to that phrase's length. If a term is contained within 3 or less documents or more than 40\% of the documents in the collection the term receives a score of zero and does not contribute to the phrase's length. This could influence the scores of base clusters as some base clusters could become longer or shorter. The base cluster score is used to sort the base clusters for the final step in the \STC algorithm.
 
 \subsubsection{Base Cluster Merging}
-Base cluster merging is the final step in the \STC and is an improvement of the original algorithm. \citeauthor{Oren1998} note that,
+Base cluster merging is the final step in the \STC algorithm and is an improvement of the original algorithm. \citeauthor{Oren1998} note that,
 \begin{quote}
 Documents may share more than one phrase. As a result, the document sets of distinct base clusters may overlap and may even be identical. To avoid the proliferation of nearly identical clusters, the third step of the algorithm merges base clusters with a high overlap in their document sets [\dots] \cite[][3]{Oren1998}
 \end{quote}
-TODO: Write about different similarity measures!
-Clusters are merged based on their similarity. \citeauthor{Oren1998} use the Jaccard Similarity Coefficient which is defined as 
-\begin{math}
-\frac{\vert X \cap Y \vert} {\vert X \cup Y \vert}
-\end{math},
-where the similarity can vary between zero if there are no common elements in set \(X\) and \(Y\) and one if the two sets have all elements in common \cite{VanRijsbergen1979}.
 
-Given two base clusters \(B_(m)\) and \(B_(n)\) and the formula for the Jaccard Similarity Coefficient the similarity between the two clusters can be calculated with:
+Base clusters are merged based on their similarity. \citeauthor{Oren1998} use a similarity measure based on a binary relationship between the number of shared documents in the two base clusters. This similarity measure will hereforth be reffered to as ``Etzioni similarity''. Given two base clusters \(B_(m)\) and \(B_(n)\) ``Etzioni similarity'' is formally defined as 
 
 \begin{displaymath} 
 J_{m}(B_{m},B_{n}) = 
@@ -111,11 +105,23 @@ J_{n}(B_{m},B_{n}) =
 \frac{\vert B_{m} \cap B_{n} \vert} {\vert B_{n} \vert}
 \end{displaymath}
 
-If and only if \(J_{m} > 0.5\) and \(J_{n} > 0.5 \) then the similarity of the two clusters \(m\) and \(n\) is equal to one. All base cluster pairs with a similarity of 1 is connected in a base cluster graph. This results in a set of connected components in the graph. Each connected component is considered a cluster in the final clustering result. In this last step two parameters can be identified. One could adjust the number of base clusters used to create the final clusters. The lowest scoring base clusters might not be relevant for the final results as the documents in these clusters share few of their phrases with each-other. On the other hand it might hurt the results if the algorithm use too few of the base clusters resulting in a lower number of merged clusters, or even less accurate merged clusters.
+If and only if \(J_{m} > 0.5\) and \(J_{n} > 0.5 \) then the ``Etzioni similarity'' of the two clusters \(m\) and \(n\) is equal to 1. This measure should not be confused with the Jaccard similarity coefficient which is expressed as 
+\begin{math}
+\frac{\vert X \cap Y \vert} {\vert X \cup Y \vert}
+\end{math}, where the similarity can vary between zero if there are no common elements in set \(X\) and \(Y\) and one if the two sets have all elements in common \cite{VanRijsbergen1979}. The ``Jaccard similarity'' of the two base clusters can be expressed as
+
+\begin{displaymath} 
+S(B_{m}, B_{n}) = 
+\frac{\vert B_{m} \cap B_{n} \vert} {\vert B_{m} \cup B_{n} \vert}.
+\end{displaymath}
+
+If and only if the ``Jaccard similarity'' is greater than 0.5 are the two base clusters considered equal. The Jaccard similarity coefficient is a stricter measure. This is true because \(\vert B_{m} \cup B_{n} \vert\ \geq \vert B_{n} \vert\) and \(\vert B_{m} \cup B_{n} \vert\ \geq \vert B_{m} \vert\). Jaccard similarity thus implicates Etzioni similarity, but Etzioni similarity does not implicate Jaccard Similarity.
+
+All base cluster pairs with a similarity of 1 is connected in a base cluster graph. This results in a set of connected components in the graph. Each connected component is considered a cluster in the final clustering result. In this last step two parameters can be identified. One could adjust the number of base clusters used to create the final clusters. The lowest scoring base clusters might not be relevant for the final results as the documents in these clusters share few of their phrases with each-other. On the other hand it might hurt the results if the algorithm use too few of the base clusters resulting in a lower number of merged clusters, or even less accurate merged clusters.
 
 It is also possible to adjust the similarity threshold used by the Jaccard coefficient, or use another similarity measure all together. One such similarity measure is the cosine similarity measure that can be used when documents are represented in a vector space model. This similarity measure is used by \cite{Chim2007}, albeit with phrases in a hierarchical clustering algorithm. The cosine similarity formula returns a value between -1 and 1, where -1 denotes that the vectors being compared are completely dissimilar, 1 that they are identical, and 0 that they are somewhere in between. The cosine similarity value can easily be applied as a similarity measure when combining clusters.
 
-How exactly is the cosine similarity of two documents computed? Usually the cosine similarity is computed using the vector space model \cite{Manning2009a}. In this model there are some key elements. There is a document \textit{corpus} consisting of \(N\) number of text documents. From this corpus one can compute a \textit{dictionary} comprising all the terms in the corpus and their frequency. A term's corpus frequency is thus the number of times it occurs in the corpus. The \textit{term frequency} (tf) of a term is the number of times it occurs in a document. The \textit{document frequency} (df) of a term is the number of documents it occurs in. A terms weight can be measured by it's tf-idf score \cite{Manning2009a}. The tf-idf score of a given term can be calculated given the functions:
+How exactly is the cosine similarity of two documents computed? Usually the cosine similarity is computed using the vector space model where each vector feature is represented with a weight value, \cite{Manning2009a}. It is not uncommon to use a tf-idf weighing scheme. In this model there are some key elements. There is a document \textit{corpus} consisting of \(N\) number of text documents. From this corpus one can compute a \textit{dictionary} comprising all the terms in the corpus and their frequency. A term's corpus frequency is thus the number of times it occurs in the corpus. The \textit{term frequency} (tf) of a term is the number of times it occurs in a document. The \textit{document frequency} (df) of a term is the number of documents it occurs in. A terms weight can be measured by it's tf-idf score \cite{Manning2009a}. The tf-idf score of a given term can be calculated given the functions:
 
 
 \begin{displaymath}
@@ -153,7 +159,7 @@ The \CTC algorithm is a slightly modified version of the \STC algorithm, develop
 Tests performed by the LLI research group indicate that using k-grams in the expansion phase may yield better time performance when compared with suffix expansion. Because speed is one of the requirements set by \cite{Oren1998} for web document clustering it is interesting to investigate the use of k-grams for snippet expansion.
 
 \subsection{Performance measures}
-My thesis will evaluate the performance of the clustering algorithm in two ways. A measurement of the performance will be used as a fitness-function in the Genetic Algorithm and the performance of the system with the initial parameters will be compared to the performance of the system with optimized parameters as part of an experiment that will be described in more detail later. As such there is a need for a clear definition of the effectiveness and performance of the \CTC algorithm given the different parameter sets.
+My thesis will evaluate the performance of the clustering algorithm in two ways. A measurement of the performance will be used as a fitness-function in the \GA and the performance of the system with the initial parameters will be compared to the performance of the system with optimized parameters as part of an experiment that will be described in more detail later. As such there is a need for a clear definition of the effectiveness and performance of the \CTC algorithm given the different parameter sets.
 
 \cite[131]{Baeza-Yates2011b} define retrieval evaluation as a \begin{quote} 
 [\dots] process of systematically associating a quantitative metric to the results produced by an IR system in response to a set of user queries. This metric should be directly associated with the relevance of the results to the user. A common approach to compute such a metric is to compare the results produced by the system with results suggested by humans for that same set of queries.
@@ -180,17 +186,13 @@ An article by \cite{Yang1999} describe a comparative evaluation of different tex
 
 
 \subsection{Available corpora}
-TODO: TREC reference....
 There are different corpora used in information retrieval research. TREC describes a number of corpora, but most of these are created for the benefit of search algorithms and are not very suitable for testing clustering algorithms. \citeauthor{Baeza-Yates2011a} describe some of the most used benchmark collections in text classification research: Reuters-21578, RCV: Reuters Corpus Volumes, OHSUMED reference collection, and 20 NewsGroups. Some of them are desribed in greater detail below.
 
-Reuters, an international news agency have made several corpora that are available trough different sources. One Reuters corpus that have been much used in the text classification community is the \textit{Reuters 21578} corpus \cite{Lewis2004a}. The documents in this collection was collected from documents appearing on the Reuters newswire in 1987. The corpus was assembled and categorized by personnel from Reuters and Carnegie Group in 1987. This corpus thus resembles that used in the ``Recycling of news in the news papers 1999 - 2000'' research project.
+Reuters, an international news agency has made several corpora that are available trough different sources. One Reuters corpus that has been much used in the text classification community is the \textit{Reuters 21578} corpus \cite{Lewis2004a}. The documents in this collection was collected from documents appearing on the Reuters newswire in 1987. It was assembled and categorized by personnel from Reuters and Carnegie Group in 1987. The corpus thus resembles that used in the ``Recycling of news in the news papers 1999 - 2000'' research project.
 
 Reuters have since made a new corpus that is likely to replace the Reuters 21578 corpus. This new corpus is divided into three volumes RCV1, RCV2 and TRC2. The first two volumes contain news stories from 96 - 97, and the last volume contains news stories from 08 to 09. RCV1 and TRC2 contain English news stories only, while RCV2 is multilingual \cite{NationalInstituteofStandardsandTechnology2004}. An article on the use of the RCV1 corpus provide more details about how the data set can be used in evaluation of text categorization systems. ``\textit{Reuters CorpusVolume I (RCV1) is an archive of over 800,000 manually categorized newswire stories recently made available by Reuters, Ltd. for research purposes. Use of this data for research on text categorization requires a detailed understanding of the real world constraints under which the data was produced.}'' \cite{Lewis2004}. 
 
-Time constraints prevents all relevant corpora to be used in this thesis research. The focus of the research will be on the ``Klimauken'' and ``Reuters 21578'' corpora. 
-
-TODO: Because the Reuters and Klimauken corpora use different ways of tagging the articles (single tags vs multiple tags)... Should perhaps add additional corpus...
-
+Because the thesis work were performed under time constraints the main focus of the thesis remained on the ``Klimauken'' corpus. Further research into the optimization problem would however likely include these other corpora.
 
 \section{Genetic Algorithms}
 \label{GeneticAlgorithm}
@@ -229,11 +231,11 @@ The Genetic Algorithm can be divided into some simple steps:
 \item Return the resulting chromosomes
 \end{inparaenum}
 
-Initially the genetic algorithm starts with a set of chromosomes, a \textit{population}. The population is generated by setting random values for each gene \cite{Haupt2004a,Negnevitsky2002,Goldberg1989}. Each gene is assigned a fitness based on a predefined fitness function. In the pseudo implementation of \citeauthor{Haupt2004a} algorithm, the top \(N\) chromosomes are deemed fit for survival and the rest are discarded.
+Initially the genetic algorithm starts with a set of chromosomes, a \textit{population}. The population is generated by setting random values for each gene \cite{Haupt2004a,Negnevitsky2002,Goldberg1989}. Each gene is assigned a fitness based on a predefined fitness function. In the pseudo implementation presented by \citeauthor{Haupt2004a} the top \(N\) chromosomes are deemed fit for survival and the rest are discarded.
 
-Then the algorithm selects pairs of chromosomes for the \textit{mating process} according to their fitness. There are several different selection techniques such as: roulette-wheel weighting; random pairing, and tournament selection, \cite{Haupt2004a}. Which one works best depends on the optimization problem. Pairing or the mating process generally involves generating two offspring from two parents. The algorithm selects at random a crossover point at some position in the chromosomes gene sequence and then combines the start and end segments of the two parents as described in Figure~\ref{fig:crossover}.
+The algorithm then selects pairs of chromosomes for the \textit{mating process} according to their fitness. There are several different selection techniques such as roulette-wheel weighting, random pairing, and tournament selection, \cite{Haupt2004a}. Which one works best depends on the optimization problem. The mating process generally involves generating two offspring from two parents. The algorithm selects at random a crossover point at some position in the chromosomes' gene sequence and then combines the start and end segments of the two parents as described in Figure~\ref{fig:crossover}.
 
-To avoid early \textit{convergence} in the population the Genetic Algorithm mutates a random selection of offspring chromosomes by mutating a randomly selected gene. The number of chromosomes and genes mutated depends on the \textit{mutation rate}. \cite{Goldberg1989,Negnevitsky2002} provides a mutation rate between 0.001 and 0.01 as a usual rate. The mating and mutation steps reiterates till some cut-off or convergence criteria is met.
+To avoid early \textit{convergence} in the population the \GA mutates a random selection of offspring chromosomes by mutating a randomly selected gene. The number of chromosomes and genes mutated depends on the \textit{mutation rate}. \cite{Goldberg1989,Negnevitsky2002} inform that a mutation rate between 0.001 and 0.01 is normal. The mating and mutation steps reiterates till some cut-off or convergence criteria is met.
 
 \section{Related Work}
 \label{RelatedWork}

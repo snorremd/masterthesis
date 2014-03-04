@@ -1,0 +1,395 @@
+%!TEX root = ../Thesis.tex
+% Chapter Template
+
+\chapter{Evaluation \& Testing} % Main chapter title
+
+\label{EvaluationTesting} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter \ref{DesignDevelopment}. \emph{Evaluation \& Testing}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+% SECTION 1
+%----------------------------------------------------------------------------------------
+
+Four stages of testing have been performed to properly investigate the optimization problem. The first stage tested the parameter set used by \citeauthor{Oren1998} in order to establish a base performance for the algorithm. We will see how this parameter set is not well optimized for the ``Klimauken'' corpus. The second stage of testing involves incremental tests. These tests have two purposes. The first one is to find good value ranges for the parameters when used in the genetic algorithm. The second purpose is to perform a test on the incrementally optimized parameters. This test provide a comparative base for the genetically optimized parameter. The third stage of testing investigated the feasability of the genetic algorithm by running a smaller population and number of generations. This was done because the full scale test would take a lot of time. Finally, in the last stage a full scale test of the genetic algorithm was performed. The parameter set from this test forms the final optimized set and will be used to answer the hypotheses.
+
+\section{Etzioni parameters test}
+An initial test on the parameter set of \citeauthor{Oren1998} was performed to find the parameter set's performance under the \CTC algorithm when applied to the ``Klimauken'' corpus. The results from this test will later be used to compare the results of the genetically and incrementally improved parameter sets with the parameter set used by \citeauthor{Oren1998}. Because \citeauthor{Oren1998} test a somewhat different corpus, and does not provide source code for their implementation of the \STC algorithm, the test was performed with an approximation of their parameter set and algorithm. The \CTC algorithm does however implement the \STC algorithm as described in \citetitle{Oren1998} and where possible the exact same parameters was applied.
+
+The parameters are as follows:
+\begin{itemize}
+\setstretch{0.5}
+  \item Tree type: Suffix
+  \item Top base clusters: 500
+  \item Min term occurrence 4
+  \item Max term ratio: 0.4
+  \item Min limit for base cluster score: 2
+  \item Max limit for base cluster score: 7
+  \item Drop singleton base clusters: 0
+  \item Drop one word clusters: 0
+  \item Sort descending: 1
+  \item Article text amount: 0
+  \item Text types: All text except article text.
+  \item Similarity measures: Etzioni similarity
+  \item Etzioni threshold: 0.5
+\end{itemize}
+
+The ground truth at full label overlap is not very good measuring only 31.2\% (Diagram~\ref{tab:etzioniparametersgroundtruth}. This result is not very good, but is not far off the ~40\% average precision over several corpora as presented in \cite{Oren1998}. The ground truth represented value (or recall) however is very poor (Diagram~\ref{tab:etzioniparametersgroundtruthrep}. At full label overlap the parameter set yields a very small \~8.8\% ground truth represented. In other words, with the Etzioni parameter set the algorithm only manage to find 59 out of 669 ground truth clusters. As a result the f-measure (harmonious mean) score is not very good. Because the initial results using the Etzioni parameters are quite low there should be good opportunity to find more optimized parameters.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 - ground truth & 59/189  & 0.312 & 0.312\\
+1 - ground truth &  7/189  & 0.037 & 0.349\\
+2 - ground truth &  3/189  & 0.016 & 0.365\\
+3 - ground truth &  6/189  & 0.032 & 0.397\\
+4 - ground truth &  8/189  & 0.042 & 0.439\\
+5 - ground truth & 106/189 & 0.561 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 457 (of  457)
+\end{center}
+\caption{Ground truth of parameters from \citeauthor{Oren1998}}
+\label{tab:etzioniparametersgroundtruth}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 - ground truth rep & 59/669  & 0.088 & 0.088\\
+1 - ground truth rep & 6/669   & 0.009 & 0.097\\
+2 - ground truth rep & 5/669   & 0.007 & 0.105\\
+3 - ground truth rep & 3/669   & 0.004 & 0.109\\
+4 - ground truth rep & 14/669  & 0.021 & 0.130\\
+5 - ground truth rep & 582/669 & 0.870 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 669 (of  669)
+\end{center}
+\caption{Ground truth represented values of parameters from \citeauthor{Oren1998}}
+\label{tab:etzioniparametersgroundtruthrep}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap & Percentage\\ 
+\hline
+0 - F-Measure & 0.138\\
+1 - F-Measure & 0.014\\
+2 - F-Measure & 0.010\\
+3 - F-Measure & 0.008\\
+4 - F-Measure & 0.028\\
+5 - F-Measure & 0.682\\
+\hline
+\end{tabular}
+\end{center}
+\caption{F-Measure values of parameters from \citeauthor{Oren1998}}
+\label{tab:etzioniparametersfmeasure}
+\end{table}
+
+\section{Incremental tests}
+
+The goal of these tests are two-fold
+\begin{inparaenum}[\itshape 1\upshape)]
+\item to find optimal parameter ranges for the genetic algorithm, and
+\item to identify an incrementally optimized parameter set
+\end{inparaenum}.
+In Section~\ref{IncrementalConclusion} a summary of the incremental tests and the performance of the incrementally optimized parameter set will be detailed. The following sections will describe the tests performed on each parameter.
+
+Each parameter that was identified as candidate parameter for the optimization problem were tested incrementally. This was done to ensure that each parameter has a measurable influence on the result, and to identify reasonable value ranges for each parameter. The results of each parameter test has been provided in form of line and bar charts in Appendix~\ref{AppendixA}. The incremental tests were run twice: once with the parameters specified by \citeauthor{Oren1998} as base parameters, and once with the parameters used by \supervisor. See Listing~\ref{lst:etzioniparams} and Listing~\ref{lst:richardparams} for the parameter values. The results show values both with the performance measures used by \supervisor and those used by \citeauthor{Oren1998}.
+
+\subsection{Tree type tests}
+A test on each expansion technique were performed. Diagram~\ref{diag:treetypesetzioni} show that there are significant, albeit small, differences in performance between the different expansion techniques under the parameters specified by \citeauthor{Oren1998}. The suffix expansion technique performs better than the others. The algorithm performs extremely ill when using wide range-slice expansion, which only gets an F-Measure 0 score of 2\%. This can be attributed to the very low ground truth represented value. Suffix expansion scores considerably much better on ground truth, scoring 7 percentile points higher than the second best expansion technique, mid-slice expansion.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|llll|}
+\hline
+F-Measure (column - row) & Suffix & Midslice & Rangeslice 0,1-1.0 & 5-slice \\
+\hline
+Suffix                        & 0,0000 & -0,0495  & -0,1132            & -0,0318 \\
+Midslice                      & 0,0495 & 0,0000   & -0,0637            & 0,0177  \\
+Rangeslice 0.1-1.0            & 0,1132 & 0,0637   & 0,0000             & 0,0814  \\
+5-slice                       & 0,0318 & -0,0177  & -0,0814            & 0,0000  \\
+\hline
+\end{tabular}
+  \caption{A comparison matrix of F-Measure 0 showing the difference in percentile points for different expansion techniques.}
+  \label{tab:expansiontechniques}
+\end{center}
+\end{table}
+
+The results (see Diagram~\ref{diag:treetypesrichard}) achieved with the parameters used by \supervisor applied to the algorithm shows a different picture. The difference in scores between the different expansion techniques are quite small. The biggest difference is seen in the ground truth represented score which is significantly lower for 5-slice and range-slice expansion than for suffix and mid-slice expansion.
+
+The differences shown in the results more than justify the inclusion of all expansion techniques as parameters in the algorithm. The different expansion techniques are shown to behave differently with different parameters as base. Range slice expansion does very poorly under the parameters used by \citeauthor{Oren1998}, but performs much better under the parameters used by \supervisor. With different ranges the range-slice expansion technique might perform even better.
+
+\textbf{N-slices}
+
+The n-slice parameter can be applied with any natural number as its slice length. So what is its sensible range? There is of course a length at which there is no more information to gain as the length is equal to the longest snippet in the corpus. Greater lengths does not necessarily equal better performance. Tests reveal that n-slices of length greater than five does not have much impact on the performance of the algorithm. Diagram~\ref{diag:nslicesetzioni} show no discernible difference for longer slices with \citeauthor{Oren1998} parameters as base. Diagram~\ref{diag:nslicesrichard} show that the ground truth vary slightly, getting worse for longer lengths of n-slices up until about ten. Lengths between zero and ten thus seem to be the reasonable lengths to use for the n-slice expansion technique.
+
+\textbf{Range-slices}
+
+Range-slice tests were performed on a shrinking range from the range 0.0 - 1.0 to the range 0.5 - 0.5. These tests does not take into account how well the range-slice expansion technique performs in ranges that primarily use shorter n-slices or those using longer n-slices. The results does however show that shorter ranges perform better than longer ranges when it comes to the ground truth represented value. This is true for both parameter bases as shown in Diagram~\ref{diag:rangelicesetzioni} and Diagram~\ref{diag:rangelicesrichard}. The results warrants testing different ranges of range-slice expansion during the optimization tests.
+
+\subsection{Base clusters amount}
+The number of base clusters included in the base cluster merging step have a great effect on the performance of the \CTC algorithm. The tests with the different parameter bases again show similar results. For the parameter base used by \citeauthor{Oren1998} the ground truth value increase with the number of included base clusters till somewhere around 9,000 base clusters (see Diagram~\ref{diag:topbaseclustersetzioni}. This is not too surprising as adding more base clusters will yield a higher amount of component clusters. This will in turn create the possibility for more ground truth clusters to be found. Including too many base clusters will negatively impact the ground truth as the algorithm does not find more ground truth clusters, but does find incorrect clusters. The ground truth represented value increase steadily as the number of included base clusters goes up. This makes sense as the ground truth represented value only measures the ratio of ground truth clusters found to the amount of ground truth clusters defined.
+
+Under the parameter base used by \supervisor the results look very different. Here the ground truth actually goes down as the number of top base clusters goes up. The ground truth represented value goes up however. See Diagram~\ref{diag:topbaseclustersrichard}. This could be explained by the inverse sorting of base clusters in that parameter set.
+
+It is likely that \citeauthor{Oren1998} only use 500 base clusters because of time constraints. Time constraints are not considered in this thesis. We have seen that a high number of top base clusters not necessarily correspond to a higher score for ground truth. It thus seems reasonable to set the range at 100 to 10,000 base clusters in order to explore possible edge cases.
+
+\subsection{Min term occurrence and max term ratio}
+\citeauthor{Oren1998} set the min term occurrence to four. For the ``Klimauken'' corpus testing reveals that the Etzioni parameter base performs better for higher values of min term occurrence (see Diagram~\ref{diag:mintermoccurrenceetzioni}). The ground truth evens out at a limit somewhere around 70. The ground truth at this limit is twice as high as the ground truth at a limit of 4. The ground truth represented value show similar trends; maxing out at a limit of 150. It is thus clear that the min term occurrence limit can have great effect on the performance of the \CTC algorithm, at least under the parameter base specified by \citeauthor{Oren1998}. Under the parameter base specified by \supervisor, the min term occurrence parameter does not show as high an impact on the performance. The ground truth increases only a little from 43.1\% with the limit set to 4 to 44.8\% with a limit of 100. There is little change, less than 1\% between a limit of 40 and 100. There is no change for limits higher than 100. Given these results, a limit between 0 and 150 was set for this parameter.
+
+For the max ratio in collection parameter the numbers look much more stable. With the parameter base of \citeauthor{Oren1998} the numbers seem to be very stable for all ratios (see Diagram~\ref{diag:maxtermratioetzioni}). The numbers do not change with the parameter base of \supervisor (Diagram~\ref{diag:maxtermratiorichard}). There is a chance that the max ratio limit might behave differently under a different base parameter set. A parameter set where more text is included might yield different results. The results, while limited does not warrant using max term ratio as a parameter as it does not have any effect on the result. A broader range might however catch special edge cases where a higher limits on the max ratio in collection parameter might be good. There might also be parameter sets where the max ratio might influence the result to a higher degree. The limit for this parameter was set to 0.01 to 1.0 in the interest of examining all possible cases. The selection of initial values are not weighted, but it is expected to see results within the optimal range seen in the incremental test.
+
+\subsection{Min and max limit for base cluster score}
+The tests on the min limit for base cluster score were run with an effectively unconstrained max limit (set to the length of the longest base cluster label). The min limit for base cluster score sees significant performance variance with the parameter base of \citeauthor{Oren1998}. Diagram~\ref{diag:minlimitbcscoreetzioni} show that the ground truth goes from a score of about 3\% for a min limit of zero to a score of about 50\% for a limit of ten. That is a huge improvement. For the parameter base of \supervisor the min limit does not affect the results that much. The ground truth score varies with about 9 percentile points from the lowest score to the highest. The score does not vary for limits above five. Based on these results a limit between 0 and 15 was chosen. The upper limit was chosen to allow possible edge cases.
+
+The max limit for base cluster score parameter does not seem to have much effect on the results. Given the parameter base of \citeauthor{Oren1998} Diagram~\ref{diag:maxlimitbcscoreetzioni} show that the max limit for base cluster score performs better when the max limit is very low. In fact a max limit of 3 (where min limit is set to 2) performs much better than higher max limits. This suggest that the algorithm either performs better with lower max limits for this parameter, or that it performs better when the difference between the min and max limits are low, or even a combination of both. An additional test where the min limit is bound to 8, the best performing value shown in the above paragraph, shows that the max limit does not have an effect at all (see Diagram~\ref{diag:maxlimitbcscoreetzioni2}). This is also true for the results retrieved when running the parameter base of \supervisor (see Diagram~\ref{diag:maxlimitbcscorerichard}).
+
+The min limit has been set to a range from 0 to 15, and the max limit from 15 to 30. This way the max limit should not affect the results.
+
+\subsection{Dropping clusters}
+Two different parameters will be explored in this section: drop singleton base clusters and drop one word clusters.
+
+\textbf{Drop singleton base clusters}
+
+Under the parameter base used by \citeauthor{Oren1998} the drop singleton base clusters parameter have a significant effect on the result (see Diagram~\ref{diag:dropsingletonbcetzioni}). Dropping singleton base clusters reduce the ground truth by more than half from 31\% to only 14\%. The ground truth representation also sees a dramatic decrease. This could be explained by the number of singleton ground truth clusters defined in the ``Klimauken'' corpus. Dropping singleton base clusters impact the number of singleton clusters created when merging the base clusters. The parameter sees even more dramatic effects under the parameter base used by \supervisor (see Diagram~\ref{diag:dropsingletonbcrichard}). Here the ground truth drops by 37 percentile points from a score of 43\% to only 6\%. The ground truth represented score is also drastically reduced when dropping singleton base clusters. Under the parameter base of \supervisor it drops from 76\% to 3\%. Given how much this parameter affects the result it should definitely be used when optimizing the parameter set.
+
+\textbf{Drop one word clusters}
+The drop one word clusters parameter have no effect under the parameter base used by \citeauthor{Oren1998} as shown in Diagram~\ref{diag:droponewordclustersetzioni}. Under the parameter based used by \supervisor the ground truth is greatly improved when dropping the one word clusters. The score goes from 29\% ground truth score to 43\%. The ground truth represented value remains the same. The parameter should thus be used when optimizing the algorithm.
+
+\subsection{Sort descending}
+It stands to reason that the order of the base clusters should have an effect on the result as this determines which base clusters are filtered out when picking only the top base clusters. The parameter does change the scores significantly under the parameter base used by \citeauthor{Oren1998} (see Diagram~\ref{diag:sortdescendingetzioni}). Here the ground truth is 45\% when the base clusters are sorted in ascending order compared to only 31\% when they are sorted in descending order. The ground truth represented value also increase with ascending ordering achieving a score of 23\% versus 9\% for descending ordering.
+
+The differences are not that great under \supervisor parameter base (see Diagram~\ref{diag:sortdescendingrichard}). Including a larger amount of base clusters (5,000) would likely be the cause of this. The behaviour of the ordering under low values of top base cluster amounts do argue for the inclusion of this parameter in the optimization process.
+
+\subsection{Article text amount}
+
+This section will discuss the results under different amounts of article text and when filtering out different types of text.
+
+\textbf{Article text amount}
+Testing show that including large parts of article text does not improve the score of the results. Under the Etzioni parameter set (see Diagram~\ref{diag:textamountetzioni}) the ground truth is at its highest, 36.6\%, when only 5\% of the article text snippets are included. Including more snippets of this type only serve to decrease the score; 10\% giving a score of 29\%. The same observations can be made for the ground truth represented value.
+
+Using the parameter set of \supervisor yield similar, albeit less varying, results (Diagram~\ref{diag:textamountrichard}). Here the decrease in ground truth is less prominent. The ground truth represented value actually starts to increase at around 60\% of the article text. This might indicate that under the right circumstance the recall of the algorithm increase with more snippets.
+
+Because the data show variance over the whole range of text amount ratios, a ratio of 0 to 1 is adopted with 0.05 steps.
+
+\textbf{Text types}
+
+Testing reveal that filtering the types of text to include in the snippet expansion phase can have a dramatic effect on the results. Under the parameters used by \citeauthor{Oren1998} the algorithm performs extremely poor when all text types are included (see Diagram~\ref{diag:texttypesetzioni}). Generally the algorithm performs better when things such as titles, bylines and article introductions are used. If all the text types are included the ground truth measures a very low \~ 9\% compared to the \~ 48\% when only front page text is included. Similarily differences can be seen for the ground truth represented score. These findings mirror what is found by \citeauthor{Oren1998}.
+
+Under the parameter set used by \supervisor (Diagram~\ref{diag:texttypesrichard}) the results are not as conclusive. They show rather similar scores for those groups of text types where front page text, titles, bylines and article introductions are included. However, if only article text (bread text) is included the ground truth represented value drops to \~ 15\%. For the other groups of text types the ground truth represented value is well above 60\%.
+
+The results more than justify the inclusion of the text types parameter in the optimization algorithm. Under the right circumstance the result can vary greatly depending on which text types one include.
+
+\subsection{Similarity measure}
+
+The \CTC algorithm can use three different similarity algorithms. The section will first look at the different measures, before delving into the specific parameters of each measure.
+
+\textbf{Similarity methods}
+
+The similarity methods perform rather similarily under the parameter set used by \citeauthor{Oren1998} (Diagram~\ref{diag:similaritymethodsetzioni}). The F-Measure score is the same for all methods, but there are very small differences in ground truth precision. Under the parameter set used by \supervisor the differences in ground truth precision are greater (see Diagram~\ref{diag:similaritymethodsrichard}). Here the Cosine and Amendment 1C similarity measures perform significanly better scoring approximately 10 percentile points better than the Etzioni and Jaccard measures. This could be a result of there being more base clusters to merge thus making the similarity measures a bigger factor in the result. All similarity methods should therefore be included.
+
+\textbf{Etzioni and Jaccard thresholds}
+
+The Etzioni and Jaccard similarity methods are very similar in nature and as such the results for the Etzioni similarity threshold and Jaccard Coefficient threshold are extremely similar. They will therefore be discussed together. The \citeauthor{Oren1998} parameters show that the ground truth decreases as the Etzioni and Jaccard thresholds go up (Diagram~\ref{diag:etzionithresholdetzioni} and Diagram~\ref{diag:jaccardthresholdetzioni}). The graphs show a decreasing ground truth over the whole range, except from 0.9 to 1. The ground truth precision increases slightly with the ratio. Under the parameter set used by \supervisor the results for ground truth represented is quite different (Diagram~\ref{diag:etzionithresholdrichard} and Diagram~\ref{diag:jaccardthresholdrichard}. The ground truth represented increase from almost 0\% at a threshold of 0 to about 21\% at a threshold of 0.05. Increasing the threshold further to 0.5 gives a ground truth represented score of about 76\%. The ground truth however only vary about 10 percentile points. throughout the threshold range. Esentially the similarity threshold can significantly impact the results and will thus be used for optimization.
+
+\textbf{Cosine similarity threshold}
+
+Diagram~\ref{diag:cosinethresholdetzioni} and Diagram~\ref{diag:cosinethresholdrichard} show that the cosine threshold have a fairly small effect on the score of the algorithm under both parameter sets. Under \citeauthor{Oren1998} parameters the ground truth hovers around 30\% whike the ground truth represented value remains quite stable at almost 10\%. The ground truth and ground truth represented values seem to increase ever so slightly under the parameter set used by \supervisor. The ground truth increase from \~ 49\% to \~ 54\%. So while the effect of the cosine threshold might be small, it can affect the result. It should thus be included in the optimization of the parameter set.
+
+
+\textbf{Amendment1C corpus frequency limit and label intersection limit}
+
+The average corpus frequency limit gives the best ground truth, using \citeauthor{Oren1998} parameter base, at around 150 where the ground truth max out at \~31\% (Diagram~\ref{diag:avgcfamendment1etzioni}). The ground truth varies with a few percent throughout the test range from a limit of 0 to a limit of 500. The ground truth represented value however stays the same. The parameter base used by \supervisor produce a less varying result. Here both the ground truth and ground truth represented values stays relatively stable, but decrease slightly as the average corpus frequency limit increase. The ground truth goes from 54\% to \~49\% (Diagram~\ref{diag:avgcfamendment1richard}). These changes are significant enough that the parameter should be included in the optimization of the parameter set. A good parameter range is hard to determine because the performance results fluctuate around the same level throughout the tested range. The whole range is thus used in the optimization problem.
+
+The label intersection limit does not seem to have any effect on either of the two parameter sets at all (Diagram~\ref{diag:minintersectamendment1cetzioni} and Diagram~\ref{diag:minintersectamendment1crichard}). It is therefore hard to justify including it as a parameter, and a default value can be used.
+
+\subsection{Incremental tests in conclusion}
+\label{IncrementalConclusion}
+The incremental testing revealed that most of the parameter candidates did indeed have an effect on the performance of the \CTC algorithm. The following parameters were eventually included in the optimization algorithm:
+\begin{itemize}
+  \setstretch{0.5}
+  \item Tree types (Suffix, Mid-Slice, N-Slice, and Range-Slice) parameter
+  \item N-Slice length (0 - 10)
+  \item Range-slice start (0.0 - 0.9) and end (0.1 - 1.0)
+  \item Top base clusters (100 - 10 000)
+  \item Min term occurrence (0 - 150)
+  \item Max term ratio (0.01 - 1.0)
+  \item Min limit for base cluster score (0 - 15)
+  \item Max limit for base cluster score (10 - 30)
+  \item Drop singleton base clusters (0, 1)
+  \item Drop one word clusters (0, 1)
+  \item Sort descending (0, 1)
+  \item Article text amount (0,0 - 1.0)
+  \item Text types ()
+  \item Similarity measures (Etzioni, Jaccard, Cosine, and Amendment 1C)
+  \item Etzioni/Jaccard/Cosine thresholds (0.0 - 1.0)
+  \item Average corpus frequency limit (0 - 500)
+\end{itemize}
+A test was performed to find the performance of the algorithm given the best parameter values from each incremental test. The F-Measure of each test was used as a base. Where the test revealed no dicernable difference, the default value was used. The optimal parameter set derived from the incremental tests are:
+
+\begin{itemize}
+\setstretch{0.5}
+  \item Tree types: Suffix
+  \item Top base clusters: 9000
+  \item Min term occurrence 200
+  \item Max term ratio: 0.2
+  \item Min limit for base cluster score 15
+  \item Max limit for base cluster score 17
+  \item Drop singleton base clusters: 0
+  \item Drop one word clusters: 1
+  \item Sort descending: 0
+  \item Article text amount: 0,05
+  \item Text types: Frontpage
+  \item Similarity measures: Cosine
+  \item Jaccard: 0.6
+  \item Cosine threshold: 0.5
+\end{itemize}
+
+The following tables show results for the \CTC algorithm using the incrementally optimized parameters.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 - ground truth & 1144/2187 & 0.523 & 0.523 \\
+1 - ground truth & 14/2187 & 0.006 & 0.529 \\
+2 - ground truth & 18/2187 & 0.008 & 0.538\\
+3 - ground truth & 23/2187 & 0.011 & 0.548\\
+4 - ground truth & 42/2187 & 0.019 & 0.567\\
+5 - ground truth & 946/2187 & 0.433 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 457 (of  457)
+\end{center}
+\caption{Ground truth of parameters from incremental tests}
+\label{tab:incrementalparametersgroundtruth}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 - ground truth rep & 551/669 & 0.824 & 0.824 \\
+1 - ground truth rep & 3/669 & 0.004 & 0.828 \\
+2 - ground truth rep & 3/669 & 0.004 & 0.833\\
+3 - ground truth rep & 0/669 & 0.000 & 0.833\\
+4 - ground truth rep & 5/669 & 0.007 & 0.840\\
+5 - ground truth rep & 107/669 & 0.160 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 669 (of  669)
+\end{center}
+\caption{Ground truth represented values of parameters from incremental tests}
+\label{tab:incrementalparametersgroundtruthrep}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap & Percentage\\ 
+\hline
+0 - F-Measure & 0.640\\
+1 - F-Measure & 0.005\\
+2 - F-Measure & 0.006\\
+3 - F-Measure & 0.000\\
+4 - F-Measure & 0.011\\
+5 - F-Measure & 0.234\\
+\hline
+\end{tabular}
+\end{center}
+\caption{F-Measure values of parameters from incremental tests}
+\label{tab:incrementalparametersfmeasure}
+\end{table}
+
+\section{Genetic Algorithm Test}
+TODO: Describe first test with about 200 individuals and 50 generations.
+
+\section{Distributed Genetic Algorithm Test}
+This is results from the distributed genetic algorithm test. The best performing chromosome (by F-Measure) were found in the first generation. This shows that, at least for this size of population, there is no benefit of running a lot of generations. It can be just as effective to just randomly generate parameters and then rank them. The genetic algorithm were in this instance run with a setting where the entire population, not only the offspring, were targeted for mutation.
+
+The ground truth (precision) of the parameter set derived from the genetic tests are ~9 percentile points higher than that of the incremental tests. It achieves this by creating less clusters and finding not so much fewer ground truth clusters compared with the incrementally optimized parameter set. This gives it a higher F-Measure score by 2.1 percentile points which is not much. Considering the parameter was found at the zeroth generation, there might be some parameter set where the F-Measure is even higher. Another run of the genetic algorithm might uncover if this is the case.
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 - ground truth & 480/783 & 0.613 & 0.613\\
+1 - ground truth &   5/783 & 0.006 & 0.619\\
+2 - ground truth &   3/783 & 0.004 & 0.623\\
+3 - ground truth &   1/783 & 0.001 & 0.625\\
+4 - ground truth &   2/783 & 0.003 & 0.627\\
+5 - ground truth & 292/783 & 0.373 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 457 (of  457)
+\end{center}
+\caption{Ground truth of parameters from genetic test}
+\label{tab:geneticparametersgroundtruth}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+\hline
+0 - ground truth rep & 480/669 & 0.717 & 0.717\\
+1 - ground truth rep &   2/669 & 0.003 & 0.720\\
+2 - ground truth rep &   1/669 & 0.001 & 0.722\\
+3 - ground truth rep &   0/669 & 0.000 & 0.722\\
+4 - ground truth rep &   0/669 & 0.000 & 0.722\\
+5 - ground truth rep & 186/669 & 0.278 & 1.000\\
+\hline
+\end{tabular}
+\\Total: 669 (of  669)
+\end{center}
+\caption{Ground truth represented values of parameters from genetic test}
+\label{tab:geneticparametersgroundtruthrep}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Topic overlap & Percentage\\ 
+\hline
+0 - F-Measure & 0.661\\
+1 - F-Measure & 0.004\\
+2 - F-Measure & 0.002\\
+3 - F-Measure & 0.000\\
+4 - F-Measure & 0.000\\
+5 - F-Measure & 0.319\\
+\hline
+\end{tabular}
+\end{center}
+\caption{F-Measure values of parameters from genetic test}
+\label{tab:geneticparametersfmeasure}
+\end{table}
+
+\section{Final testing}
+
+
+
+
