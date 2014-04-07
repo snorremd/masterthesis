@@ -182,7 +182,7 @@
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Optimal Compact Trie Clustering - A genetic approach} % Your thesis title - this is used in the title and abstract
+\thesistitle{Compact Trie Clustering - Finding optimal parameters} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------
 \supervisor{ \textsc{Richard Elling Moe}} % You supervisor's name - this is used in the title page
 %-------------------------------------------------

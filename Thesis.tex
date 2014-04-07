@@ -31,15 +31,16 @@
 \usepackage[american]{babel}
 \usepackage{csquotes}
 \DeclareUnicodeCharacter{00A0}{~}
-\graphicspath{{./Figures/}} % Specifies the directory where pictures are stored
+\graphicspath{} % Specifies the directory where pictures are stored
 
 % Use BibLatex with apa6
 \usepackage[style=apa, backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
-\addbibresource{thesis.bib}
+\addbibresource{Thesis.bib}
 
 % Add Table coloring
 \usepackage[table]{xcolor}
+\usepackage{longtable}
 
 %\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers'
 
@@ -60,6 +61,9 @@
 \usepackage{pgfplots}
 \pgfplotsset{width=7cm, compat=1.8}
 \usetikzlibrary{patterns}
+
+% Package for tree building
+\usepackage{qtree}
 
 %Package for inline lists
 \usepackage{paralist}
@@ -297,7 +301,6 @@ Acknowledgements comes here
 %----------------------------------------------------------------------------------------
 % BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
-
 \label{Bibliography}
 
 %\lhead{\emph{Bibliography}} % Change the page header to say "Bibliography"
@@ -319,7 +322,6 @@ Acknowledgements comes here
 % Uncomment the lines as you write the Appendices
 
 \input{./Appendices/AppendixA}
-%\input{./Appendices/AppendixB}
 %\input{./Appendices/AppendixC}
 
 \end{document}

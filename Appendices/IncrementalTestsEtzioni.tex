@@ -36,17 +36,17 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testTrees.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testTrees.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testTrees.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testTrees.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different expansion techniques.}
-  \label{diag:treetypesetzioni}
+  %\label{diag:treetypesetzioni}
 \end{diagram}
 
 % N-SLICE
@@ -68,11 +68,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=n-slice] {Diagrams/Etzioni/testNSlices.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -111,11 +111,11 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testRangeSlices.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testRangeSlices.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testRangeSlices.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testRangeSlices.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -135,24 +135,24 @@
     xlabel = {Base cluster amount},
     ylabel = {Score},
     ymin=0,
-    xmin=0,
+    % xmin=0,
     legend cell align=left,
     legend style={
       cells={anchor=east},
       legend pos=outer north east
     }
   ]
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Basecluster-amount] {Diagrams/Etzioni/testBaseClusterAmounts.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{semilogxaxis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different limits on top base clusters amount.}
-  \label{diag:topbaseclustersetzioni}
+  %\label{diag:topbaseclustersetzioni}
 \end{diagram}
 
 % MIN TERM OCCURRENCE
@@ -176,17 +176,17 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min Term Occurrence] {Diagrams/Etzioni/testMinTermOccurrence.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{semilogxaxis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different limits on minimal term occurrence in collection.}
-  \label{diag:mintermoccurrenceetzioni}
+  %\label{diag:mintermoccurrenceetzioni}
 \end{diagram}
 
 % MAX TERM RATIO
@@ -210,11 +210,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Term Ratio] {Diagrams/Etzioni/testMaxTermRatio.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -244,17 +244,17 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min Limit] {Diagrams/Etzioni/testMinLimitBC.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).}
-  \label{diag:minlimitbcscoreetzioni}
+  %\label{diag:minlimitbcscoreetzioni}
 \end{diagram}
 
 % Max Limit BC Score
@@ -278,11 +278,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -312,11 +312,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC2.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC2.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC2.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Etzioni/testMaxLimitBC2.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -354,11 +354,11 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testDropSingletonBC.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -396,11 +396,11 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testDropOneWordClusters.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -438,17 +438,17 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testSortDescending.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testSortDescending.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testSortDescending.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testSortDescending.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm when base clusters are sorted in descending and acending order.}
-  \label{diag:sortdescendingetzioni}
+  %\label{diag:sortdescendingetzioni}
 \end{diagram}
 
 % Text amount
@@ -472,11 +472,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Article Text Amount] {Diagrams/Etzioni/testArticleTextAmount.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -515,17 +515,17 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testTextTypes.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testTextTypes.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testTextTypes.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testTextTypes.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for inclusion of different types of texts.}
-  \label{diag:texttypesetzioni}
+  %\label{diag:texttypesetzioni}
 \end{diagram}
 
 % SIMILARITY METHODS TESTS
@@ -557,11 +557,11 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Etzioni/testSimilarityMethods.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -592,11 +592,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Etzioni/testEtzioniSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Threshold] {Diagrams/Etzioni/testEtzioniSimilarity.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Etzioni/testEtzioniSimilarity.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Etzioni/testEtzioniSimilarity.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -627,11 +627,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Etzioni/testJaccardSimilarity.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -662,11 +662,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Cosine Threshold] {Diagrams/Etzioni/testCosineSimilarity.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -696,11 +696,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Avg CF limit] {Diagrams/Etzioni/testAmendment1CSimilarityAvgCF.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
@@ -730,11 +730,11 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
   \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
   \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min intersect limit] {Diagrams/Etzioni/testAmendment1CSimilarityIntersect.csv};
 
-  \legend{Ground truth 0,Ground truth rep 0, F-Measure 0}
+  \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}

@@ -7,7 +7,7 @@
 
 \lhead{Appendix A. \emph{Incremental Test Results}} % This is for the header on each page - perhaps a shortened title
 
-This appendix contains diagrams of all incremental test results. It serves as a reference for discussion and descriptions in section~\ref{Testing}. The appendix is divided into two main sections. The first contains results from incremental tests using the parameters specified by Etzioni and Oren as base values. The second section contains results using the parameters suggested by \supervisor as base values.
+This appendix contains diagrams of all incremental test results. It serves as a reference for discussion and descriptions in section~\ref{EvaluationTesting}. The appendix is divided into two main sections. The first contains results from incremental tests using the parameters specified by Etzioni and Oren as base values. The second section contains results using the parameters suggested by \supervisor as base values.
 
 \section{Oren \& Etzioni parameters}
 
@@ -43,11 +43,11 @@ The following results were obtained by applying the parameters used by \citeauth
 
 \input{./Appendices/IncrementalTestsEtzioni}
 
-\section{\supervisor parameters}
+\section{\CTC research parameters}
 
-The following results were obtained by applying the LII groups parameters as base parameters for the incremental tests.
+The following results were obtained by applying the parameters from research on the \CTC algorithm as base parameters for the incremental tests.
 
-\begin{lstlisting}[float=t, language=python, label=lst:richardparams, caption={Parameter set used by \protect\supervisor.}]
+\begin{lstlisting}[float=t, language=python, label=lst:ctcparams, caption={Parameter set used in \CTC algorithm}]
 <parameters>
     <tree_type>(1,0,0)</tree_type>
     <top_base_clusters_amount>5000</top_base_clusters_amount>

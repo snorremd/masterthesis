@@ -1,80 +1,100 @@
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.1}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different expansion techniques.\relax }}{67}{diagram.335}
+\contentsline {diagram}{\numberline {5.1}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different expansion techniques using the \citeauthor {Oren1998} parameters as base.\relax }}{55}{diagram.280}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.2}{\ignorespaces Performance results of the Compact Trie Clustering algorithm for different lengths of n-slice expansion.\relax }}{68}{diagram.336}
+\contentsline {diagram}{\numberline {5.2}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on top base clusters amount using the \citeauthor {Oren1998} parameters as base.\relax }}{57}{diagram.283}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.3}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different ranges of range-slice expansion.\relax }}{68}{diagram.337}
+\contentsline {diagram}{\numberline {5.3}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on minimal term occurrence in collection using the \citeauthor {Oren1998} parameters as base.\relax }}{58}{diagram.285}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.4}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on top base clusters amount.\relax }}{69}{diagram.338}
+\contentsline {diagram}{\numberline {5.4}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on minimal term occurrence in collection using the \citeauthor {Moe2013} parameters as base.\relax }}{58}{diagram.286}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.5}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on minimal term occurrence in collection.\relax }}{69}{diagram.339}
+\contentsline {diagram}{\numberline {5.5}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label). This diagram show results for the \citeauthor {Oren1998} parameters.\relax }}{59}{diagram.288}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.6}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max term ratio in collection.\relax }}{69}{diagram.340}
+\contentsline {diagram}{\numberline {5.6}{\ignorespaces Performance of the Compact Trie Clustering algorithm for exclusion and inclusion of singleton base clusters using the \citeauthor {Moe2013} parameters.\relax }}{60}{diagram.290}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.7}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).\relax }}{70}{diagram.341}
+\contentsline {diagram}{\numberline {5.7}{\ignorespaces Performance of the Compact Trie Clustering algorithm when base clusters are sorted in descending and acending order using the \citeauthor {Oren1998} parameters.\relax }}{61}{diagram.292}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.8}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to \citeauthor {Oren1998} default.\relax }}{70}{diagram.342}
+\contentsline {diagram}{\numberline {5.8}{\ignorespaces Performance of the Compact Trie Clustering algorithm for inclusion of different types of texts using the \citeauthor {Oren1998} parameters.\relax }}{62}{diagram.294}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.9}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to 8, the best min limit from incremental test on min limit for base cluster score.\relax }}{70}{diagram.343}
+\contentsline {diagram}{\numberline {5.9}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different similarity methods using the \citeauthor {Moe2013} parameters.\relax }}{63}{diagram.296}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.10}{\ignorespaces Performance of the Compact Trie Clustering algorithm for exclusion and inclusion of singleton base clusters.\relax }}{71}{diagram.344}
+\contentsline {diagram}{\numberline {5.10}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Etzioni similarity thresholds using the \citeauthor {Moe2013} parameters.\relax }}{64}{diagram.297}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.11}{\ignorespaces Performance of the Compact Trie Clustering algorithm on exclusion and inclusion of one word clusters.\relax }}{71}{diagram.345}
+\contentsline {diagram}{\numberline {A.1}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different expansion techniques.\relax }}{76}{diagram.346}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.12}{\ignorespaces Performance of the Compact Trie Clustering algorithm when base clusters are sorted in descending and acending order.\relax }}{71}{diagram.346}
+\contentsline {diagram}{\numberline {A.2}{\ignorespaces Performance results of the Compact Trie Clustering algorithm for different lengths of n-slice expansion.\relax }}{77}{diagram.347}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.13}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different amounts of article text.\relax }}{72}{diagram.347}
+\contentsline {diagram}{\numberline {A.3}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different ranges of range-slice expansion.\relax }}{77}{diagram.348}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.14}{\ignorespaces Performance of the Compact Trie Clustering algorithm for inclusion of different types of texts.\relax }}{72}{diagram.348}
+\contentsline {diagram}{\numberline {A.4}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on top base clusters amount.\relax }}{78}{diagram.349}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.15}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different similarity methods.\relax }}{72}{diagram.349}
+\contentsline {diagram}{\numberline {A.5}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on minimal term occurrence in collection.\relax }}{78}{diagram.350}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.16}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Etzioni similarity thresholds.\relax }}{73}{diagram.350}
+\contentsline {diagram}{\numberline {A.6}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max term ratio in collection.\relax }}{78}{diagram.351}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.17}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Jaccard Coefficient thresholds.\relax }}{73}{diagram.351}
+\contentsline {diagram}{\numberline {A.7}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).\relax }}{79}{diagram.352}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.18}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Cosine Similarity thresholds.\relax }}{73}{diagram.352}
+\contentsline {diagram}{\numberline {A.8}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to \citeauthor {Oren1998} default.\relax }}{79}{diagram.353}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.19}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max average corpus frequency in Amendment1C.\relax }}{74}{diagram.353}
+\contentsline {diagram}{\numberline {A.9}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to 8, the best min limit from incremental test on min limit for base cluster score.\relax }}{79}{diagram.354}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.20}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different minimum limits on base cluster label intersect in Amendment1C.\relax }}{74}{diagram.354}
+\contentsline {diagram}{\numberline {A.10}{\ignorespaces Performance of the Compact Trie Clustering algorithm for exclusion and inclusion of singleton base clusters.\relax }}{80}{diagram.355}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.21}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different expansion techniques.\relax }}{74}{diagram.382}
+\contentsline {diagram}{\numberline {A.11}{\ignorespaces Performance of the Compact Trie Clustering algorithm on exclusion and inclusion of one word clusters.\relax }}{80}{diagram.356}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.22}{\ignorespaces Performance results of the Compact Trie Clustering algorithm for different lengths of n-slice expansion.\relax }}{75}{diagram.383}
+\contentsline {diagram}{\numberline {A.12}{\ignorespaces Performance of the Compact Trie Clustering algorithm when base clusters are sorted in descending and acending order.\relax }}{80}{diagram.357}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.23}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different ranges of range-slice expansion.\relax }}{75}{diagram.384}
+\contentsline {diagram}{\numberline {A.13}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different amounts of article text.\relax }}{81}{diagram.358}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.24}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on top base clusters amount.\relax }}{76}{diagram.385}
+\contentsline {diagram}{\numberline {A.14}{\ignorespaces Performance of the Compact Trie Clustering algorithm for inclusion of different types of texts.\relax }}{81}{diagram.359}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.25}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on minimal term occurrence in collection.\relax }}{76}{diagram.386}
+\contentsline {diagram}{\numberline {A.15}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different similarity methods.\relax }}{81}{diagram.360}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.26}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max term ratio in collection.\relax }}{76}{diagram.387}
+\contentsline {diagram}{\numberline {A.16}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Etzioni similarity thresholds.\relax }}{82}{diagram.361}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.27}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).\relax }}{77}{diagram.388}
+\contentsline {diagram}{\numberline {A.17}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Jaccard Coefficient thresholds.\relax }}{82}{diagram.362}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.28}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to \citeauthor {Oren1998} default.\relax }}{77}{diagram.389}
+\contentsline {diagram}{\numberline {A.18}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Cosine Similarity thresholds.\relax }}{82}{diagram.363}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.29}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to 8, the best min limit from incremental test on min limit for base cluster score.\relax }}{77}{diagram.390}
+\contentsline {diagram}{\numberline {A.19}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max average corpus frequency in Amendment1C.\relax }}{83}{diagram.364}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.30}{\ignorespaces Performance of the Compact Trie Clustering algorithm for exclusion and inclusion of singleton base clusters.\relax }}{78}{diagram.391}
+\contentsline {diagram}{\numberline {A.20}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different minimum limits on base cluster label intersect in Amendment1C.\relax }}{83}{diagram.365}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.31}{\ignorespaces Performance of the Compact Trie Clustering algorithm on exclusion and inclusion of one word clusters.\relax }}{78}{diagram.392}
+\contentsline {diagram}{\numberline {A.21}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different expansion techniques.\relax }}{83}{diagram.393}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.32}{\ignorespaces Performance of the Compact Trie Clustering algorithm when base clusters are sorted in descending and acending order.\relax }}{78}{diagram.393}
+\contentsline {diagram}{\numberline {A.22}{\ignorespaces Performance results of the Compact Trie Clustering algorithm for different lengths of n-slice expansion.\relax }}{84}{diagram.394}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.33}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different amounts of article text.\relax }}{79}{diagram.394}
+\contentsline {diagram}{\numberline {A.23}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different ranges of range-slice expansion.\relax }}{84}{diagram.395}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.34}{\ignorespaces Performance of the Compact Trie Clustering algorithm for inclusion of different types of texts.\relax }}{79}{diagram.395}
+\contentsline {diagram}{\numberline {A.24}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on top base clusters amount.\relax }}{85}{diagram.396}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.35}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different similarity methods.\relax }}{79}{diagram.396}
+\contentsline {diagram}{\numberline {A.25}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on minimal term occurrence in collection.\relax }}{85}{diagram.397}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.36}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Etzioni similarity thresholds.\relax }}{80}{diagram.397}
+\contentsline {diagram}{\numberline {A.26}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max term ratio in collection.\relax }}{85}{diagram.398}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.37}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Jaccard Coefficient thresholds.\relax }}{80}{diagram.398}
+\contentsline {diagram}{\numberline {A.27}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different min limit values for base cluster score with unbounded max limit (max limit = length of longest label).\relax }}{86}{diagram.399}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.38}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Cosine Similarity thresholds.\relax }}{80}{diagram.399}
+\contentsline {diagram}{\numberline {A.28}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to \citeauthor {Oren1998} default.\relax }}{86}{diagram.400}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.39}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max average corpus frequency in Amendment1C.\relax }}{81}{diagram.400}
+\contentsline {diagram}{\numberline {A.29}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different max limit values for base cluster score. Min limit set to 8, the best min limit from incremental test on min limit for base cluster score.\relax }}{86}{diagram.401}
 \defcounter {refsection}{0}\relax 
-\contentsline {diagram}{\numberline {A.40}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different minimum limits on base cluster label intersect in Amendment1C.\relax }}{81}{diagram.401}
+\contentsline {diagram}{\numberline {A.30}{\ignorespaces Performance of the Compact Trie Clustering algorithm for exclusion and inclusion of singleton base clusters.\relax }}{87}{diagram.402}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.31}{\ignorespaces Performance of the Compact Trie Clustering algorithm on exclusion and inclusion of one word clusters.\relax }}{87}{diagram.403}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.32}{\ignorespaces Performance of the Compact Trie Clustering algorithm when base clusters are sorted in descending and acending order.\relax }}{87}{diagram.404}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.33}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different amounts of article text.\relax }}{88}{diagram.405}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.34}{\ignorespaces Performance of the Compact Trie Clustering algorithm for inclusion of different types of texts.\relax }}{88}{diagram.406}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.35}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different similarity methods.\relax }}{88}{diagram.407}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.36}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Etzioni similarity thresholds.\relax }}{89}{diagram.408}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.37}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Jaccard Coefficient thresholds.\relax }}{89}{diagram.409}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.38}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different Cosine Similarity thresholds.\relax }}{89}{diagram.410}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.39}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different limits on max average corpus frequency in Amendment1C.\relax }}{90}{diagram.411}
+\defcounter {refsection}{0}\relax 
+\contentsline {diagram}{\numberline {A.40}{\ignorespaces Performance of the Compact Trie Clustering algorithm for different minimum limits on base cluster label intersect in Amendment1C.\relax }}{90}{diagram.412}

@@ -13,15 +13,15 @@ The methodology chapter should be written in past tense?
 
 \color{black}
 
-Research methodologies and standards used to test search and classification algorithms will make the foundation of this thesis' research methodology. While experiments in the information retrieval field do not necessarily directly involve human subjects, there are still standards and methodologies in place to ensure that experimental results are valid. This chapter will describe the scientific approach used in the scientific field of information retrieval, and how this approach will be applied to this thesis work.
+Research methodologies and standards used to test retrieval and classification algorithms form the foundation of this thesis' research methodology. While experiments in the information retrieval field do not necessarily directly involve human subjects, there are still standards and methodologies in place to ensure that experimental results are valid. This chapter will describe the scientific approach used in the scientific field of information retrieval, and how this approach was applied to this thesis work.
 
 \section{Experimental Evaluation}
 \label{ExperimentalEvaluation}
-The configuration and parameter sets for the \CTC algorithm will be evaluated experimentally rather than analytically for reasons explained by \cite[p. 32]{Sebastiani2002}:
-\begin{quote}The reason is that, in order to evaluate a system analytically (e.g., proving that the system is correct and complete), we would need a formal specification of the problem that the system is trying to solve (e.g., with respect to what correctness and completeness are defined), and the central notion of TC [Text Classification] (namely, that of membership of a document in a category) is, due to its subjective character, inherently nonformaliable. The experimental evaluation of a classifier usually measures its effectiveness (rather than its efficiency), that is, its ability to take the right classification decisions.
+The configuration and parameter sets for the \CTC algorithm was evaluated experimentally rather than analytically for reasons explained by \cite[][32]{Sebastiani2002}:
+\begin{quote}The reason is that, in order to evaluate a system analytically (e.g., proving that the system is correct and complete), we would need a formal specification of the problem that the system is trying to solve (e.g., with respect to what correctness and completeness are defined), and the central notion of TC [Text Classification] (namely, that of membership of a document in a category) is, due to its subjective character, inherently nonformalizable. The experimental evaluation of a classifier usually measures its effectiveness (rather than its efficiency), that is, its ability to take the right classification decisions.
 \end{quote}
 
-Experimental evaluation have long been used and discussed in the field of information retrieval. One of the first experimental paradigms in information retrieval research, one that is still in use today, is the test collection evaluation paradigm introduced by The Cranfield research projects during the 60s \cite{Cleverdon1966}. The experimental methodology formed during these experiments are nicely summarized by \cite[p. 564]{Voorhees2005} who writes that:
+Experimental evaluation have long been used and discussed in the field of information retrieval. One of the first experimental paradigms in information retrieval research, one that is still in use today, is the test collection evaluation paradigm introduced by The Cranfield research projects during the 60s \cite{Cleverdon1966}. The experimental methodology formed during these experiments are nicely summarized by \cite[][564]{Voorhees2005} who writes that:
 
 \begin{quote}
 At the core of this experimental methodology was the idea that live users could be removed from the evaluation loop, thus simplifying the evaluation and allowing researchers to run in vitro–style experiments in a laboratory with just their retrieval engine, a set of queries, a test collection, and a set of judgments (i.e., a list of relevant documents).
@@ -44,7 +44,7 @@ Reuters, an international news agency have made several corpora that are availab
 
 Reuters have since made a new corpus that is likely to replace the Reuters 21578 corpus. This new corpus is divided into three volumes RCV1, RCV2 and TRC2. The first two volumes contain news stories from 96 - 97, and the last volume contains news stories from 08 to 09. RCV1 and TRC2 contain English news stories only, while RCV2 is multilingual \cite{NationalInstituteofStandardsandTechnology2004}. An article on use of the RCV1 corpus provide more details about how the data set can be used in evaluation text categorization systems. ``\textit{Reuters CorpusVolume I (RCV1) is an archive of over 800,000 manually categorized newswire stories recently made available by Reuters, Ltd. for research purposes. Use of this data for research on text categorization requires a detailed understanding of the real world constraints under which the data was produced.}'' \cite{Lewis2004}. 
 
-This thesis will mainly focus on news corpora, but the LLI research group will also look at the blogosphere. With this in mind it would be interesting to use a standard blog collection for evaluation of the algorithm in future research. Two blog collections are used in the blog track in the TREC conference, the Blogs06 and Blogs08 collections.\begin{quote}
+This thesis focus mainly on news corpora, but the research group investigating the ``Klimauken'' corpus has also looked into the blogosphere. With this in mind it could be interesting to use a standard blog collection for evaluation of the algorithm in future research. Two blog collections are used in the blog track in the TREC conference, the Blogs06 and Blogs08 collections.\begin{quote}
 The TREC Blogs06 collection is a big sample of the blogosphere, and contains spam as well as possibly non-blogs, e.g. RSS feeds from news broadcasters. It was crawled over an eleven week period from 6th December 2005 until the 21st February 2006. The collection is 148GB in size [\dots] The collection was used in TREC 2006, 2007 and 2008 \cite{Macdonald2011}.
 \end{quote} 
 
@@ -52,11 +52,9 @@ These corpora form a solid foundation for experimental evaluations and make it p
 
 \section{Evaluation Measures}
 \label{EvaluationMeasures}
-There are some considerations to take when choosing evaluation measures. When performing experimental research it is important to use the same evaluation measures as those used in related research works to make the results comparable. In much of information retrieval research, text classification included, there are agreed upon measures that can be used while performing research. Such measures does not exist to the same extent for clustering algorithms. There seems to be a community of practice with regards to evaluation measures used for the \STC algorithm. An alternative evaluation measure used by the LLI group in their research will be compared to the other measures.
+There are some considerations to take when choosing evaluation measures. When performing experimental research it is important to use the same evaluation measures as those used in related research works to make the results comparable. In much of information retrieval research, text classification included, there are agreed upon measures that can be used while performing research. Such measures do not exist to the same extent for clustering algorithms because the measure of relevance may not be similar in different clustering research. For the \STC algorithm there seems to be a community of practice with regards to evaluation metrics. The measure of relevance in this research is quite similar to that used in much classification work where each document is assigned a class.
 
-\subsection{Chim and Deng}
-
-\cite{Chim2007} detail how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical clustering algorithm. The results from hierarchical clustering algorithms and the \CTC algorithm are however similar in nature. and it will be possible to use measurement formulas described in their article when calculating the various performance measurements. These formulas have also been used by \cite{Rafi2011} when they compare the standard suffix tree clustering algorithm of \citeauthor{Oren1998} with the algorithm formulated by \citeauthor{Chim2008}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
+\cite{Chim2007} detail how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical agglomerative clustering algorithm as well as the \STC algorithm. These formulas have also been used by \cite{Rafi2011} when they compare the standard suffix tree clustering algorithm of \citeauthor{Oren1998} with the algorithm formulated by \citeauthor{Chim2008}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
 
 If you have the sets
 
@@ -82,7 +80,9 @@ precision(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_{j} \vert}
 F-Measure(i,j) = \frac{2 \cdot precision(i,j) \cdot recall(i,j)}{precision(i,j) + recall(i,j)}
 \end{displaymath}
 
-\cite{Chim2007} do not provide any information as to whether the category set \(C^*\) is disjoint (i.e. whether one document can occur in several categories). The category set is therefore most likely not disjoint, or it depends on the collection. As was explained in the literature section recall aims to capture the fraction of positive results to the total number of correct results. In this context recall expresses the fraction of a category's documents the cluster contains. Precision shows the fraction of documents in a cluster that is correctly clustered given a category to the amount of documents in a cluster. Because precision and recall is not good measures by themselves (recall could be a 100\%, but often precision would then be very low) an F-Measure is often used in evaluation of text classifiers \cite{Baeza-Yates2011a}. The F-Measure is the harmonic mean between recall and precision and is high when both precision and recall is high \cite{Baeza-Yates2011b}. 
+\cite{Chim2007} do not provide any information as to whether the classes of \(C^*\) must be disjoint (i.e. whether one document can be assigned to multiple classes). The authors use this performance measure on both the \STC and Hierarchical Agglomerative Clustering algorithms. The \STC algorithm allows clusters to be overlapping, i.e. a document can occur in more than one document. The Hierarchical Agglomerative algorithm builds non-overlapping clusters. Based on this information one can assume that the authors have used the above performance measurements on both the overlapping and non-overlapping cluster sets.
+
+As was explained in the literature section recall aims to capture the fraction of positive results to the total number of correct results. In this context recall expresses the fraction of a category's documents the cluster contains. Precision shows the fraction of documents in a cluster that is correctly clustered given a category to the amount of documents in a cluster. Because precision and recall is not good measures by themselves (recall could be a 100\%, but often precision would then be very low) an F-Measure is often used in evaluation of text classifiers \cite{Baeza-Yates2011a}. The F-Measure is the harmonic mean between recall and precision and is high when both precision and recall is high \cite{Baeza-Yates2011b}. 
 
 The precision, recall, and F-Measure measurements defined above are applied to one cluster and class at a time. In other words the F-Measure of a cluster j with regards to a class i might not be any good, but its F-Measure with regards to another class i' might be very good. \cite{Chim2007} define an overall F-Measure function that captures the F-Measures for all the correct classes defined for the document set. For this function only those clusters j which maximize the F-Measure score for class i are considered in the overall F-Measure score. The overall F-Measure is calculated using the function:
 
@@ -91,27 +91,24 @@ Given the formulas the overall F-Measure of the clusters \(C\) can be calculated
 F := \sum_{i=1}^{l} \frac{\vert C_i^* \vert}{\vert D \vert} \cdot \max_{j=1,\dots,k} \{F-Measure(i,j)\}
 \end{displaymath}
 
-\subsection{LII research group}
-The ``Klimauken'' corpus is tagged with five topics (tags or classes) per document rather than a single topic. See the tags attribute in Listing~\ref{lst:snippetfile} for an example of a document in snippet format. In context of this corpus, a ground truth cluster is defined as all those documents that have all five topics in common. But only looking at perfect matches, TODO: CITATION papers says, might exclude those clusters that closely match a ground truth cluster. In thus makes sense to talk about degrees of correctness. 
-
-\subsubsection{Ground truth}
-
-The discrepancy of a cluster \(C\) with regards to a ground truth cluster \(G\) is defined as \(5 - d\) where \(d\) is the number of tags in common in the set \(C_{tags} \cup G_{tags}\). If all documents in the cluster and ground truth cluster have all five topics in common, there is no discrepancy. Further we impose a limit on discrepancy, namely that \(C\) matches ground truth with discrepancy \(d\) if and only if there is a \(G\) such that:
+\subsection{News articles project}
+The ``Klimauken'' corpus is tagged with five topics (tags or classes) per document rather than a single topic. See the tags attribute in Listing~\ref{lst:snippetfile} for an example of a document in snippet format. In context of this corpus, a ground truth cluster is defined as all those documents that have all five topics in common. But only looking at perfect matches might exclude those clusters that closely match a ground truth cluster. It thus makes sense to adjust the relevance definition and talk about degrees of correctness. To this end a measure, discrepancy, is introduced. The discrepancy of a cluster \(C\) with regards to a ground truth cluster \(G\) is defined as \(5 - d\) where \(d\) is the number of tags in common in the set \(C_{tags} \cup G_{tags}\). If all documents in the cluster and ground truth cluster have all five topics in common, there is no discrepancy. Further we impose a limit on discrepancy, namely that \(C\) matches ground truth with discrepancy \(d\) iff there is a \(G\) such that:
 
 \begin{displaymath}
-\{ G \vert G \subseteq C \textit{ and } G = max(d(G_{1}, \dots, d(G_{n})))
+\{ G \vert G \subseteq C \textit{ and } G = max\{d(G_{1}), \dots, d(G_{n})\}\}
 \end{displaymath}
 
 The discrepancy of a cluster in relation to the ground truth is thus its discrepancy to the best matching ground truth cluster. An example of a cluster is given in Table~\ref{tab:clusterexample}.
 
-With this definition in place we understand that the number of ground truth cluster of zero discrepancy divided by the number of retrieved clusters act as the standard precision measure. The division of retrieved clusters into levels of discrepancy allows us to relax the original measure and for example allow ground truth clusters of discrepancy zero and one to be used when calculating precision.
+\subsubsection{Precision}
+With a definition of discrepancy in place we understand precision to be the number of ground truth clusters of zero discrepancy divided by the number of retrieved clusters. The division of retrieved clusters into levels of discrepancy allows us to relax the original measure and for example allow ground truth clusters of discrepancy zero and one to be used when calculating precision. For a clustering result with many clusters of discrepancy 1, including these clusters when calculating the precision can have a big impact.
 
-\subsubsection{Ground truth represented}
+\subsubsection{Recall}
 
-Ground truth clusters represented is essentially a measure of recall. The ground truth represented value, \(GtR\), for ground truth clusters \(G\) of discrepancy \(d\) given \(C\) retrieved clusters is calculated: \(GtR = \frac{\vert G_{d} \vert}{\vert C \vert}\). Again only looking at ground truth clusters with a discrepancy of zero gives us the standard measure. Again one can use the accumulated recall values of discrepancy levels zero and one to include mostly correct clusters as ground truth clusters.
+The recall of a clustering result \(C\), given ground truth clusters \(G\) and a discrepancy \(d\), can be calculated: \(Recall = \frac{\vert G_{d} \vert}{\vert C \vert}\). As with precision looking only at ground truth clusters with a discrepancy of zero gives us the recall value given a traditional relevance measurement. Again one can use the accumulated recall values of discrepancy levels zero and one to include mostly correct clusters as ground truth clusters.
 
 \subsubsection{Tag Accuracy}
-TODO CITATION also introduce a measure called tag accuracy. This measure leaves behind the notion of ground truth all together in favour of measuring the coherency between the tags in the documents in the resulting clusters. \textit{``A cluster has a tag accuracy of 5 - d if and only if d is the number of words common to all tags in it.''} TODO: Citation. Given two documents with the tags 
+A third measure called tag accuracy can also be used to meaure the clustering result. This measure leaves behind the notion of ground truth all together in favor of measuring the coherency between tags in the documents in the resulting clusters. \textit{``A cluster has a tag accuracy of 5 - d if and only if d is the number of words common to all tags in it.''}, \cite{Moe2013}. Given two documents with the tags 
 \begin{inparaenum}[\itshape 1\upshape)]
 	\item Innenriks-ulykker-akeulykke-8åring-nordkapp, and
 	\item Innenriks-kriminalitet-trafikk-førerkort-kristiansand,
@@ -162,20 +159,14 @@ Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\
 \end{table}
 
 
-\subsection{Measurement comparison}
-Compare the measurements here
-TODO: Find out differences...
-
 \section{Experimental Research}
 \label{ExperimentalResearch}
 
-In order to answer the formulated hypotheses a scientific experiment must be formulated. This section will describe scientific experiments in context of algorithm analysis and outline an experiment design to test the hypotheses formulated to test the \CTC algorithm. The experiment will be formed around some of the techniques described in \cite{Bartz-Beielstein2004}, but with significant adjustments. In his article, \citeauthor{Bartz-Beielstein2004} is primarily concerned with the optimization of a particle swarm optimization algorithm. The techniques are non the less relevant as they provide valuable insight into experimental benchmarking of algorithms. The process is summarized in Table~\ref{tab:experimentsequence}.
+This section will describe scientific experiments in context of algorithm analysis and outline an experiment design to test the hypotheses formulated to test the \CTC algorithm. The experimental design was formed around some of the techniques described in \cite{Bartz-Beielstein2004}, but with significant adjustments. In his article, \citeauthor{Bartz-Beielstein2004} is primarily concerned with the optimization of a particle swarm optimization algorithm. The techniques are non the less relevant as they provide valuable insight into experimental benchmarking of algorithms. The process is summarized in Table~\ref{tab:experimentsequence}.
 
 \begin{table}[htdp]
 \footnotesize
 %\rowcolors{1}{gray!10}{white}
-\caption{``\textit{Sequential approach. This approach combines methods from computational statistics and exploratory data analysis to improve (tune) the performance of direct search algorithms.}'', from \protect \cite[p. 417]{Bartz-Beielstein2004}}
-\label{tab:experimentsequence}
 \begin{center}
 \begin{tabular}{|c|p{10cm}|}
 \hline
@@ -203,6 +194,8 @@ been reached, go to step (S-11)\\
 (S-12) & Objective interpretation of the results from step (S-11)\\
 \hline
 \end{tabular}
+\caption{``\textit{Sequential approach. This approach combines methods from computational statistics and exploratory data analysis to improve (tune) the performance of direct search algorithms.}'', from \protect \cite[p. 417]{Bartz-Beielstein2004}}
+\label{tab:experimentsequence}
 \end{center}
 \end{table}
 
@@ -211,37 +204,36 @@ The first step is pre-experimental planning. During the pre-experimental plannin
 
 \subsection{Scientific Hypotheses}
 
-To investigate whether the new optimal parameter set performs better than the default and whether the automated optimization algorithm is effective the following formal hypotheses have been defined:
+To investigate whether the optimization algorithm is effective a hypothesis was defined.
 
 
-\begin{description}
-	\item []Optimal parameter set
-	\begin{description}
-	\item [\(H1_{1}\)] There is a parameter set \(p_{optimized}\) for the \CTC algorithm that for the ``Klimauken'' corpus give significantly improved results compared to the parameter set \(p_{default}\).
-	\item [\(H1_{0}\)] The parameter set \(p_{optimized}\) does not give significant improvements compared to the parameter set \(p_{default}\) for the ``Klimauken'' corpus.
-	\end{description}
-\end{description}
+% \begin{description}
+% 	\item []Optimal parameter set
+% 	\begin{description}
+% 	\item [\(H1_{1}\)] There is a parameter set \(p_{optimized}\) for the \CTC algorithm that for the ``Klimauken'' corpus give improved results compared to the average performance of 10 random parameter sets.
+% 	\item [\(H1_{0}\)] There is no parameter set \(p_{optimized}\) that improves the performance of the \CTC algorithm for the ``klimauken'' corpus compared to the average performance of 10 random prameter sets.
+% 	\end{description}
+% \end{description}
 
 \begin{description}
 	\item []Optimization algorithm
 	\begin{description}
-	\item [\(H2_{1}\)] The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that is significantly better than the default parameter set \(p_{default}\).
-	\item [\(H2_{0}\)] The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is better than the default parameter set \(p_{default}\).
+	\item [\(H_{1}\)] The genetic algorithm gives values that for the ``klimauken'' corpus give better performance than the average performance of random values.
+	% \item [\(H2_{1}\)] The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that for the ``klimauken'' corpus gives better performance than the average performance of ten random parameter sets.
+	% \item [\(H2_{0}\)] The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is worse than the default parameter set \(p_{default}\).
+	\item [\(H_{0}\)] The genetic algorithm does not give values that for the ``klimauken'' corpus give better performance than the average performance of random values.
 	\end{description}
 \end{description}
 
-\(H2_{1}\) and \(H2_{0}\) only test the specific implementation of the Genetic Algorithm as implemented in this thesis work. Other optimization algorithms or other implementations of the Genetic Algorithm might perform differently from this one. By constricting the hypothesis to only account for this implementation of the Genetic Algorithm it is possible to formulate a null hypothesis.
+The hypothesis only test the specific implementation of the Genetic Algorithm as implemented in this thesis work. Other optimization algorithms or other implementations of the Genetic Algorithm might perform differently from this one. By constricting the hypothesis to only account for this implementation of the Genetic Algorithm it is possible to formulate a null hypothesis. The results should however indicate whether this optimization approach has any virtue, or if genetic algorithms are wholly unsuitable for this optimization problem.
 
-\begin{description}
-	\item []Genetic versus incremental search
-	\begin{description}
-	\item [\(H3_{1}\)] The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that is significantly better than an iteratively improved parameter set \(p_{iterativ}\).
-	\item [\(H3_{0}\)] The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is better than an iteratively improved parameter set \(p_{iterative}\).
-	\end{description}
-\end{description}
-
-\color{red}For the optimized parameter set to be considered significantly better it should perform at least 5\% better in terms of the balanced F-Measure score. So for the optimized parameter set to perform significantly better than incremental improvement, if the incremental improvement yield an F-Measure of 0.5, then the optimized parameter set need to yield an F-Measure of at least 0.6.
-\color{black}
+% \begin{description}
+% 	\item []Genetic versus incremental search
+% 	\begin{description}
+% 	\item [\(H3_{1}\)] The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that is significantly better than an iteratively improved parameter set \(p_{iterativ}\).
+% 	\item [\(H3_{0}\)] The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is better than an iteratively improved parameter set \(p_{iterative}\).
+% 	\end{description}
+% \end{description}
 
 The scope of this thesis does not allow for additional hypotheses to be investigated. For future research an additional possible hypothesis that would be worth testing is whether the optimized parameter set is also optimized for similar corpora.
 
@@ -250,50 +242,108 @@ The specification of an experiment on the optimization of an algorithm should, a
 
 
 \subsubsection{Experiment Design}
-The algorithm design describes the parameter sets used in the experimentation phase. There are three algorithm designs that will be used for the experiment. They are listed in Table~\ref{tab:algorithmdesign}. Each column corresponds to one parameter. The first algorithm design is labeled Etzioni. It is an approximation of the parameter set used by \citeauthor{Oren1998} in the article \citetitle{Oren1998}. Because the authors use different types of corpora and does not provide source code for an implementation of the algorithm some of the parameter chosen for the algorithm design might not accurately represent the original algorithm design.
+The algorithm design describes the parameter sets used in the experimentation phase. The algorithm designs are listed in Table~\ref{tab:algorithmdesign}. Each column corresponds to one parameter in the algorithm and is labeled with an abbriviation of the parameter name. Please refer to Table~\ref{tab:parameterabbreviationdictionary} to see a dictionary for the abbriviations.
 
-The second algorithm design was derived from the incremental tests. The parameters represent the highest performing value for that parameter given either the algorithm design of \citeauthor{Oren1998} or the design of \supervisor. Alternatively an incrementally optimized parameter set could be derived by serially optimizing the parameters. I.e. optimize the first parameter, keep the optimized value, then optimize the next parameter and so forth. This method would however present difficulties of its own as the order in which the parameters are optimized would affect the result.
+Three specific algorithm designs have been defined: \citeauthor{Oren1998} parameters, Genetic params, and \citeauthor{Moe2013} parameters. The \citeauthor{Oren1998} parameters are not directly relevant to the experiment. Its inclusion can be argued for because it serves as a interesting comparison for the average performance of the algorithm and the performance with optimized parameters. The \citeauthor{Moe2013} parameters were included on the same basis. These parameters measure how well the algorithm performs on a corpus when the parameters have been manually optimized for the ``Klimauken'' corpus. The last parameter set, Genetic params, were created using the \GA optimization process. It is this parameter set that will be used in the experiments. In addition to these three parameter sets, 100 random parameter sets were created to measure the average performance of the \CTC algorithm on the ``Klimauken'' corpus. This was done to establish a base performance to measure the optimized parameters against. These are not listed in Table~\ref{tab:algorithmdesign} for practical reasons.
 
-The third algorithm design was derived by running a genetic optimization process on the parameter set. TODO: Insert info about how the algorithm was run here.
+The random parameters were generated using the generate\_random\_chromosome function implemented for the genetic algorithm. The spesific values and their limits are listed below:
+
+\begin{description}
+  \item[Tree types:] Suffix, Mid-gram, N-gram, Range-gram\hfill
+  	\begin{description}
+	  \item[Suffix:] No limits
+	  \item[Mid-gram:] No limits
+	  \item[N-gram:] 1 - 10
+	  \item[Range-gram:] min: 0.0 - 0.9 \& max: 0.1 - 1.0
+	\end{description}
+  \item[Top base clusters amount:] 100 - 10 000
+  \item[Min term occurrence:] 5 - 150
+  \item[Max term ratio:] 0.05 - 1.00 (rounded to two decimals)
+  \item[Min limit base cluster score:] 0 - 20
+  \item[Max limit base cluster score:] 3 - 25 (if n > min limit base cluster score, min + 1 if not)
+  \item[Drop singleton base clusters:] 0 or 1
+  \item[Drop one word clusters:] 0 or 1
+  \item[Order descending:] 0 or 1
+  \item[Text types:] (0 - 1) for Frontpage Heading, Frontpage Introduction, Article Heading, Article Introduction, Article Byline, Article Text
+  \item[Text amount:] 0.0 - 1.0
+  \item[Similarity measure:] Etzioni, Jaccard, Cosine, Amendment 1C\hfill
+  	\begin{description}
+	  \item[Etzioni:] 0.0 - 1.0 (Etzioni threshold)
+	  \item[Jaccard:] 0.0 - 1.0 (Jaccard threshold)
+	  \item[Cosine:] 0.0 - 1.0 (Jaccard threshold) \& 0.0 - 1.0 (Cosine threshold)
+	  \item[Amendment 1C:] 0.0 - 1.0 (Jaccard threshold), 5 - 500 (avg. corpus frequency threshold), \& 0 - 50 (intersect minimum limit) 
+	\end{description}
+\end{description}
+
 
 \begin{landscape}
 \begin{table}
-\small
 \begin{center}
-  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
-  \hline
-  Design & TT & TBC & MTO & MTR & MiLBCS & MaLBCS & DSBC & DOWC & OD & TA & TTy & SM\\ 
-  \hline
-  Etzioni & Suffix & 500 & 4 & 0.4 & 2 & 7 & False & False & True & 0 & Front page, headings, byline & Etzioni (0.5 threshold) \\
-  \hline
-  Incremental & Suffix & 9000 & 200 & 0.2 & 15 & 17 & False & True & False & 0.05 & Front page & Cosine (0.6, 0.5, 0) \\
-  \hline
-  Genetic & 4-slice & 7937 & 141 & 0.47 & 11 & 17 & False & True & False & 0.32 & Front page intro, Article heading, article intro & Etzioni (0.99) \\
-  \hline
-  \end{tabular}
+	\begin{tabular}{|l|l|l|}
+	\hline
+	Abbreviation & Full parameter name & Short explanation\\
+	\hline
+	TreeT & Tree type & The tree type (suffix, mid-gram, etc) used to build the phrase tree.\\
+	TBC & Top Base Clusters & The top base clusters limit that determines the amount of base clusters to include.\\
+	MinTO & Min term occurrence & The minimal occurrence of term in the corpus for it to not be considered a stop word.\\
+	MaxTR & Max term ratio & The max allowed ratio of a term in the corpus for it not to be considered a stop word.\\
+	MinLBCS & Min limit base cluster score & The min limit at which the base cluster label is scored the minimum score.\\
+	MaxLBCS & Max limit base cluster score & The max limit at which the base cluster label is scored the maximum score.\\
+	DSBC & Drop singleton base clusters & Whether to drop singleton base clusters or not.\\
+	DOWC & Drop one word clusters & Whether to drop one word clusters or not.\\
+	OD & Order descending & Whether to order the base clusters list in descending or ascending order.\\
+	TA & Text amount & The amount of article text to include in the snippet expansion phase.\\
+	TTy & Text types & Which kinds of text to include in the snippet expansion phase.\\
+	SM & Similarity method & Which similarity method to use in the base clusters similarity function.\\
+	\hline
+	\end{tabular}
+	\caption{A dictionary of abbreviations used in Table~\ref{tab:algorithmdesign}}
+	\label{tab:parameterabbreviationdictionary}
 \end{center}
-\caption{The three algorithm designs used in the experiments.}
-\label{tab:algorithmdesign}
 \end{table}
 \end{landscape}
 
-Table~\ref{tab:problemdesign} describes the clustering problems used for the experiments. The Experiment column specify the hypothesis for which the problem design was applied. The algorithm design is a reference to the parameter sets specified in Table~\ref{tab:algorithmdesign}. To keep the results in line with the classifications provided by the experts that prepared the ``Klimauken'' corpus singleton ground truth clusters were preserved. The F-Beta constant was set to 1 to weigh precision and recall equally. Each experiment was run on the ``Klimauken'' corpus.
+\begin{landscape}
+\begin{center}
+\footnotesize
+  \begin{longtable}{|p{1.5cm}|p{1.5cm}|p{1cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.2cm}|p{1.5cm}|p{0.8cm}|p{1cm}|p{2.5cm}|p{1.5cm}|}
+  \hline
+  Design & TreeT & TBC & MinTO & MaxTR & MinLBCS & MaxLBCS & DSBC & DOWC & OD & TA & TTy & SM\\
+  \hline
+  \endhead
+  \citeauthor{Oren1998} parameters & Suffix & 500 & 4 & 0.4 & 2 & 7 & 0 & 0 & 1 & 0 & Frontpage Introduction, Frontpage Heading, Article Heading, Article Byline, Article Introduction & Etzioni (0.5 threshold)\\
+  \hline
+  Genetic params & 4-slice & 7937 & 141 & 0.47 & 11 & 17 & False & True & False & 0.32 & Front page intro, Article heading, article intro & Etzioni (0.99) \\
+  \hline
+  \citeauthor{Moe2013} parameters & Mid-gram & 5000 & 6 & 0.6 & 2 & 7 & 0 & 0 & 1 & 0 & Article Heading, Article Byline, Article Introduction & Etzioni (0.5 threshold)\\
+  \hline
+    \caption{Algorithm designs used in the experiments.}
+	\label{tab:algorithmdesign}
+  \end{longtable}
+\end{center}
+\end{landscape}
+
+In \citetitle{Bartz-Beielstein2004} the problem design describes the optimization problems on which the particle swarm algorithm will work on. One can thus understand problem design as a definition of the problems that the algorithm is to solve. Table~\ref{tab:problemdesign} describes the clustering problem used in the experiment. The Experiment column specify the hypothesis for which the problem design was applied. The algorithm design is a reference to the parameter sets specified in Table~\ref{tab:algorithmdesign}. To keep the results in line with the classifications provided by the experts that prepared the ``Klimauken'' corpus, singleton ground truth clusters were preserved. The F-Beta constant was set to 1 to weigh precision and recall equally.
 
 \begin{table}
 \small
 \begin{center}
-  \begin{tabular}{|l|l|l|l|l|}
+  \begin{tabular}{|l|p{2.5cm}|l|l|l|}
   \hline
   Experiment & Algorithm Design & Drop singelton ground truth & F-Beta constant & Corpus\\ 
   \hline
-  H1 & Etzioni, Incremental & False & 1 & Klimauken\\
+  E1 & Genetic params & False & 1 & Klimauken\\
   \hline
-  H2 & Etzioni, Genetic & False & 1 & Klimauken\\
+  E1 & Random 1 & False & 1 & Klimauken\\
   \hline
-  H3 & Incremental, Genetic & False & 1 & Klimauken\\
+  E1 & Random 2 & False & 1 & Klimauken\\
+  \hline
+  E1 & Random ... & False & 1 & Klimauken\\
+  \hline
+  E1 & Random 100 & False & 1 & Klimauken\\
   \hline
   \end{tabular}
 \end{center}
-\caption{The problem designs describing the clustering problem for the experiments.}
+\caption{The problem designs describing the clustering problem for the experiment.}
 \label{tab:problemdesign}
 \end{table}
