@@ -27,6 +27,7 @@
 %!TEX encoding = UTF-8 Unicode
 \documentclass[11pt, a4paper, oneside]{Thesis} % Paper size, default font size and one-sided paper
 \usepackage[T1]{fontenc}
+\usepackage{courier}
 \usepackage[utf8]{inputenc}
 \usepackage[american]{babel}
 \usepackage{csquotes}
@@ -41,6 +42,10 @@
 % Add Table coloring
 \usepackage[table]{xcolor}
 \usepackage{longtable}
+\definecolor{lightgray}{gray}{0.9}
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\rowcolors{2}{white}{lightgray}\oldtabular}{\endoldtabular}
 
 %\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers'
 

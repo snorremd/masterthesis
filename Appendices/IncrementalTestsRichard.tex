@@ -36,9 +36,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testTrees.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testTrees.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testTrees.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testTrees.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testTrees.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testTrees.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -68,9 +68,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -111,9 +111,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testRangeSlices.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testRangeSlices.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testRangeSlices.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testRangeSlices.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testRangeSlices.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -154,9 +154,9 @@
 %     }
 %   ]
 
-%   \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testRangeSlices.csv};
-%   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testRangeSlices.csv};
-%   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testRangeSlices.csv};
+%   \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testRangeSlices.csv};
+%   \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testRangeSlices.csv};
+%   \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testRangeSlices.csv};
 
 %   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -184,9 +184,9 @@
       legend pos=outer north east
     }
   ]
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Basecluster-amount] {Diagrams/Richard/testBaseClusterAmounts.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -194,7 +194,7 @@
 \end{tikzpicture}
   \end{center}
   \caption{Performance of the \CTC algorithm for different limits on top base clusters amount.}
-  \label{diag:topbaseclustersrichard}
+%  \label{diag:topbaseclustersrichard}
 \end{diagram}
 
 % MIN TERM OCCURRENCE
@@ -218,9 +218,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Min Term Occurrence] {Diagrams/Richard/testMinTermOccurrence.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -252,9 +252,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Max Term Ratio] {Diagrams/Richard/testMaxTermRatio.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -286,9 +286,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Min Limit] {Diagrams/Richard/testMinLimitBC.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -320,9 +320,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -354,9 +354,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Max Limit] {Diagrams/Richard/testMaxLimitBC2.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -396,9 +396,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testDropSingletonBC.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testDropSingletonBC.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testDropSingletonBC.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testDropSingletonBC.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testDropSingletonBC.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -438,9 +438,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testDropOneWordClusters.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testDropOneWordClusters.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testDropOneWordClusters.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testDropOneWordClusters.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testDropOneWordClusters.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -480,9 +480,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testSortDescending.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testSortDescending.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testSortDescending.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testSortDescending.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testSortDescending.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -514,9 +514,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Article Text Amount] {Diagrams/Richard/testArticleTextAmount.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -539,7 +539,7 @@
     bar width=6pt,
     ymajorgrids = true,
     ylabel = {Score},
-    symbolic x coords={All,Frontpage,Article sans bread text,Article with bread text,Article text},
+    symbolic x coords={All,Frontpage,Article sans body text,Article with body text,Article text},
     x tick label style={font=\small,text width=1.7cm,align=center},
     xtick = data,
     xlabel = {Text types included},
@@ -557,9 +557,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testTextTypes.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testTextTypes.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testTextTypes.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testTextTypes.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testTextTypes.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -583,7 +583,7 @@
     ymajorgrids = true,
     ylabel = {Score},
     xlabel = {Similarity methods},
-    symbolic x coords={Etzioni,Jaccard,Cosine,Amendment1C},
+    symbolic x coords={Etzioni,Jaccard,Cosine,Amendment},
     xtick = data,
     scaled y ticks = false,
     enlarge x limits=0.20,
@@ -599,9 +599,9 @@
     }
   ]
 
-  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth 0] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Ground Truth Rep 0] {Diagrams/Richard/testSimilarityMethods.csv};
-  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=fMeasure 0] {Diagrams/Richard/testSimilarityMethods.csv};
+  \addplot [style={rred,fill=rred,mark=none},postaction={pattern=north east lines,pattern color=white}] table [col sep=semicolon,y=Precision 0] {Diagrams/Richard/testSimilarityMethods.csv};
+  \addplot [style={bblue,fill=bblue,mark=none},postaction={pattern=north west lines,pattern color=white}] table [col sep=semicolon,y=Recall 0] {Diagrams/Richard/testSimilarityMethods.csv};
+  \addplot [style={ggreen,fill=ggreen,mark=none},postaction={pattern=horizontal lines,pattern color=white}] table [col sep=semicolon,y=F-Measure 0] {Diagrams/Richard/testSimilarityMethods.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -634,9 +634,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Threshold] {Diagrams/Richard/testEtzioniSimilarity.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -670,9 +670,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Threshold] {Diagrams/Richard/testJaccardSimilarity.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -705,9 +705,9 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Cosine Threshold] {Diagrams/Richard/testCosineSimilarity.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
@@ -739,16 +739,16 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Avg CF limit] {Diagrams/Richard/testAmendment1CSimilarityAvgCF.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different limits on max average corpus frequency in Amendment1C.}
+  \caption{Performance of the \CTC algorithm for different limits on max average corpus frequency in Amendment.}
   \label{diag:avgcfamendment1richard}
 \end{diagram}
 
@@ -773,15 +773,15 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Ground Truth 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Ground Truth Rep 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=fMeasure 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=Min intersect limit] {Diagrams/Richard/testAmendment1CSimilarityIntersect.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different minimum limits on base cluster label intersect in Amendment1C.}
+  \caption{Performance of the \CTC algorithm for different minimum limits on base cluster label intersect in Amendment.}
   \label{diag:minintersectamendment1crichard}
 \end{diagram}
