@@ -20,7 +20,7 @@
     ymajorgrids = true,
     ylabel = {Score},
     xlabel = {Tree types},
-    symbolic x coords={Suffix,Midslice,Rangeslice 0.1-1.0,5-slice},
+    symbolic x coords={Suffix,Mid-gram,Range-gram 0.1-1.0,5-gram},
     xtick = data,
     scaled y ticks = false,
     enlarge x limits=0.15,
@@ -57,7 +57,7 @@
     width  = 0.8*\textwidth,
     height = 4.55cm,
     % major x tick style = transparent,
-    xlabel = {N-Slice length},
+    xlabel = {N-gram length},
     ylabel = {Score},
     % xtick = data,
     ymin=0,
@@ -68,16 +68,16 @@
     }
   ]
 
-  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
-  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=n-slice] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={rred,mark size=1.5}] table [col sep=semicolon,y=Precision 0,x=n-gram] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={bblue,mark size=1.5}] table [col sep=semicolon,y=Recall 0,x=n-gram] {Diagrams/Richard/testNSlices.csv};
+  \addplot+ [style={ggreen,mark=triangle*,mark size=1.5}] table [col sep=semicolon,y=F-Measure 0,x=n-gram] {Diagrams/Richard/testNSlices.csv};
 
   \legend{Precision 0,Recall 0, F-Measure 0}
   
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance results of the \CTC algorithm for different lengths of n-slice expansion.}
+  \caption{Performance results of the \CTC algorithm for different lengths of n-gram expansion.}
   \label{diag:nslicesrichard}
 \end{diagram}
 
@@ -93,7 +93,7 @@
     bar width=5pt,
     ymajorgrids = true,
     ylabel = {Score},
-    xlabel = {Range slice length},
+    xlabel = {Range-gram length},
     symbolic x coords={0.0-1.0,0.1-0.9,0.2-0.8,0.3-0.7,0.4-0.6,0.5-0.5},
     xtick = data,
     scaled y ticks = false,
@@ -120,7 +120,7 @@
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different ranges of range-slice expansion.}
+  \caption{Performance of the \CTC algorithm for different ranges of range-gram expansion.}
   \label{diag:rangelicesrichard}
 \end{diagram}
 

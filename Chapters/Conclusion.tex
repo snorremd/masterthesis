@@ -2,10 +2,10 @@
 \chapter{Summary and Conclusion} % Main chapter title
 \label{Conclusion} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 \lhead{Chapter \ref{Conclusion}. \emph{Conclusion}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
-The goal of the thesis was to identify an approach for finding optimized parameter sets for the \CTC algorithm. This goal was motivated by the need of researchers to better fit the parameters of the \CTC algorithm to the corpora of their research. This need was evident in the case of the ``Klimauken'' research project. The thesis propose and implement a genetic algorithm for parameter optimization. This algorithm was tested experimentally by forming a hypothesis: The genetic algorithm gives values that for the ``klimauken'' corpus give better performance than the average performance of random values.
+The goal of the thesis was to demonstrate the feasibility of automatically improving the \CTC algorithm by means of a genetic algorithm. This goal was motivated by the need of researchers to better fit the parameters of the \CTC algorithm to the corpora of their research. This need was evident in the case of the ``Klimauken'' research project. The thesis propose and implement a genetic algorithm for parameter optimization. This algorithm was tested experimentally. The feasibility of the algorithm was measured in two respects. The feasibility was first measured in terms of the effectiveness of the optimisation algorithm, i.e. whether the algorithm produced better performing algorithm designs. Secondly the feasibility was measured in terms of whether the algorithm was practically runnable with regards to time, equipment, and knowledge. This was important to determine the actual usability of the algorithm for the intended user group.
 
 \section{Results}
-The experiment was performed based on the traditional information retrieval research methodology. Precision, recall, and the harmonius F-Measure was chosen as independent variables and measured for each tested parameter set with its correspondiThe approximate average performance of the algorithm was found by calculating the performance of 100 random parameter sets. The genetic parameter produced many optimised parameter set, but the chosen set was chosen for best possible F-Measure.
+The experiment was performed based on the traditional information retrieval research methodology as well as the principles of experimental research. Precision, recall, and the harmonious F-Measure was chosen as independent variables and measured for each tested parameter set. The approximate average performance of the algorithm was found by calculating the performance of 100 random parameter sets. The genetic parameter produced many optimised parameter sets of which one was chosen for maximised F-Measure.
 
 \begin{table}[H]
 \setstretch{1}
@@ -14,26 +14,25 @@ The experiment was performed based on the traditional information retrieval rese
 \hline
 Test & Precision 0 & Recall 0 & F-Measure 0\\ 
 \hline
-Random 						&   0.422& 	  0.202& 	0.188\\ 
-Genetic 					&   0.691&    0.783&    0.735\\ 
-Point-wise 					&   0.522&    0.833&    0.642\\ 
+Random 	&   0.422& 	  0.202& 	0.188\\ 
+Genetic &   0.691&    0.783&    0.735\\ 
 \hline
 \end{tabular}
 \end{center}
-\caption{Table summary of results from relevant tests.}
+\caption{Table summary of experiment results.}
 \label{tab:summarytableresultsconclusion}
 \end{table}
 
-The results are more than conclusive. The genetic parameter set is better than the average (random) performance with regards to all the measures. The precision and recall are respectively 26.9 and 58.1 percentile points higher than the same scores for the average performance of the algorithm. The genetic parameter set produces a harmonious F-Measure that is 54.7 percentile points higher. That is an approximate 390\% increase in score. The null-hypothesis was rejected, and the alternative hypothesis confirmed.
+The results from the tests are more than conclusive. The algorithm design computed by the optimisation algorithm is better than the average (random) performance with regards to all the independent variables (performance measures). The precision and recall are respectively 26.9 and 58.1 percentile points higher than the same scores for the average performance of the algorithm. The genetically computed algorithm design produces a harmonious F-Measure that is 54.7 percentile points higher than that of the average performance. That is an approximate 390\% increase. The effectiveness of the optimisation algorithm was thus confirmed.
 
-The results ufortunately do not possess external validity. This is because the tests were run on a single news corpus. We can there-fore not claim that the genetic algorithm will be able to optimise parameters for all news corpora. The results are not checked for statistical significance, but it is safe to assume that the genetic algorithm will be able to produce fairly consistent results with only small variance in terms of running time and exact parameter values.
+With regards to practicality the thesis shows that the algorithm is runnable on a modern laptop, with a running time of approximately 24 hours for the ``Klimauken'' corpus. This short running time is though dependent on sensible parameter ranges determined in pre-tests. Further research needs to be done to determine if the parameter ranges proposed in this thesis can be re-used for other news corpora. The algorithm was also feasible in terms of usability as long as the researcher has some knowledge about programming.
+
+The results unfortunately do not possess external validity. This is because the tests were run on a single news corpus. We can therefore not claim that the genetic algorithm will be able to optimise the algorithm design for all news corpora. The results are not checked for statistical significance, but it is safe to assume that the genetic algorithm will be able to produce fairly consistent results with only small variance in terms of running time and exact parameter values for the algorithm design.
 
 \section{Future research}
-To solidify the findings research should be conducted in order to confirm external validity for the proposed optimization algorithm. Such a study should test the algorithm on all standard news corpora such as the Reuters RCV1 corpus. Further more, it is likely that there is some overlap between the characteristics of news corpora. A possible area of research would include an investigation into whether the optimises parameter set will produce consistently better results on all news corpora.
+To solidify the findings research should be conducted in order to confirm external validity for the proposed optimisation algorithm. Such a study should test the algorithm on all standard news corpora such as the Reuters RCV1 corpus. Further more, it is very likely that there is some overlap in the characteristics of news corpora. Interesting research possibilities arise from this observation. As was previously remarked one should perform an investigation that looks into the possibility that the parameter ranges specified in this thesis might also work for other news corpora. Another investigation could look into whether or not the optimised algorithm design produces consistently better results for all news corpora to determine the external validity of the findings presented in this thesis. We have shown how the results suggest that optimisation algorithm works for news corpora, but research should be conducted to find out if it also works for other kinds of corpora such as the Blogs08 corpus.
 
 One factor in clustering that was not accounted for in this research is time efficiency. The \CTC algorithm has an obvious bottle-neck in the base cluster merging step. New research using the genetic optimisation algorithm should factor in time when running the algorithm. Finding a good balance between high F-Measure and high time efficiency, and encoding this into the fitness measure of the genetic algorithm, can be a complex matter in itself.
 
-While this thesis suggest that the proposed optimization algorithm works for news corpora, it is more uncertain whether it would also work for other kinds of corpora. A possible research effort could look into the effectiveness of the optimization algorithm for other types of corpora, for example the Blogs08 corpus.
-
 \section{Conclusion}
-Final remarks.
+The thesis has introduced an optimisation algorithm based on genetic optimisation that produce optimised algorithm designs for the \CTC algorithm. It has demonstrated the feasibility of the algorithm and shown that the optimised algorithm design produce good cluster results. While the results do not provide external validity it is clear that the optimisation algorithm has potential for other corpora, and that it deserves some research focus. As new features such as alternative similarity and scoring functions are introduced to the \CTC algorithm the optimisation algorithm should be updated so that it can provide new optimised algorithm designs. Hopefully the optimisation algorithm will find its use in the community and provide algorithm designs that better enable researchers to find good clusters.

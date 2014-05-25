@@ -5,11 +5,11 @@
 \label{AnalysisAndDiscussion}
 
 \lhead{Chapter \ref{AnalysisAndDiscussion}. \emph{Analysis and Discussion}}
-This chapter will start by summarising and briefly discussing the results of the different tests. It will then discuss the validity and relevance of these results with regards to the context of the experiment and the experiment goal. A short section will be provided on the feasibility of the optimization algorithm. While the algorithm might produce better parameters it should be shown that the algorithm can also be run by the intended target group. The chapter then ends with an acceptance test to check whether the null-hypothesis holds.
+This chapter will start by summarising and briefly discuss the results of the different tests. It will then discuss the validity and relevance of these results with regards to the context of the experiment and the experiment goal. A short section will be provided on the feasibility of the optimisation algorithm. While the algorithm might produce better parameters it should be shown that the algorithm can also be run by the intended target group. The chapter then ends with an acceptance test to check whether the null-hypothesis holds.
 
 \section{Results}
 \label{Results}
-The results for each of the tests performed in Chapter~\ref{EvaluationTesting} has been compiled and is presented in Table~\ref{tab:summarytableresults} below. The performance for the random, genetic, and point-wise parameter sets are listed first. Additionally three comparison matrix tables, one for each kind of performance measure, have been supplied to make comparison of the genetic, random and point-wise parameter sets easier. These are found in Table~\ref{tab:summaryprecisiontableresults}, \ref{tab:summaryrecalltableresults}, and \ref{tab:summaryfmeasuretableresults}.
+The results for each of the tests performed in Chapter~\ref{EvaluationTesting} has been compiled and is presented in Table~\ref{tab:summarytableresults} below. The performance for the random and genetic parameter sets are listed first. Additionally a comparison table, Table~\ref{tab:geneticrandomcomparison}) have been supplied to make comparison of the genetic and random parameter sets easier. The results for the algorithm designs from \citeauthor{Moe2014compact} and \citeauthor{Oren1998} are not directly comparable with the results from the Random and Genetic algorithm designs. They are again included to provide context.
 
 \begin{table}[H]
 \setstretch{1}
@@ -19,8 +19,7 @@ The results for each of the tests performed in Chapter~\ref{EvaluationTesting} h
 Test & Precision 0 & Recall 0 & F-Measure 0\\ 
 \hline
 Random 						&   0.422& 	  0.202& 	0.188\\ 
-Genetic 					&   0.691&    0.783&    0.735\\ 
-Point-wise 					&   0.522&    0.833&    0.642\\ 
+Genetic 					&   0.691&    0.783&    0.735\\
 \citeauthor{Moe2014compact} &   0.629&    0.619&    0.624\\ 
 \citeauthor{Oren1998}		&   0.312&    0.088&    0.138\\ 
 \hline
@@ -35,73 +34,44 @@ Point-wise 					&   0.522&    0.833&    0.642\\
 \begin{center}
 \begin{tabular}{|l|ccc|}
 \hline
-Test & 			Random 	& 	Genetic 	& Point-wise\\ 
+Test & 				Genetic 	& 	Random 	& Difference\\ 
 \hline
-Random 		&  	  0 	& 	0.269		&  0.100\\ 
-Genetic 	&   -0.269 	&      0  		&  -0.169\\ 
-Point-wise 	&   -0.100 	&    0.169 		&  0  \\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{Comparison matrix for precision scores of the parameter sets Random, Genetic and Point-wise.}
-\label{tab:summaryprecisiontableresults}
-\end{table}
-
-The definitively best parameter set in terms of precision is the Genetic parameter set. It outperforms the average performance of random parameters with 26.9 percentile points. The point-wise parameter set only do 10 percentile points better than the random parameter set. The genetic parameter set even outperforms the point-wise parameter set with a solid 16.9 percentile points.
-
-\begin{table}[H]
-\setstretch{1}
-\begin{center}
-\begin{tabular}{|l|ccc|}
-\hline
-Test & 			Random 	& 	Genetic 	& Point-wise\\ 
-\hline
-Random 		&  	  0 	& 	0.581		&  0.631\\ 
-Genetic 	&   -0.581 	&     0  		&  0.05\\ 
-Point-wise 	&   -0.631 	&   -0.05 		&  0  \\ 
+Precision 		&	0.691 		& 	0.422		&  0.269\\ 
+Recall 			&   0.783 		&   0.202  		&  0.581\\ 
+F-Measure		& 	0.735		&	0.188 		&  0.547\\
 \hline
 \end{tabular}
 \end{center}
-\caption{Comparison matrix for recall scores of the parameter sets Random, Genetic and Point-wise.}
-\label{tab:summaryrecalltableresults}
+\caption{Comparison table for the Genetic and Random algorithm designs.}
+\label{tab:geneticrandomcomparison}
 \end{table}
 
-In terms of recall the best parameter set is the Point-wise parameter set. It even scores significantly better than the Genetic parameter set with a 5 percentile points increase in recall. But at what cost? The Point-wise parameter set use the suffix expansion technique whereas the Genetic parameter set use 7-grams. The increased amount of phrases produced with the suffix expansion technique is a likely factor for the increased recall, but it seems it does this at the expense of precision and algorithm run time. On a current laptop processor the genetic parameter set makes the algorithm run for approximately 43 seconds. The point-wise parameter set makes the algorithm more demanding and produce a result in about 56 seconds, quite a bit more.
+The definitively best algorithm design in terms of precision is the Genetic algorithm design. It outperforms the average performance of random parameters with 26.9 percentile points. This is more than a significant increase in effectiveness of the algorithm. Naturally it performs better than the \citeauthor{Oren1998} algorithm design. As a side note it should be noted that it also outperforms the algorithm design proposed based on the point-wise tests. This demonstrate that fully automatic tuning can produce results comparable to those achieved when some manual input is provided.
 
-\begin{table}[H]
-\setstretch{1}
-\begin{center}
-\begin{tabular}{|l|ccc|}
-\hline
-Test & 			Random 	& 	Genetic 	& Point-wise\\ 
-\hline
-Random 		&  	  0 	& 	0.547		&  0.454\\ 
-Genetic 	&   -0.547 	&      0  		&  -0.093\\ 
-Point-wise 	&   -0.454 	&    0.093 		&  0  \\ 
-\hline
-\end{tabular}
-\end{center}
-\caption{Comparison matrix for F-Measure scores of the parameter sets Random, Genetic and Point-wise.}
-\label{tab:summaryfmeasuretableresults}
-\end{table}
+With regards to recall the genetic algorithm again scores significantly better than the random parameter sets at a massive 58.1 percentile point increase. 
 
-The F-Measure comparison shows the relative performance of the different parameter sets when we want to consider both the precision and recall values of each parameter set. Because of the quite low average F-Measure of the random parameters we see even larger differences in performance here. If we first compare the genetic and random parameter sets we see that the genetic parameter set performs 54.7 percentile points higher than the average of the random parameter sets. This is a striking difference in performance and shows that the genetic parameter set produce a very good result when both precision and recall is considered. We also observe that the F-Measure of the genetic parameter set is 9.3 percentile points higher than for the Point-wise parameter set. This is because the genetic parameters offer better balance between precision and recall. While the Point-wise parameter set has better recall, it does not offer the very high precision of the genetic parameters.
+% Interestingly the algorithm design based on the point-wise tests here score better, with a 5 percentile points higher recall. But at what cost? The Point-wise parameter set use the suffix expansion technique whereas the Genetic parameter set use 7-grams. The increased amount of phrases produced with the suffix expansion technique is a likely factor for the increased recall, but it seems it does this at the expense of precision and algorithm run time.
 
+The recall of the original algorithm design by \citeauthor{Oren1998} clearly showcase how the design is not optimised for this type of corpus. There are 669 ground truth clusters in the ``Klimauken'' corpus which is 169 more clusters than the top base clusters amount for the \citeauthor{Oren1998} parameters. This does however demonstrate the need for tuning.
+
+The harmonious F-Measure comparison shows the performance difference between the genetically determined algorithm design and the random parameters when both precision and recall is considered. The random parameters score quite low in terms of recall and thus receives a very low F-Measure score at only 18.8\%. This is 54.7 percentile points lower than the genetic algorithm design which achieves an impressive 73.5\%. As an interesting side note we observe that the genetic algorithm outperforms the algorithm design determined by the point-wise tests with about 9 percentile points. This indicates that the fully automated genetic algorithm has some merit when compared to semi-automatic point-wise optimisation.
+
+%The algorithm design determined by the genetic algorithm also beats the manually tuned algorithm design specified by the \citeauthor{Moe2014compact} parameters.
 
 \section{Validity and relevance}
 \label{ValidityRelevance}
-Chapter~\ref{Methodology} discussed how it is not possible to claim any external validity for the results presented in this thesis. The results are valid only for the context of the experiment which is the ``Klimauken'' corpus. Unfortunately this means that the results only holds true for this particular corpus. At any level the positive results should be viewed as indicative of a more general potential for the optimization algorithm. There is a good chance that the optimization algorithm suggested in this thesis might also work on other news corpora. The algorithm has only been tested in the news corpora context and does not suggest whether the algorithm would also work in other contexts, but the possibility that it does should not be dismissed without further tests.
+Chapter~\ref{Methodology} discussed how it is not possible to claim any external validity for the results presented in this thesis. The results are valid only for the context of the experiment which is the ``Klimauken'' corpus. Unfortunately this means that the results only hold true for this particular corpus. At any level the positive results should be viewed as indicative of a more general potential for the optimisation algorithm. There is a good chance that the optimisation algorithm suggested in this thesis might also work on other news corpora. The optimisation algorithm has only been tested in the news corpora context and the results do not suggest whether the algorithm would also work in other contexts, but the possibility that it does should not be dismissed without further research.
 
-The experiment goal and hypothesis were defined to limit their contexts to the ``Klimauken'' corpus. This was done to ensure that the test results could actually answer the hypothesis, and to make the experiment results valid. Each of the tests were run on the corpus using standard measures for information retrieval research. Because the experiment relies on these standard measures and a corpus with pre-categorised documents, there is no doubt that the tests measure the relevant characteristics of the algorithms performance.
+The experiment goal and hypothesis were defined to limit their contexts to the ``Klimauken'' corpus. This was done to ensure that the test results could answer the hypothesis, and to make the experiment results valid. Each of the tests were run on the corpus using standard measures for information retrieval research. Because the experiment relies on these standard measures and a corpus with pre-categorised documents, there is no doubt that the tests measure the relevant characteristics of the \CTC algorithms performance.
 
-Statistically speaking the results have not been tested for statistical significance. This was not done because the \CTC algorithm itself is deterministic and simply checking averaged numbers against optimised parameter sets would show that the optimization algorithm has produced better parameters for the ``Klimauken'' corpus.
+The results from the random tests do not really represent the average performance of the possible algorithm designs, and one cannot claim statistical significance for the differences between the two test results. The average performance of the randomised algorithm design does however provide a base with which to compare the optimised algorithm design and can at the very least indicate the effectiveness of the optimisation algorithm.
 
-I could here write a paragraph discussing why time efficiency was not considered and how this could affect relevance and context. I.e. the algorithm is not created to optimise for quality per time.
+The time efficiency of the algorithm design was not considered in this investigation. As explained earlier in the thesis time was not considered because the potential need to distribute the algorithm would make time comparisons difficult. As a result the optimisation algorithm produced an algorithm design with rather poor time efficiency. In \cite{Moe2014} and \cite{Moe2014compact}, the time efficiency factor is considered and so the research is not directly comparable. This affects the context of the results.
 
 \subsection{Acceptance test}
-Acceptance test will be a simple comparison of F-Measure for the average performance of the algorithm and the performance with the best parameter set. The hypothesis will be accepted on the base that the F-Measure, which is considered to measure the relevant aspect of the algorithm's performance, is better for the optimised set when compared with the average performance.
+The hypothesis will be accepted on the base that the F-Measure, which is considered to measure the relevant aspect of the \CTC algorithm's performance, is better for the genetically optimised algorithm design when compared with the average performance.
 
-We've observed the results of the different parameter set and how the genetic parameters have outperformed the random parameters in terms of all three performance measures. While we can not claim external validity for the results we can assume that they are relevant and thus possible to use for an acceptance test of the hypotheses. Recall the null hypothesis and directional hypothesis below.
+We've observed the results of the different algorithm designs and how the genetic algorithm design has outperformed the random parameters in terms of all three performance measures. While we can not claim external validity for the results we can assume that they are relevant and thus possible to use for an acceptance test of the hypotheses. Recall the null hypothesis and directional hypothesis:
 
 \begin{description}
 	\item [\(H_{1}\)] The genetic algorithm gives values that for the ``klimauken'' corpus give better performance than the average performance of random values.
@@ -110,14 +80,14 @@ We've observed the results of the different parameter set and how the genetic pa
 	\item [\(H_{0}\)] The genetic algorithm does not give values that for the ``klimauken'' corpus give better performance than the average performance of random values.
 \end{description}
 
-The best parameter set from the genetic algorithm gives the \CTC algorithm an F-Measure of 0.735 compared to the average performance of 0.188. This is a significant improvement and we can safely reject the null-hypothesis. This also means that the directional hypothesis which states that the genetic algorithm gives better performance holds true as well.
+The best parameter set from the genetic algorithm gives the \CTC algorithm a F-Measure of 0.735 compared to the average performance of 0.188. This is a significant improvement and we can safely reject the null hypothesis. This also means that the directional hypothesis which states that the genetic algorithm gives better performance holds true as well. The effectiveness of the optimisation algorithm can also be backed up by the fact that the genetically computed algorithm design outperforms the manually tuned algorithm design from \cite{Moe2014compact}.
 
 \section{Feasibility}
 
-The effectiveness of the optimization algorithm has now been properly established, but is the optimization algorithm feasible? Feasible here refers to whether the optimization algorithm is practically runnable and usable. Runnable refers to practicality of running the algorithm hardware wise, i.e. what is its computation cost? The usability of the algorithm refers to whether researchers and other users of the \CTC algorithm can apply the optimization algorithm, especially with regards to the their corpus of choice.
+The effectiveness of the optimisation algorithm has been properly established, but is the optimisation algorithm feasible? Feasible here refers to whether the optimization algorithm is practically runnable and usable. Runnable refers to practicality of running the algorithm hardware wise, i.e. what is its computation cost? The usability of the algorithm refers to whether researchers and other users of the \CTC algorithm can use the optimisation algorithm, especially with regards to the their corpus of choice.
 
-The genetic algorithm as previously reported found good parameters after only 27 generations. That means the algorithm needed to calculate fitness for 3548 parameter sets. This required less than a day (24 hours) of calculation when running the algorithm on two CPU cores on a modern laptop CPU. The time is of course dependent on the population size and mutation rate. The small population size necessitated the pre-experimental point-wise tests. These as well required some time to run (a couple of hours). If the parameter ranges discovered in this thesis is valid for all news corpora it would not be necessary to run the point-wise tests, and in such a case the time requirement of the algorithm would be very reasonable.
+The genetic algorithm as previously reported found good parameters after only 27 generations. That means the algorithm needed to calculate fitness for 3548 parameter sets. This required less than a day (24 hours) of calculation when running the algorithm on two CPU cores on a modern laptop CPU. The time is of course dependent on the population size and mutation rate. The small population size necessitated the pre-experimental point-wise tests. These as well required some time to run (a few hours). If the parameter ranges discovered in this thesis is valid for all news corpora it would not be necessary to run the point-wise tests, and in such a case the time requirement of the algorithm would be very reasonable. Investigating the validity of the parameter range for the entire context (i.e. news corpora in general) should therefore be a priority in future research.
 
-In terms of usability the algorithm might need some work. It uses a specific XML structure for the corpus file. It is therefore not possible to directly run the algorithm with other corpora such as the RVC1 corpus and OHSUMED. The algorithm does have an easily extendable corpus processor created for this very reason. Any potential users of the optimization algorithm thus require some programming knowledge to use the algorithm. The algorithm is currently implemented to work with the relevance measures created for the tagging system used in the ``Klimauken'' corpus. Other corpora might use different tagging systems that does not fit with these. Potential users of the optimization algorithm should be aware of this and implement/modify the relevance and performance measures accordingly.
+In terms of usability the algorithm might need some work. It uses a specific XML structure for the snippet file used by the algorithm. It is therefore not possible to directly run the algorithm with other corpora such as the RVC1 corpus and OHSUMED. The algorithm does have an easily extensible corpus processor implementation created for this very reason. Any potential users of the optimisation algorithm should therefore have some programming knowledge in order to use the algorithm on other corpora. The algorithm is currently implemented to work with the relevance measures created for the tagging system used in the ``Klimauken'' corpus. Other corpora might use different tagging systems that does not fit with these. Potential users of the optimisation algorithm should be aware of this and implement/modify the relevance and performance measures accordingly.
 
-In conclusion the algorithm is feasible for general use without requiring much in terms of hardware resources, but the algorithm requires a bit of implementation work. To facilitate this the implementation has been open-sourced, implemented to be as flexible as possible, and implemented to allow modification.
+In conclusion the algorithm is feasible for general use without requiring much in terms of hardware resources, but the algorithm requires a bit of implementation work. To facilitate this the implementation has been open-sourced and implemented to be as flexible as possible.

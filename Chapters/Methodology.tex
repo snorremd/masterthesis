@@ -7,7 +7,7 @@
 
 \lhead{Chapter \ref{Methodology}. \emph{Methodology}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
-Research methodologies and standards used to test retrieval and classification algorithms form the foundation of this thesis' research methodology. While experiments in the information retrieval field do not necessarily directly involve human subjects, there are still standards and methodologies in place to ensure that experimental results are valid. This chapter will describe the scientific approach used in the scientific field of information retrieval, and how this approach was applied to this thesis work in conjunction with guidelines for experiments in software engineering.
+Research methodologies and standards used to test retrieval and classification algorithms form the foundation of this thesis' research methodology. While experiments in the information retrieval field do not necessarily directly involve human subjects, there are still standards and methods in place to ensure that experimental results are valid. This chapter will describe the scientific approach used in the scientific field of information retrieval, and how this approach was applied to this thesis work in conjunction with guidelines for experiments in software engineering and algorithm benchmarking.
 
 \section{Experimental Evaluation}
 \label{ExperimentalEvaluation}
@@ -15,7 +15,7 @@ The configuration and parameter sets for the \CTC algorithm was evaluated experi
 \begin{quote}The reason is that, in order to evaluate a system analytically (e.g., proving that the system is correct and complete), we would need a formal specification of the problem that the system is trying to solve (e.g., with respect to what correctness and completeness are defined), and the central notion of TC [Text Classification] (namely, that of membership of a document in a category) is, due to its subjective character, inherently nonformalizable. The experimental evaluation of a classifier usually measures its effectiveness (rather than its efficiency), that is, its ability to take the right classification decisions.
 \end{quote}
 
-Experimental evaluation have long been used and discussed in the field of information retrieval. One of the first experimental paradigms in information retrieval research, one that is still in use today, is the test collection evaluation paradigm introduced by The Cranfield research projects during the 60s, \cite{Cleverdon1966}. The experimental methodology formed during these experiments are nicely summarized by \cite[][564]{Voorhees2005} who writes that:
+Experimental evaluation have long been used and discussed in the field of information retrieval. One of the first experimental paradigms in information retrieval research, one that is still in use today, is the test collection evaluation paradigm introduced by The Cranfield research projects during the 60s, \parencite{Cleverdon1966}. The experimental methodology formed during these experiments are nicely summarized by \cite[][564]{Voorhees2005}:
 
 \begin{quote}
 At the core of this experimental methodology was the idea that live users could be removed from the evaluation loop, thus simplifying the evaluation and allowing researchers to run in vitro–style experiments in a laboratory with just their retrieval engine, a set of queries, a test collection, and a set of judgments (i.e., a list of relevant documents).
@@ -27,28 +27,30 @@ At the core of this experimental methodology was the idea that live users could 
 \item A set of questions, together with decisions as to exactly which documents are relevant to each question;
 \item A set of results of searches made in the test; these usually give the numbers of documents retrieved in the searches, divided into the relevant and non-relevant documents.
 \end{enumerate}
-These questions should be asked with regards to information retrieval experiments done on text search via queries, but can inspire similar questions for experiments done on text classification and clustering algorithms. Instead of forming questions and determining which documents are relevant to those question, one can form a set of categories and then decide which documents fall into which categories. In other words one might define a set of categories and classify each document in a collection to one of those categories. It is then possible to use these classifications when calculating the precision and recall values of a single cluster.
+These questions should be asked with regards to information retrieval experiments done on text search via queries, but can inspire similar questions for experiments done on text classification and clustering algorithms. Instead of forming questions and determining which documents are relevant to those questions, one can form a set of categories and then decide which documents fall into which categories. In other words one might define a set of categories and classify each document in a collection to one of those categories. It is then possible to use these classifications when calculating the precision and recall values of a single cluster.
 
 \section{Corpora}
 \label{Corpora}
 
-When performing experimental research on information retrieval systems it is customary to use standard document collections or corpora as they are also known. There are several corpora available for text classification and clustering research. \cite{Baeza-Yates2011a} describe some of the corpora available for text classification research among them: Reuters-21578, RCV: Reuters Corpus Volumes, the OHSUMED reference collection and 20 NewsGroups. Some of them are briefly explained below.
+When performing experimental research on information retrieval systems it is customary to use standard document collections (also known as corpora). There are several corpora available for text classification and clustering research. \cite{Baeza-Yates2011a} describe some of the corpora available for text classification research. Among them are: Reuters-21578, RCV: Reuters Corpus Volumes, the OHSUMED reference collection and 20 NewsGroups. Some of them are briefly explained below.
 
-Reuters, an international news agency have made several corpora that are available trough different sources. One Reuters corpus that have been much used in the text classification community is the \textit{Reuters 21578} corpus \cite{Lewis2004a}. The documents in this collection was collected from documents appearing on the Reuters newswire in 1987. The corpus was assembled and categorized by personnel from Reuters and Carnegie Group in 1987. This corpus thus resembles that used in the ``Recycling of news in the news papers 1999 - 2000'' research project.
+Reuters, an international news agency have made several corpora that are available trough different sources. One Reuters corpus that have been much used in the text classification community is the \textit{Reuters 21578} corpus, \parencite{Lewis2004a}. The documents in this collection were collected from documents appearing on the Reuters newswire in 1987. The corpus was assembled and categorized by personnel from Reuters and Carnegie Group in 1987.
 
-Reuters have since made a new corpus that is likely to replace the Reuters 21578 corpus. This new corpus is divided into three volumes: Reuters Corpus Volume 1 (RCV1), Reuters Corpus Volume 2 (RCV2) and TRC2. The first two volumes contain news stories from 96 - 97, and the last volume contains news stories from 08 to 09. RCV1 and TRC2 contain English news stories only, while RCV2 is multilingual \cite{NationalInstituteofStandardsandTechnology2004}. The article \citetitle{Lewis2004} provide more details about the RCV1 corpus, notes its benefits, and attempts to provide the documentation needed to use the corpus for evaluation of text classification and categorization algorithms, \parencite{Lewis2004}. ``\textit{It [the RCV1 corpus] consists of over 800,000 newswire stories that have been manually coded using three category sets.}'', \parencite[][362]{Lewis2004}. \cite{Lewis2004} note that the quality of coding for each part of the corpus is somewhat uneven, and that no formal specification of the coding practices used at the time of making the RCV1 corpus exist. This issue is somewhat alleviated by interviews performed by the authors where the staff involved in the creation of the corpus has been interviewed. According to \cite{Lewis2004} the corpus was made in an operational setting at Reuters and its use in research was first later considered. This is further evident when \cite{Lewis2004} describe the categories which are divided into three sets: Topics, Industries, and Regions. The categories are described as being tailored for business needs, \parencite{Lewis2004}. While the Reuters Corpus Volumes 1 collection might not be perfect, it is described as being one of the largest and most accurately coded text collections.
+Reuters 21578 corpus thus resembles the corpus used in the ``Recycling of news in the news papers 1999 - 2000'' research project. The ``Klimauken'' corpus consists of news papers from the on-line editions of several major Norwegian news papers. They were collected over a relatively short time span and tagged manually. The process and system that was used for collecting the news documents are described in \cite{Losnegaard}. Essentially the process includes manually checking the front pages of each news paper to make sure the system collects the relevant news documents and in the right order. The system also mandates a tagging step where the article being collected must be tagged with five tags, \parencite{Losnegaard}.
+
+Reuters has since made a new corpus that will likely replace the Reuters 21578 corpus. This new corpus is divided into three volumes: Reuters Corpus Volume 1 (RCV1), Reuters Corpus Volume 2 (RCV2) and TRC2. The first two volumes contain news stories from 96 - 97, and the last volume contains news stories from 08 to 09. RCV1 and TRC2 contain English news stories only, while RCV2 is multilingual, \parencite{NationalInstituteofStandardsandTechnology2004}. \cite{Lewis2004} provide more details about the RCV1 corpus, notes its benefits, and attempts to provide the documentation needed to use the corpus for evaluation of text classification and categorization algorithms.``\textit{It [the RCV1 corpus] consists of over 800,000 newswire stories that have been manually coded using three category sets.}'', \parencite[][362]{Lewis2004}. \citeauthor{Lewis2004} note that the quality of coding for each part of the corpus is somewhat uneven, and that no formal specification of the coding practices used at the time of making the RCV1 corpus exist. This issue is somewhat alleviated by interviews performed by the authors where the staff involved in the creation of the corpus has been interviewed. According to \citeauthor{Lewis2004} the corpus was made in an operational setting at Reuters and its use in research was first later considered. The categories are described as being tailored for business needs, \parencite{Lewis2004}. The Reuters Corpus Volumes 1 collection might not be perfect, but it is described as being one of the largest and most accurately coded text collections.
 
 This thesis focus mainly on news corpora, but the research group investigating the ``Klimauken'' corpus has also looked into the blogosphere. With this in mind it could be interesting to use a standard blog collection for evaluation of the algorithm in future research. Two blog collections are used in the blog track in the TREC conference, the Blogs06 and Blogs08 collections.\begin{quote}
-The TREC Blogs06 collection is a big sample of the blogosphere, and contains spam as well as possibly non-blogs, e.g. RSS feeds from news broadcasters. It was crawled over an eleven week period from 6th December 2005 until the 21st February 2006. The collection is 148GB in size [\dots] The collection was used in TREC 2006, 2007 and 2008 \cite{Macdonald2011}.
+The TREC Blogs06 collection is a big sample of the blogosphere, and contains spam as well as possibly non-blogs, e.g. RSS feeds from news broadcasters. It was crawled over an eleven week period from 6th December 2005 until the 21st February 2006. The collection is 148GB in size [\dots] The collection was used in TREC 2006, 2007 and 2008, \parencite{Macdonald2011}.
 \end{quote} 
 
-These corpora form a solid foundation for experimental evaluations and make it possible to replicate and compare results between research projects and researchers. But for this to be possible, it is necessary to use some formal evaluation measures that are employed by a majority of the research in the area of study. This will be the focus of the next section (Section~\ref{EvaluationMeasures}).
+These corpora form a solid foundation for experimental evaluations and make it possible to replicate and compare results between research projects and researchers. But for this to be possible, it is necessary to use some formal evaluation measures that are employed by a majority of the research in the area of study. This will be the focus of the next section (Section~\ref{EvaluationMeasures}). Because this thesis focus on measuring the improvement of the algorithm, numbers directly comparable to those in other research papers are not so important. Standard corpora for text classification research are therefore not be used.
 
 \section{Evaluation Measures}
 \label{EvaluationMeasures}
 There are some considerations to take when choosing evaluation measures. When performing experimental research it is important to use the same evaluation measures as those used in related research works to make the results comparable. In much of information retrieval research, text classification included, there are agreed upon measures that can be used while performing research. Such measures do not exist to the same extent for clustering algorithms because the measure of relevance may not be similar in different clustering research. For the \STC algorithm there seems to be a community of practice with regards to evaluation metrics. The measure of relevance in this research is quite similar to that used in much classification work where each document is assigned a class.
 
-\cite{Chim2007} detail how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical agglomerative clustering algorithm as well as the \STC algorithm. These formulas have also been used by \cite{Rafi2011} when they compare the standard suffix tree clustering algorithm of \citeauthor{Oren1998} with the algorithm formulated by \citeauthor{Chim2008}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
+\cite{Chim2007} describe how they perform an experimental evaluation of their clustering result in some detail. \citeauthor{Chim2007} use the evaluation measures on the results from a hierarchical agglomerative clustering algorithm as well as the \STC algorithm. These performance measures have also been used by \cite{Rafi2011} when they compare the standard suffix tree clustering algorithm of \citeauthor{Oren1998} with the algorithm authored by \citeauthor{Chim2008}. Their papers describe four standard measurements for clustering quality: precision, recall, F-Measure and overall F-Measure.
 
 If you have the sets
 
@@ -62,7 +64,7 @@ C^* = \{C_1^*, C_2^*, \dots, C_l^*\}
 D = \{D_{1}, D_{2}, \dots, D_{m}\}
 \end{displaymath}
 
-where \(C\) is the clusters produced by the algorithms on document set \(D\), and \(C^*\) is the ``correct'' classes of document set \(D\), then the recall, precision and F-measure of cluster \(j\) with respect to class \(i\) can be calculated as:
+where \(C\) is the clusters produced by the algorithms on document set \(D\), and \(C^*\) is the ``correct'' (i.e. ground truth) classes of document set \(D\), then the recall, precision and F-measure of cluster \(j\) with respect to class \(i\) can be calculated as:
 
 \begin{displaymath}
 recall(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_i^* \vert}
@@ -74,24 +76,24 @@ precision(i,j) = \frac{\vert C_{j} \cap C_i^* \vert}{\vert C_{j} \vert}
 \text{F-Measure}(i,j) = \frac{2 \cdot precision(i,j) \cdot recall(i,j)}{precision(i,j) + recall(i,j)}
 \end{displaymath}
 
-\cite{Chim2007} do not provide any information as to whether the classes of \(C^*\) must be disjoint (i.e. whether one document can be assigned to multiple classes). The authors use this performance measure on both the \STC and Hierarchical Agglomerative Clustering algorithms. The \STC algorithm allows clusters to be overlapping, i.e. a document can occur in more than one document. The Hierarchical Agglomerative algorithm builds non-overlapping clusters. Based on this information one can assume that the authors have used the above performance measurements on both the overlapping and non-overlapping cluster sets.
+\cite{Chim2007} do not provide any information as to whether the classes of \(C^*\) must be disjoint (i.e. no document can be assigned to multiple classes). The authors use this performance measure on both the \STC and Hierarchical Agglomerative Clustering algorithms. The \STC algorithm allows clusters to be overlapping, i.e. a document can occur in more than one document. The Hierarchical Agglomerative algorithm builds non-overlapping clusters. Based on this information one can assume that the authors have used the above performance measurements on both the overlapping and non-overlapping cluster sets.
 
-As was explained in the literature section recall aims to capture the fraction of positive results to the total number of correct results. In this context recall expresses the fraction of a category's documents the cluster contains. Precision shows the fraction of documents in a cluster that is correctly clustered given a category to the amount of documents in a cluster. Because precision and recall is not good measures by themselves (recall could be a 100\%, but often precision would then be very low) an F-Measure is often used in evaluation of text classifiers \cite{Baeza-Yates2011a}. The F-Measure is the harmonic mean between recall and precision and is high when both precision and recall is high \cite{Baeza-Yates2011b}. 
+As was explained in Chapter~\ref{Theory} recall aims to capture the fraction of true positive results to the total number of correct results. In this context recall expresses the fraction of a category's documents the cluster contains. Precision shows the fraction of documents in a cluster that is correctly clustered given a category to the amount of documents in a cluster. Because precision and recall is not good measures by themselves (recall could be a 100\%, but often precision would then be very low) an F-Measure is often used in evaluation of text classifiers \cite{Baeza-Yates2011a}. The F-Measure as defined above is the harmonic mean between recall and precision and is high when both precision and recall is high \cite{Baeza-Yates2011b}. Other F-Measure variants exists where either precision or recall is weighted higher than the other. Sometimes researchers might prefer to focus on either precision or recall. This is the case for \cite{Moe2014compact} where the precision is in focus. In this investigation a neutral measure is needed and so the harmonious F-Measure was used. 
 
-The precision, recall, and F-Measure measurements defined above are applied to one cluster and class at a time. In other words the F-Measure of a cluster j with regards to a class i might not be any good, but its F-Measure with regards to another class i' might be very good. \cite{Chim2007} define an overall F-Measure function that captures the F-Measures for all the correct classes defined for the document set. For this function only those clusters j which maximize the F-Measure score for class i are considered in the overall F-Measure score. The overall F-Measure of the clusters \(C\) can be calculated using the formula below where F-Measure refers to the previously described F-Measure score of a single cluster.
+The precision, recall, and F-Measure measurements defined above are applied to one cluster and class at a time. In other words the F-Measure of a cluster j with regards to a class i might not be any good, but its F-Measure with regards to another class i' might be very good. \cite{Chim2007} define an overall F-Measure function that captures the F-Measures for all the correct classes defined for the document set. For this function only those clusters j which maximize the F-Measure score for class i are considered in the overall F-Measure score. The overall F-Measure of the clusters \(C\) can be calculated using the function below where F-Measure refers to the previously described F-Measure score of a single cluster.
 
 \begin{displaymath}
-F := \sum_{i=1}^{l} \frac{\vert C_i^* \vert}{\vert D \vert} \cdot \max_{j=1,\dots,k} \{\text{F-Measure}(i,j)\}
+\text{F-Overall} = \sum_{i=1}^{\vert C^* \vert} \frac{\vert C_i^* \vert}{\vert D \vert} \cdot \max_{j=1,\dots,k} \{\text{F-Measure}(i,j)\}
 \end{displaymath}
 
 \subsection{News articles project}
-All documents in the ``Klimauken'' corpus is classified with five tags. See the tags attribute in Listing~\ref{lst:snippetfile} at page \pageref{lst:snippetfile} for an example of a document in snippet format. In context of this corpus a ground truth clusters consist of all documents with identical tags, \parencite{Moe2014}. But only looking at perfect matches might exclude those clusters that closely match a ground truth cluster. It thus makes sense to adjust the relevance definition and talk about degrees of correctness. To this end a measure, discrepancy, is introduced. \cite[][666]{Moe2014} offers this definition: A cluster \(C\) matches ground truth with discrepancy 5 - \(d\) if and only if \(d\) is the maximal number for which there is a ground-truth cluster \(G\) such that \(G \subseteq C\) and \(d\) is the number of words common to all tags in \(C \cup G\). If all documents in the cluster and ground truth cluster have all five topics in common the discrepancy is zero. An example of a cluster is given in Table~\ref{tab:clusterexample}.
+All documents in the ``Klimauken'' corpus is classified with five tags. See the tags attribute in Listing~\ref{lst:snippetfile} at page \pageref{lst:snippetfile} for an example of a document in snippet format. In context of this corpus ground truth clusters consist of all documents with identical tags, \parencite{Moe2014}. But only looking at perfect matches might exclude those clusters that closely match a ground truth cluster. It thus makes sense to adjust the relevance definition and talk about degrees of correctness. To this end a measure, discrepancy, is introduced. \cite[][666]{Moe2014} offers this definition: ``\textit{A cluster \(C\) matches ground truth with discrepancy 5 - \(d\) if and only if \(d\) is the maximal number for which there is a ground-truth cluster \(G\) such that \(G \subseteq C\) and \(d\) is the number of words common to all tags in \(C \cup G\)}''. If all documents in the cluster and ground truth cluster have all five topics in common the discrepancy is zero. An example of a cluster is given in Table~\ref{tab:clusterexample} on page \pageref{tab:clusterexample}.
 
 \subsubsection{Precision}
-With a definition of discrepancy in place one can define precision. The set of relevant clusters are here defined as those clusters best matching ground truth (zero discrepancy). Precision is then calculated as \(\frac{C \cap \text{Relevant}}{\vert C \vert}\). The division of retrieved clusters into levels of discrepancy allows us to relax the original measure and redefine what is relevant. One could allow ground truth clusters of discrepancy zero and one to be used when calculating precision. If the algorithm were to produce many clusters with a discrepancy of one, allowing these clusters to be counted as relevant could have a really big impact on the precision score of the result.
+With a definition of discrepancy in place one can define precision. The set of relevant clusters is here defined as those clusters best matching ground truth (zero discrepancy). Precision is then calculated as \(\frac{C \cap \text{Relevant}}{\vert C \vert}\). The division of retrieved clusters into levels of discrepancy allows us to relax the original measure and redefine what is relevant. One could allow ground truth clusters of discrepancy zero and one to be used when calculating precision. If the algorithm were to produce many clusters with a discrepancy of one, allowing these clusters to be counted as relevant could potentially have a really big impact on the precision score of the result. Example precision values for a clustering result is presented in Table~\ref{tab:clusterprecision} on page \pageref{tab:clusterprecision}.
 
 \subsubsection{Recall}
-The recall of a clustering result can be calculated as \(\frac{C \cap \text{Relevant}}{\vert G \vert}\). The recall of a clustering result thus describe the ratio of relevant clusters to the total number of ground truth clusters in the corpus. If one defines relevant clusters only as those matching ground truth with zero discrepancy, the measure captures the traditional recall measure. Again it is possible to relax the definition of relevance and allow clusters matching ground truth by some discrepancy.
+The recall of a clustering result can be calculated as \(\frac{C \cap \text{Relevant}}{\vert G \vert}\). The recall of a clustering result thus describes the ratio of relevant clusters to the total number of ground truth clusters in a corpus. If one defines relevant clusters only as those matching ground truth with zero discrepancy, the measure captures the traditional recall measure. Again it is possible to relax the definition of relevance and allow clusters matching ground truth by some discrepancy. Table~\ref{tab:clusterexample} shows an example of a cluster where a document would unfairly be dismissed because it has a discrepancy of 1. The document is clearly related to the others as it shares four tags. In this thesis only results for zero discrepancy will be included as we are interested in optimising the algorithm with regards to ground truth.
 
 \subsubsection{F-Measure}
 The new relevance definition does not affect the calculation of F-Measure. The F-Measure is indeed calculated as described in Chapter~\ref{Theory}, but can be calculated for different levels of discrepancy.
@@ -131,14 +133,14 @@ Documents & www.vg.no/sport/ski/langrenn/artikkel.php?artid=581044 www.aftenpost
 \begin{center}
 \begin{tabular}{|c|c|c|c|}
 \hline
-Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\ 
+Topic overlap &  Fraction of total clusters & Precision  & accumulated\\ 
 \hline
-0 -precision & 253 / 457 & 0.554 & 0.554 \\
-1 -precision & 2 / 457 & 0.004 & 0.558 \\
-2 -precision & 1 / 457 & 0.002 & 0.560\\
-3 -precision & 2 / 457 & 0.004 & 0.565\\
-4 -precision & 8 / 457 & 0.018 & 0.582\\
-5 -precision & 191 / 457 & 0.418 & 1.000\\
+0 disrepancy & 253 / 457 & 0.554 & 0.554 \\
+1 disrepancy & 2 / 457 & 0.004 & 0.558 \\
+2 disrepancy & 1 / 457 & 0.002 & 0.560\\
+3 disrepancy & 2 / 457 & 0.004 & 0.565\\
+4 disrepancy & 8 / 457 & 0.018 & 0.582\\
+5 disrepancy & 191 / 457 & 0.418 & 1.000\\
 \hline
 \end{tabular}
 \\Total: 457 (of  457)
@@ -150,15 +152,15 @@ Topic overlap &  Fraction of total clusters & Percentage  & accumulated\\
 
 \section{Experimental Research}
 \label{ExperimentalResearch}
-To test the optimization process described in this thesis a solid experimental foundation is needed. The experiment design is based chiefly on two sources. \citetitle{Wohlin2000} provide guidelines on experimentation in a software engineering context and how to ensure the validity of an experiment, \parencite{Wohlin2000}. Some of the key points will be presented here for clarity. \citetitle{Bartz-Beielstein2004} describe an experimental approach to algorithm optimization, \parencite{Bartz-Beielstein2004}. They are primarily concerned with the optimization of a particle swarm algorithm, and the research techniques described do not correlate directly with this research effort. The article will non the less be provide valuable insight into experimental benchmarking of algorithms and some of the techniques described will be used here. 
+To test the optimisation process described in this thesis a solid experimental foundation is needed. The experiment design is based chiefly on two sources. The first is \citetitle{Wohlin2000} which provides guidelines on experimentation in a software engineering context and how to ensure the validity of an experiment, \parencite{Wohlin2000}. Some information will be presented here for clarity. The second source is \citetitle{Bartz-Beielstein2004} which describes an experimental approach to algorithm optimisation, \parencite{Bartz-Beielstein2004}. They are primarily concerned with the optimisation of a particle swarm algorithm, and the research techniques described do not correlate directly with this research effort. The article will none the less  provide valuable insight into experimental benchmarking of algorithms and some of the techniques described will be used here. 
 
 \subsection{Experimentation in software engineering}
 
-When creating an experiment design one first needs to define the experiment. \cite{Wohlin2000} provide a goal definition template which states that the experiment goal should include information about the object of study, a purpose, quality focus (i.e. the primary effect under study), perspective (viewpoint from which the results are interpreted), and a context (the environment the experiment is run in), \parencite{Wohlin2000}.
+When creating an experiment design one first needs to define the experiment. \citeauthor{Wohlin2000} provide a goal definition template which states that the experiment goal should include information about the object of study, a purpose, quality focus (i.e. the primary effect under study), perspective (viewpoint from which the results are interpreted), and a context (the environment the experiment is run in), \parencite{Wohlin2000}.
 
 The planning phase involves context selection, hypothesis formulation, variable selection, choice of experiment design, instrumentation, and validity evaluation and definition of validity threats, \parencite{Wohlin2000}. Context selection should here be understood as the type of corpus on which the algorithm is run as information retrieval experiments does not involve people. Instrumentation involves among other things to select the measurement instruments.
 
-The book also discuss validity in experiments. Internal validity refers to the causality of the observed relationship between the treatment (of a group) and the outcome, \parencite{Wohlin2000}. In information retrieval research humans are taken out of the equation, and one can be fairly sure that the observed relationship is indeed a causal one. Internal validity will therefore not be discussed in this thesis. External validity is discussed with regards to generalization. If one observes a causal relationship between the treatment and outcome, one must then ask if it is possible to generalize the result outside the scope of the study, \parencite{Wohlin2000}. Because it is a general goal to make research generalizable external validity is an important measure that should be included.
+The book also discuss validity in experiments. Internal validity is not an issue in this investigation because the information retrieval methodology and an algorithm is used. External validity measures how generalisable the results are for the context of study, \parencite{Wohlin2000}. The issue of external validity will be briefly discussed in the next subsection.
 
 Operation, and analysis and interpretation, are the two last phases of an experiment. Operation consists of three steps: preparation, execution, and data validation, \parencite{Wohlin2000}. These steps ties neatly into the experimental benchmarking techniques as described below where pre-experimental planning, experimentation, and evaluation would be the corresponding steps.
 
@@ -177,7 +179,7 @@ Step & Action\\
 (S-2) & Scientific hypothesis\\
 (S-3) & Statistical hypothesis\\
 (S-4) & Specification\\
-(a) & optimization problem,\\
+(a) & optimisation problem,\\
 (b) & constraints,\\
 (c) & initialization method,\\
 (d) & termination method,\\
@@ -200,43 +202,36 @@ been reached, go to step (S-11)\\
 \end{center}
 \end{table}
 
-Step 1 through 4 corresponds with the planning phase discussed in the previous section. The pre-experimental planning phase includes defining what the researcher is going to study and how to collect the data, \parencite{Bartz-Beielstein2004}. As in all experiments some hypothesis needs to be defined. The specification of an experiment on the optimization of an algorithm should, according to \citeauthor{Bartz-Beielstein2004}, include a specification of the optimization problem, definition of constraints on the optimization, a description of how the algorithm is initialized, and an experiment design which describes the problem to be investigated and the algorithm design. The specification step is important because it makes the experiment reproducible.
-
-In \citetitle{Bartz-Beielstein2004} the problem design describes the optimization problems on which the particle swarm algorithm will work on. One can thus understand problem design as a definition of the problems that the algorithm is to solve.
+Step 1 through 4 correspond with the planning phase discussed in the previous section. The pre-experimental planning phase includes defining what the researcher is going to study and how to collect the data, \parencite{Bartz-Beielstein2004}. As in all experiments some hypothesis needs to be defined. The specification of an experiment on the optimisation of an algorithm should, according to \citeauthor{Bartz-Beielstein2004}, include a specification of the optimisation problem, definition of constraints on the optimisation, a description of how the algorithm is initialised, and an experiment design which describes the problem to be investigated and the algorithm design. The specification step is important because it makes the experiment reproducible.
 
 \subsection{Experiment specification and design}
 
 \subsubsection{Planning}
-The goal of the experiment is to analyze the optimization algorithm proposed in the thesis for the purpose of investigating whether the algorithm finds optimized parameters for news corpora  with respect to the F-Measure, precision and recall scores. These scores are the independent variables in this experiment. The dependent variable is the optimization algorithm. The context of the experiment is the ``Klimauken'' corpus which is at least somewhat representative of news corpora. This context is chosen for reasons of scope and benefit to existing research.
+The goal of the experiment is to analyse the optimisation algorithm proposed in the thesis for the purpose of investigating whether the algorithm finds optimized algorithm designs for news corpora  with respect to the F-Measure, precision and recall scores. These scores are the independent variables in this experiment. The dependent variable is the optimisation algorithm. The context of the experiment is the ``Klimauken'' corpus which is presumably somewhat representative of news corpora. This context is chosen for reasons of scope and benefit to existing research.
 
-TODO: Here I will present a bit of information about the ``Klimauken corpus''.
-
-During pre-experimental planning, tests were performed to find candidate parameters for the algorithm as well as good parameter ranges (see Chapter~\ref{EvaluationTesting}). Additionally the corpus file was processed to get a suitable format for clustering with different parameters. This included marking sentences up with appropriate text types.
+During pre-experimental planning, tests were performed to find candidate parameters for the algorithm as well as good parameter ranges (see Chapter~\ref{EvaluationTesting}). Additionally the corpus file was processed to get a suitable format for the \CTC algorithm. This included marking sentences up with appropriate text types.
 
 \subsubsection{Hypothesis}
 
-To investigate whether the optimization algorithm is effective a hypothesis was defined:
+To investigate whether the optimisation algorithm is effective a hypothesis was defined:
 
-\begin{description}
-	\item []Optimization algorithm
 	\begin{description}
 	\item [\(H_{1}\)] The genetic algorithm gives values that for the ``klimauken'' corpus give better performance than the average performance of random values.
 	% \item [\(H2_{1}\)] The genetic algorithm described in this thesis produce a parameter set \(p_{optimized}\) that for the ``klimauken'' corpus gives better performance than the average performance of ten random parameter sets.
 	% \item [\(H2_{0}\)] The genetic algorithm described in this thesis does not produce a parameter set \(p_{optimized}\) that is worse than the default parameter set \(p_{default}\).
 	\item [\(H_{0}\)] The genetic algorithm does not give values that for the ``klimauken'' corpus give better performance than the average performance of random values.
 	\end{description}
-\end{description}
 
-The hypothesis only test the specific implementation of the Genetic Algorithm as implemented in this thesis work. Other optimization algorithms or other implementations of the Genetic Algorithm might perform differently from this one. By constricting the hypothesis to only account for this implementation of the Genetic Algorithm it is possible to formulate a null hypothesis. The results should however indicate whether this optimization approach has any virtue, or if genetic algorithms are wholly unsuitable for this optimization problem.
+The hypothesis only test the specific implementation of the genetic algorithm as implemented in this thesis work. Other optimisation algorithms or other implementations of the genetic algorithm might perform differently from this one. By constricting the hypothesis to only account for this implementation of the genetic algorithm it is possible to formulate a null hypothesis. The results should however indicate whether this optimisation approach has any virtue, or if genetic algorithms are wholly unsuitable for this optimisation problem.
 
-The scope of this thesis does not allow for additional hypotheses to be investigated. For future research an additional possible hypothesis that would be worth testing is whether the optimized parameter set is also optimized for similar corpora.
+The scope of this thesis does not allow for additional hypotheses to be investigated. For future research an additional possible hypothesis that would be worth testing is whether the optimised parameter set is also optimised for similar corpora.
 
 \subsubsection{Algorithm and problem designs}
-The algorithm design describes the parameter sets used in the experimentation phase. The algorithm designs are listed in Table~\ref{tab:algorithmdesign} on page \pageref{tab:algorithmdesign}. Each column corresponds to one parameter in the algorithm and is labeled with an abbreviation of the parameter name. Please refer to Table~\ref{tab:parameterabbreviationdictionary} on page \pageref{tab:parameterabbreviationdictionary} to see a dictionary for the abbreviations.
+An algorithm design is a specific instantiation of parameters. The parameters determine the exact settings to use in the algorithm. One example is the tree type parameter that determines if the algorithm should use suffix or n-gram expansion, and the parameter numbers to use in the case of n-grams and range-grams. The algorithm designs are listed in Table~\ref{tab:algorithmdesign} on page \pageref{tab:algorithmdesign}. Each column corresponds to one parameter in the algorithm and is labelled with an abbreviation of the parameter name. Please refer to Table~\ref{tab:parameterabbreviationdictionary} on page \pageref{tab:parameterabbreviationdictionary} to see a dictionary for the abbreviations.
 
-Three specific algorithm designs have been defined: \citeauthor{Oren1998} parameters, Genetic params, and \citeauthor{Moe2014} parameters. The \citeauthor{Oren1998} parameters are not directly relevant to the experiment. Its inclusion can be argued for because it serves as a interesting comparison for the average performance of the algorithm and the performance with optimized parameters. The \citeauthor{Moe2014} parameters were included on the same basis. These parameters measure how well the algorithm performs on a corpus when the parameters have been manually optimized for the ``Klimauken'' corpus. The last parameter set, Genetic params, were created using the \GA optimization process. It is this parameter set that will be used in the experiments. In addition to these three parameter sets, 100 random parameter sets were created to measure the average performance of the \CTC algorithm on the ``Klimauken'' corpus. This was done to establish a base performance to measure the optimized parameters against. These are not listed in Table~\ref{tab:algorithmdesign} for practical reasons.
+Three specific algorithm designs have been defined: \citeauthor{Oren1998} parameters, Genetic parameters, and \citeauthor{Moe2014compact} parameters. The \citeauthor{Oren1998} parameters are not directly relevant to the experiment. Its inclusion can be argued for because it serves as an interesting comparison for the average performance of the algorithm and the performance with optimized parameters. The \citeauthor{Moe2014compact} parameters were included on the same basis. There are several algorithm designs specified in \cite{Moe2014compact}. The algorithm design where the top base clusters amount were specified to be 5000 was chosen because it offers the best balance between recall and precision. \citeauthor{Moe2014compact} do not however evaluate their algorithm designs with F-Measure in mind. The \citeauthor{Moe2014compact} parameters measure how well the algorithm performs on a corpus when the parameters have been manually tuned for the ``Klimauken'' corpus. The last algorithm design, Genetic parameters, were created using the \GA optimisation process. It is this algorithm design that will be used in the experiments. In addition to these three algorithm designs, 100 random algorithm designs (parameter sets) were created to measure the average performance of the \CTC algorithm on the ``Klimauken'' corpus. This was done to establish a base performance to measure the Genetic parameters algorithm design against. The random algorithm designs are not listed in Table~\ref{tab:algorithmdesign} for practical reasons.
 
-The random parameters were generated using the \texttt{generate\_random\_chromosome} function implemented for the genetic algorithm. The specific values and their limits are listed below:
+It should be pointed out that the random parameters are not completely random. They were generated using the \texttt{generate\_random\_chromosome} function implemented for the genetic algorithm. The ranges are listed below:
 
 \begin{description}
   \item[Tree types:] Suffix, Mid-gram, N-gram, Range-gram\hfill
@@ -256,12 +251,12 @@ The random parameters were generated using the \texttt{generate\_random\_chromos
   \item[Order descending:] 0 or 1
   \item[Text types:] (0 - 1) for Frontpage Heading, Frontpage Introduction, Article Heading, Article Introduction, Article Byline, Article Text
   \item[Text amount:] 0.0 - 1.0
-  \item[Similarity measure:] Etzioni, Jaccard, Cosine, Amendment 1C\hfill
+  \item[Similarity measure:] Etzioni, Jaccard, Cosine, Amendment similarity\hfill
   	\begin{description}
 	  \item[Etzioni:] 0.0 - 1.0 (Etzioni threshold)
 	  \item[Jaccard:] 0.0 - 1.0 (Jaccard threshold)
 	  \item[Cosine:] 0.0 - 1.0 (Jaccard threshold) \& 0.0 - 1.0 (Cosine threshold)
-	  \item[Amendment 1C:] 0.0 - 1.0 (Jaccard threshold), 5 - 500 (avg. corpus frequency threshold), \& 0 - 50 (intersect minimum limit) 
+	  \item[Amendment similarity:] 0.0 - 1.0 (Etzioni threshold), 5 - 500 (avg. corpus frequency threshold), \& 0 - 50 (intersect minimum limit) 
 	\end{description}
 \end{description}
 
@@ -304,7 +299,7 @@ The random parameters were generated using the \texttt{generate\_random\_chromos
   \hline
   Genetic params & 4-slice & 7937 & 141 & 0.47 & 11 & 17 & False & True & False & 0.32 & Front page intro, Article heading, article intro & Etzioni (0.99) \\
   \hline
-  \citeauthor{Moe2014} parameters & Mid-gram & 5000 & 6 & 0.6 & 2 & 7 & 0 & 0 & 1 & 0 & Article Heading, Article Byline, Article Introduction & Etzioni (0.5 threshold)\\
+  \citeauthor{Moe2014compact} parameters & Mid-gram & 5000 & 6 & 0.6 & 2 & 7 & 0 & 0 & 1 & 0 & Article Heading, Article Byline, Article Introduction & Etzioni (0.5 threshold)\\
   \hline
     \caption{Algorithm designs used in the experiments.}
 	\label{tab:algorithmdesign}
@@ -312,24 +307,18 @@ The random parameters were generated using the \texttt{generate\_random\_chromos
 \end{center}
 \end{landscape}
 
-Table~\ref{tab:problemdesign} on page \pageref{tab:problemdesign} describes the clustering problem used in the experiment. The Experiment column specify the hypothesis for which the problem design was applied. The algorithm design is a reference to the parameter sets specified in Table~\ref{tab:algorithmdesign}. To keep the results in line with the classifications provided by the experts that prepared the ``Klimauken'' corpus, singleton ground truth clusters were preserved. The F-Measure beta value was set to 1 to weigh precision and recall equally.
+Table~\ref{tab:problemdesign} describes the clustering problem used in the experiment. The Experiment column specify the hypothesis for which the problem design was applied. The algorithm design is a reference to the parameter sets specified in Table~\ref{tab:algorithmdesign}. The F-Measure beta value was set to 1 to weigh precision and recall equally.
 
 \begin{table}
 \small
 \begin{center}
   \begin{tabular}{|l|p{2.5cm}|l|l|l|}
   \hline
-  Experiment & Algorithm Design & Drop singelton ground truth & Beta value & Corpus\\ 
+  Experiment & Algorithm Design & Beta value & Corpus\\ 
   \hline
-  E1 & Genetic params & False & 1 & Klimauken\\
+  E1 & Genetic & 1 & Klimauken\\
   \hline
-  E1 & Random 1 & False & 1 & Klimauken\\
-  \hline
-  E1 & Random 2 & False & 1 & Klimauken\\
-  \hline
-  E1 & Random ... & False & 1 & Klimauken\\
-  \hline
-  E1 & Random 100 & False & 1 & Klimauken\\
+  E1 & Random \(n\) & 1 & Klimauken\\
   \hline
   \end{tabular}
 \end{center}
@@ -338,6 +327,6 @@ Table~\ref{tab:problemdesign} on page \pageref{tab:problemdesign} describes the 
 \end{table}
 
 \subsubsection{Validity and reproducibility}
-The experiment is run in a narrow context. While the ``Klimauken'' corpus should be similar to other news corpora, it is admittedly not possible to argue that it represents news corpora in general. The experiment can not be said to have been designed with external validity in mind. Fortunately the results will still provide insight into the performance of the optimization algorithm in the selected context and indicate whether the algorithm has merit for news corpora in general.
+The experiment was run in a narrow context. While the ``Klimauken'' corpus should be similar to other news corpora, it is admittedly not possible to argue that it represents news corpora in general. The experiment can not be said to have been designed with external validity in mind. Fortunately the results still provide insight into the performance of the optimisation algorithm in the selected context and indicate whether the algorithm has merit for news corpora in general. External validity is not considered a priority because the main goal of this research effort is to demonstrate the feasibility of the optimisation algorithm. Demonstrating the feasibility of the optimisation algorithm for the selected corpus should be enough to indicate its feasibility for similar corpora.
 
-Reproducibility has been planned for in several ways. The code for the optimization algorithm is open source and easily available to other researchers. The algorithm and problem designs are well defined and specify how the algorithm was run in the experiments. The corpus is unfortunately not freely available and so it might take some work to gain access. Future research should therefore look into running the algorithm on the standard news corpora.
+Reproducibility has been planned for in several ways. The code for the optimisation algorithm is open source and easily available to other researchers. The algorithm and problem designs are well defined and specify how the algorithm was run in the experiments. The corpus is unfortunately not freely available and so it might take some work to gain access. Future research should therefore look into running the algorithm on standard news corpora.
