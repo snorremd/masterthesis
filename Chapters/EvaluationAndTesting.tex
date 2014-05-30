@@ -14,7 +14,7 @@
 %----------------------------------------------------------------------------------------
 % SECTION 1
 %----------------------------------------------------------------------------------------
-The first section in this chapter provides a brief test of the algorithm design used by \cite{Oren1998}. This is done to demonstrate how the original algorithm design of the \STC algorithm does not perform well on all types of corpora. The following section describes a test of one of the algorithm designs used in research related to the \citetitle{Moe2014compact} paper in order to showcase how well the algorithm performs when the algorithm design has been manually tuned for a specific corpus.
+The first section in this chapter provides a brief test of the algorithm design used by \cite{Oren1998}. This is done to demonstrate how the original algorithm design of the \STC algorithm does not perform well on all types of corpora. The following section describes a test of one of the algorithm designs used in research related to the \citetitle{Moe2013compact} paper \parencite{Moe2013compact} in order to showcase how well the algorithm performs when the algorithm design has been manually tuned for a specific corpus.
 
 To answer the hypothesis a measure of the \CTC algorithms base performance is needed. The third section will provide an overview of how the performance of the \CTC algorithm was calculated using the average performance of random algorithm designs. Before presenting the algorithm design produced by the optimisation algorithm and its performance, a section will describe several point-wise tests that were done to find sensible parameter ranges for the optimisation algorithm.
 
@@ -110,7 +110,7 @@ Discrepancy & Number of gt to total & Precision  & Recall & F-Measure\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % KLIMAUKEN PARAMETERS TESTS
 \section{``Klimauken'' algorithm design test}
-In relation to the \citetitle{Elgesem2009} research project and work on the \CTC algorithm \cite{Moe2014compact} have found an algorithm design that produce both high precision and recall. The better recall is achieved by increasing the number of base clusters to merge, but this comes at the expense of time efficiency. The number of base clusters that were used here were chosen because it had the best precision to recall balance. The top base clusters value is chosen from one of several algorithm designs proposed in the research, \parencite{Moe2014compact}. Likewise the Amendment similarity measure was used in this test because it offers the best results.
+In relation to the \citetitle{Elgesem2009} research project and work on the \CTC algorithm \cite{Moe2013compact} have found an algorithm design that produce both high precision and recall. The better recall is achieved by increasing the number of base clusters to merge, but this comes at the expense of time efficiency. The number of base clusters that were used here were chosen because it had the best precision to recall balance. The top base clusters value is chosen from one of several algorithm designs proposed in the research, \parencite{Moe2013compact}. Likewise the Amendment similarity measure was used in this test because it offers the best results.
 
 The parameters are as follows:
 \begin{itemize}
@@ -129,7 +129,7 @@ The parameters are as follows:
   \item Similarity measures: Amendment Similarity, Etzioni threshold: 0.5, average corpus frequency: 5, intersect minimum limit: 1
 \end{itemize}
 
-If we compare the results of the ``Klimauken'' and ``Etzioni'' algorithm designs we see that the ``Klimauken'' algorithm design performs much better. Both the precision and recall values are much higher. One obvious reason for the higher recall is the fact that this algorithm design produces more clusters which makes the probability of finding more ground truth clusters higher. While the algorithm design produces results where 2339 clusters match ground truth, many of these clusters overlap in terms of documents and labels.
+If we compare the results of the ``Klimauken'' (see Table~\ref{tab:klimaukenparametersgroundtruth}) and ``Etzioni'' algorithm designs we see that the ``Klimauken'' algorithm design performs much better. Both the precision and recall values are much higher. One obvious reason for the higher recall is the fact that this algorithm design produces more clusters which makes the probability of finding more ground truth clusters higher. While the algorithm design produces results where 1583 clusters match ground truth, many of these clusters overlap in terms of documents and labels.
 
 \begin{table}[H]
 \setstretch{1}
@@ -147,7 +147,7 @@ Discrepancy & Number of gt to total & Precision & Recall & F-Measure\\
 \hline
 \end{tabular}
 \end{center}
-\caption{Precision of algorithm design from \citeauthor{Moe2014compact}}
+\caption{Results for algorithm design from \citeauthor{Moe2013compact}}
 \label{tab:klimaukenparametersgroundtruth}
 \end{table}
 
@@ -259,13 +259,13 @@ Discrepancy & Precision & Recall & F-Measure\\
 
 \section{Point-wise tests}
 
-The main goal of the point-wise tests were to identify sensible parameter ranges for the genetic algorithm. The point-wise tests were necessary to reduce the feature space of the optimisation task to reduce running time. The preparation of the tests and the analysis of the test results were a time intensive task. One must ask whether this preparation work is such intensive a task that it makes the optimisation algorithm infeasible. As we will see in the end of this section, the tests also suggest an alternative method of optimisation where each parameter in turn is optimised within an otherwise fixed parameter set (algorithm design) as base.
+The main goal of the point-wise tests were to identify sensible parameter ranges for the genetic algorithm. Point-wise here refers to testing where one parameter were tested with a range of different values with fixed values for the other parameters. The point-wise tests were necessary to reduce the feature space of the optimisation task to reduce running time. The preparation of the tests and the analysis of the test results were a somehwat time intensive task, but probably beneficial in terms of making the genetic optimisation algorithm feasible.
 
-Sub-section~\ref{subsec:incrementalconclusion} will provide a summary of the point-wise tests and list the performance for a point-wise optimised algorithm design. The point-wise optimised algorithm design will not be discussed in detail because it is not applicable to the research goal of the thesis. Its use in this thesis serves to provide a reference for readers of the thesis who might want to look into a point-wise optimisation process. The coming sections will describe the tests performed on each parameter.
+Sub-section~\ref{subsec:incrementalconclusion} will provide a summary of the point-wise tests and list the performance for a point-wise optimised algorithm design. The point-wise optimised algorithm design will not be discussed in detail because it is not applicable to the research goal of the thesis. The coming sections will describe the tests performed on each parameter.
 
 Each parameter identified as a candidate parameter for the optimisation problem were individually tested with incrementally increasing values. The dependencies and interplay between the parameters are of course lost in these tests. The point-wise tests were run to ensure that each parameter has a measurable influence on the result, and to identify reasonable value ranges for each parameter. The results of each parameter test have been provided in form of line and bar charts in Appendix~\ref{AppendixA}. The more important diagrams are presented within this section for illustration.
 
-The point-wise test results rely on the base configuration of the parameter set used in the tests. The tests were therefore run twice, first with the algorithm design specified by \citeauthor{Oren1998} as base parameters, and once with the algorithm design used by \cite{Moe2014compact}. See Listing~\ref{lst:etzioniparams} and Listing~\ref{lst:ctcparams} for the parameter values. Results are provided for both base parameter sets.
+The point-wise test results rely on the base configuration of the parameter set used in the tests. The tests were therefore run twice, first with the algorithm design specified by \citeauthor{Oren1998} as base parameters, and once with the algorithm design used by \cite{Moe2013compact}. See Listing~\ref{lst:etzioniparams} and Listing~\ref{lst:ctcparams} for the parameter values. Results are provided for both base parameter sets.
 
 \subsection{Tree type tests}
 A test on each expansion technique was performed. Diagram~\ref{diag:treetypesetzioni} shows that there are significant differences in performance between the different expansion techniques under the parameters specified by \citeauthor{Oren1998}. The suffix expansion technique performs better than the others. The algorithm performs very bad when using wide range-slice expansion, which only gets an F-Measure 0 score of 2\%. This can be attributed to the very low recall. Suffix expansion scores considerably much better on precision, scoring 7 percentile points higher than the second best expansion technique, mid-gram expansion.
@@ -327,9 +327,9 @@ A test on each expansion technique was performed. Diagram~\ref{diag:treetypesetz
 % \end{center}
 % \end{table}
 
-The results (see Diagram~\ref{diag:treetypesrichard}) achieved with the \citeauthor{Moe2014compact} parameters shows a different picture. The difference in scores between the different expansion techniques are quite small. The biggest difference is seen in the recall score which is significantly lower for 5-gram and range-gram expansion than for suffix and mid-gram expansion. The difference between suffix and mid-gram expansion is very small both in terms of precision and recall. This corresponds well with existing research which remarks that the mid-gram and suffix expansion techniques produce relatively comparable clustering results, but that mid-gram expansion does so in a shorter time, \parencite{Moe2014compact}.
+The results (see Diagram~\ref{diag:treetypesrichard}) achieved with the \citeauthor{Moe2013compact} parameters shows a different picture. The difference in scores between the different expansion techniques are quite small. The biggest difference is seen in the recall score which is significantly lower for 5-gram and range-gram expansion than for suffix and mid-gram expansion. The difference between suffix and mid-gram expansion is very small both in terms of precision and recall. This corresponds well with existing research which remarks that the mid-gram and suffix expansion techniques produce relatively comparable clustering results, but that mid-gram expansion does so in a shorter time, \parencite{Moe2013compact}.
 
-The differences shown in the results more than justify the inclusion of all expansion techniques as parameters in the algorithm. The different expansion techniques are shown to behave differently with different parameters as base. Range-gram expansion does very poorly using the \citeauthor{Oren1998} parameters, but performs much better when using the \citeauthor{Moe2014compact} parameters. With different ranges the range-gram expansion technique might perform even better.
+The differences shown in the results more than justify the inclusion of all expansion techniques as parameters in the algorithm. The different expansion techniques are shown to behave differently with different parameters as base. Range-gram expansion does very poorly using the \citeauthor{Oren1998} parameters, but performs much better when using the \citeauthor{Moe2013compact} parameters. With different ranges the range-gram expansion technique might perform even better.
 
 \textbf{N-gram}
 
@@ -400,16 +400,16 @@ The number of base clusters included in the base cluster merging step has a grea
   \end{semilogxaxis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different limits on top base clusters amount using the \citeauthor{Moe2014compact} algorithm design as base.}
+  \caption{Performance of the \CTC algorithm for different limits on top base clusters amount using the \citeauthor{Moe2013compact} algorithm design as base.}
   \label{diag:topbaseclustersrichard}
 \end{diagram}
 
-For the \citeauthor{Moe2014compact} parameter set the results look somewhat different. Here the precision starts out high. The precision then naturally goes down as the number of top base clusters goes up and the recall increase, See Diagram~\ref{diag:topbaseclustersrichard}. The fact that the precision starts out so high when it starts out low for the other base parameter set could possibly be explained by the scoring function for base clusters in the \citeauthor{Moe2014compact} parameter set which inverse the scores.
+For the \citeauthor{Moe2013compact} parameter set the results look somewhat different. Here the precision starts out high. The precision then naturally goes down as the number of top base clusters goes up and the recall increase, See Diagram~\ref{diag:topbaseclustersrichard}. The fact that the precision starts out so high when it starts out low for the other base parameter set could possibly be explained by the scoring function for base clusters in the \citeauthor{Moe2013compact} parameter set which inverse the scores.
 
 So why do \cite{Oren1998} specify such a low base cluster amount? It is likely that they only use 500 base clusters because of time constraints. They use the algorithm in an on-line search engine results context where time efficiency is a factor. Time constraints are not considered in this thesis. A higher amount of included base clusters are thus considered feasible for the algorithm. We have seen that a high number for top base clusters amount not necessarily corresponds to higher precision. It thus seems reasonable to set the range at 100 to 10,000 base clusters in order to explore possible edge cases.
 
 \subsection{Min term occurrence and max term ratio}
-\citeauthor{Oren1998} set the min term occurrence to four. For the ``Klimauken'' corpus testing reveals that the \citeauthor{Oren1998} algorithm design performs better for higher values of min term occurrence (see Diagram~\ref{diag:mintermoccurrenceetzioni}). The precision evens out at a limit somewhere around 70. The precision at this limit is twice as high as the precision at a limit of 4. The recall shows similar trends, maxing out at a limit of 150. It is thus clear that the min term occurrence limit can have great effect on the performance of the \CTC algorithm, at least for the algorithm design specified by \citeauthor{Oren1998}. For the \citeauthor{Moe2014compact} parameter base the min term occurrence parameter has less impact. The precision goes up from approximately 52\% at 0 to approximately 57\% at 1 and then gradually sinks back to approximately 52\% at 30 from where it stays the same. The zeroth value does not show in the diagram because the x axis is logarithmic.
+\citeauthor{Oren1998} set the min term occurrence to four. For the ``Klimauken'' corpus testing reveals that the \citeauthor{Oren1998} algorithm design performs better for higher values of min term occurrence (see Diagram~\ref{diag:mintermoccurrenceetzioni}). The precision evens out at a limit somewhere around 70. The precision at this limit is twice as high as the precision at a limit of 4. The recall shows similar trends, maxing out at a limit of 150. It is thus clear that the min term occurrence limit can have great effect on the performance of the \CTC algorithm, at least for the algorithm design specified by \citeauthor{Oren1998}. For the \citeauthor{Moe2013compact} parameter base the min term occurrence parameter has less impact. The precision goes up from approximately 52\% at 0 to approximately 57\% at 1 and then gradually sinks back to approximately 52\% at 30 from where it stays the same. The zeroth value does not show in the diagram because the x axis is logarithmic.
 
 Given the results for the \citeauthor{Oren1998} parameter base the range for the min term occurrence parameter was set to 0 to 150 with increments of 1.
 
@@ -477,14 +477,14 @@ Given the results for the \citeauthor{Oren1998} parameter base the range for the
   \end{semilogxaxis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different limits on minimal term occurrence in collection using the \citeauthor{Moe2014compact} algorithm design as base.}
+  \caption{Performance of the \CTC algorithm for different limits on minimal term occurrence in collection using the \citeauthor{Moe2013compact} algorithm design as base.}
   \label{diag:mintermoccurrencerichard}
 \end{diagram}
 
-For the max term ratio in collection parameter the numbers look much more stable. For the \citeauthor{Oren1998} parameter base the results seem to be very stable for all ratios (see Diagram~\ref{diag:maxtermratioetzioni}). The results do not change with the \citeauthor{Moe2014compact} parameter base (Diagram~\ref{diag:maxtermratiorichard}). There is a chance that the max ratio limit might behave differently under a different base parameter set. A parameter set that specifies that more text should be included might yield different results. The results do not warrant using max term ratio as a parameter as it does not have any effect on the result. A broader range might however catch special edge cases where a higher limit on the max ratio in collection parameter might be good. There might also be parameter sets where the max ratio might influence the result to a higher degree. The limit for this parameter was set to 0.01 to 1.0 in the interest of examining all possible cases. The selection of initial values are not weighted, but it is expected to see results within the optimal range seen in the point-wise test.
+For the max term ratio in collection parameter the numbers look much more stable. For the \citeauthor{Oren1998} parameter base the results seem to be very stable for all ratios (see Diagram~\ref{diag:maxtermratioetzioni}). The results do not change with the \citeauthor{Moe2013compact} parameter base (Diagram~\ref{diag:maxtermratiorichard}). There is a chance that the max ratio limit might behave differently under a different base parameter set. A parameter set that specifies that more text should be included might yield different results. The results do not warrant using max term ratio as a parameter as it does not have any effect on the result. A broader range might however catch special edge cases where a higher limit on the max ratio in collection parameter might be good. There might also be parameter sets where the max ratio might influence the result to a higher degree. The limit for this parameter was set to 0.01 to 1.0 in the interest of examining all possible cases. The selection of initial values are not weighted, but it is expected to see results within the optimal range seen in the point-wise test.
 
 \subsection{Min and max limit for base cluster score}
-The tests on the min limit for base cluster score were run with an effectively unconstrained max limit (set to the length of the longest base cluster label). The min limit for base cluster score sees significant performance variance using the \citeauthor{Oren1998} algorithm design as base. Diagram~\ref{diag:minlimitbcscoreetzioni} shows that the precision goes from a score of about 4.6\% for a min limit of zero to a score of about 50\% for a limit of fourteen. That is a huge improvement. For the \citeauthor{Moe2014compact} algorithm design the min limit does not affect the results that much (Diagram~\ref{diag:minlimitbcscorerichard}). The precision score varies with about 9 percentile points from the lowest score to the highest. The score does not vary for limits above five. Based on these results a limit between 0 and 15 was chosen. The upper limit was chosen to allow possible edge cases.
+The tests on the min limit for base cluster score were run with an effectively unconstrained max limit (set to the length of the longest base cluster label). The min limit for base cluster score sees significant performance variance using the \citeauthor{Oren1998} algorithm design as base. Diagram~\ref{diag:minlimitbcscoreetzioni} shows that the precision goes from a score of about 4.6\% for a min limit of zero to a score of about 50\% for a limit of fourteen. That is a huge improvement. For the \citeauthor{Moe2013compact} algorithm design the min limit does not affect the results that much (Diagram~\ref{diag:minlimitbcscorerichard}). The precision score varies with about 9 percentile points from the lowest score to the highest. The score does not vary for limits above five. Based on these results a limit between 0 and 15 was chosen. The upper limit was chosen to allow possible edge cases.
 
 % Min Limit BC Score
 \begin{diagram}[H]
@@ -520,7 +520,7 @@ The tests on the min limit for base cluster score were run with an effectively u
   \label{diag:minlimitbcscoreetzioni}
 \end{diagram}
 
-The max limit for base cluster score parameter does not seem to have much effect on the results. Given the \citeauthor{Oren1998} algorithm design, Diagram~\ref{diag:maxlimitbcscoreetzioni} shows that the max limit for base cluster score performs better when the max limit is very low. In fact a max limit of 3 (where min limit is set to 2) performs much better than higher max limits. This suggest that the algorithm either performs better with lower max limits for this parameter, or that it performs better when the difference between the min and max limits are low, or even a combination of both. An additional test where the min limit is bound to 8, the best performing value shown in the above paragraph, shows that the max limit does not have an effect at all (see Diagram~\ref{diag:maxlimitbcscoreetzioni2}). This is also true for the results retrieved when running the \CTC algorithm with the algorithm design of \citeauthor{Moe2014compact} (see Diagram~\ref{diag:maxlimitbcscorerichard}).
+The max limit for base cluster score parameter does not seem to have much effect on the results. Given the \citeauthor{Oren1998} algorithm design, Diagram~\ref{diag:maxlimitbcscoreetzioni} shows that the max limit for base cluster score performs better when the max limit is very low. In fact a max limit of 3 (where min limit is set to 2) performs much better than higher max limits. This suggest that the algorithm either performs better with lower max limits for this parameter, or that it performs better when the difference between the min and max limits are low, or even a combination of both. An additional test where the min limit is bound to 8, the best performing value shown in the above paragraph, shows that the max limit does not have an effect at all (see Diagram~\ref{diag:maxlimitbcscoreetzioni2}). This is also true for the results retrieved when running the \CTC algorithm with the algorithm design of \citeauthor{Moe2013compact} (see Diagram~\ref{diag:maxlimitbcscorerichard}).
 
 The min limit has been set to a range from 0 to 20, and the max limit from 3 to 25. The min limit is constrained to be at least 1 smaller than the max limit. The max limit will similarly be 1 larger than the min limit. This way one should be able to explore both large and small differences in min and max limits as well as limits both in the low and high ranges.
 
@@ -529,7 +529,7 @@ Two different parameters will be explored in this section: drop singleton base c
 
 \textbf{Drop singleton base clusters}
 
-For the \citeauthor{Oren1998} algorithm design the drop singleton base clusters parameter have a significant effect on the result (see Diagram~\ref{diag:dropsingletonbcetzioni}). Dropping singleton base clusters reduce the precision by more than half from 31\% to only 14\%. The recall also sees a dramatic decrease. This could be explained by the number of singleton ground truth clusters defined in the ``Klimauken'' corpus; the corpus contains local news which does not spread much thus producing many singleton ground truth clusters. Dropping singleton base clusters impact the number of singleton clusters created when merging the base clusters. The parameter sees even more dramatic effects for the \citeauthor{Moe2014compact} algorithm design (see Diagram~\ref{diag:dropsingletonbcrichard}). Here the precision drops by 37 percentile points from a score of 43\% to only 6\%. Recall is also drastically reduced when dropping singleton base clusters. For the \citeauthor{Moe2014compact} algorithm design it drops from 76\% to 3\%. Given how much this parameter affects the result it should definitely be used when optimising the algorithm design.
+For the \citeauthor{Oren1998} algorithm design the drop singleton base clusters parameter have a significant effect on the result (see Diagram~\ref{diag:dropsingletonbcetzioni}). Dropping singleton base clusters reduce the precision by more than half from 31\% to only 14\%. The recall also sees a dramatic decrease. This could be explained by the number of singleton ground truth clusters defined in the ``Klimauken'' corpus; the corpus contains local news which does not spread much thus producing many singleton ground truth clusters. Dropping singleton base clusters impact the number of singleton clusters created when merging the base clusters. The parameter sees even more dramatic effects for the \citeauthor{Moe2013compact} algorithm design (see Diagram~\ref{diag:dropsingletonbcrichard}). Here the precision drops by 37 percentile points from a score of 43\% to only 6\%. Recall is also drastically reduced when dropping singleton base clusters. For the \citeauthor{Moe2013compact} algorithm design it drops from 76\% to 3\%. Given how much this parameter affects the result it should definitely be used when optimising the algorithm design.
 
 % Drop singleton bc test
 \begin{diagram}[H]
@@ -569,15 +569,15 @@ For the \citeauthor{Oren1998} algorithm design the drop singleton base clusters 
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for exclusion and inclusion of singleton base clusters using the \citeauthor{Moe2014compact} algorithm design.}
+  \caption{Performance of the \CTC algorithm for exclusion and inclusion of singleton base clusters using the \citeauthor{Moe2013compact} algorithm design.}
   \label{diag:dropsingletonbcrichard}
 \end{diagram}
 
 \textbf{Drop one word clusters}
-The drop one word clusters parameter have no effect for the \citeauthor{Oren1998} algorithm design as shown in Diagram~\ref{diag:droponewordclustersetzioni}. For the \citeauthor{Moe2014compact} algorithm design the precision is greatly improved when dropping the one word clusters. The score goes from 29\% precision score to 43\%. The recall remains the same. It thus seems fair to include the parameter when optimising the algorithm.
+The drop one word clusters parameter have no effect for the \citeauthor{Oren1998} algorithm design as shown in Diagram~\ref{diag:droponewordclustersetzioni}. For the \citeauthor{Moe2013compact} algorithm design the precision is greatly improved when dropping the one word clusters. The score goes from 29\% precision score to 43\%. The recall remains the same. It thus seems fair to include the parameter when optimising the algorithm.
 
 \subsection{Order descending}
-It stands to reason that the order of the base clusters should have an effect on the result as this determines which base clusters are filtered out when picking only the top base clusters. The parameter does change the results significantly for the \citeauthor{Oren1998} algorithm design (see Diagram~\ref{diag:sortdescendingetzioni}). Here the precision is 45\% when the base clusters are sorted in ascending (shortest effective label length) order compared to only 31\% when they are sorted in descending (longest effective label length) order. The recall also increase with ascending ordering achieving a score of 23\% versus 9\% for descending ordering. These results are consistent with findings from \cite{Moe2014,Moe2014compact}.
+It stands to reason that the order of the base clusters should have an effect on the result as this determines which base clusters are filtered out when picking only the top base clusters. The parameter does change the results significantly for the \citeauthor{Oren1998} algorithm design (see Diagram~\ref{diag:sortdescendingetzioni}). Here the precision is 45\% when the base clusters are sorted in ascending (shortest effective label length) order compared to only 31\% when they are sorted in descending (longest effective label length) order. The recall also increase with ascending ordering achieving a score of 23\% versus 9\% for descending ordering. These results are consistent with findings from \cite{Moe2014,Moe2013compact}.
 
 % Sort descending test
 \begin{diagram}[H]
@@ -621,20 +621,20 @@ It stands to reason that the order of the base clusters should have an effect on
   \label{diag:sortdescendingetzioni}
 \end{diagram}
 
-The differences are not as great for the \citeauthor{Moe2014compact} algorithm design (see Diagram~\ref{diag:sortdescendingrichard}). A likely cause for this observation could be that the \citeauthor{Moe2014compact} parameter set has a top base clusters amount value of 5000. The behaviour of the base cluster ordering under low values of top base cluster amounts do argue for the inclusion of this parameter in the optimisation algorithm.
+The differences are not as great for the \citeauthor{Moe2013compact} algorithm design (see Diagram~\ref{diag:sortdescendingrichard}). A likely cause for this observation could be that the \citeauthor{Moe2013compact} parameter set has a top base clusters amount value of 5000. The behaviour of the base cluster ordering under low values of top base cluster amounts do argue for the inclusion of this parameter in the optimisation algorithm.
 
 \subsection{Article text amount}
 
 \textbf{Article text amount}
-Testing shows that including large parts of article text does not improve the results. For the \citeauthor{Oren1998} algorithm design (see Diagram~\ref{diag:textamountetzioni}) the precision is at its highest, 36.6\%, when only 5\% of the article text snippets are included. Including more snippets of this type only serves to decrease the score; 10\% article text gives a score of 29\%. The same observations can be made for the recall. These findings are consistent with \cite{Oren1998} and \cite{Moe2014compact}.
+Testing shows that including large parts of article text does not improve the results. For the \citeauthor{Oren1998} algorithm design (see Diagram~\ref{diag:textamountetzioni}) the precision is at its highest, 36.6\%, when only 5\% of the article text snippets are included. Including more snippets of this type only serves to decrease the score; 10\% article text gives a score of 29\%. The same observations can be made for the recall. These findings are consistent with \cite{Oren1998} and \cite{Moe2013compact}.
 
-For the \citeauthor{Moe2014compact} algorithm design one can observe similar, albeit less varying, results (Diagram~\ref{diag:textamountrichard}). Here the decrease in precision is less prominent. The recall actually starts to increase at around 60\% of the article text. This might indicate that under the right circumstance the recall of the algorithm increase with more of the article text sentences included.
+For the \citeauthor{Moe2013compact} algorithm design one can observe similar, albeit less varying, results (Diagram~\ref{diag:textamountrichard}). Here the decrease in precision is less prominent. The recall actually starts to increase at around 60\% of the article text. This might indicate that under the right circumstance the recall of the algorithm increase with more of the article text sentences included.
 
 Because the data show variance over the whole range of text amount ratios, a ratio of 0 to 1 is adopted with two decimal places.
 
 \textbf{Text types}
 
-Tests reveal that filtering the types of text to include in the snippet expansion phase can have a dramatic effect on the results. For the \citeauthor{Oren1998} algorithm design the \CTC algorithm performs extremely poor when all text types are included (see Diagram~\ref{diag:texttypesetzioni}). Generally the algorithm performs better when only things such as titles, bylines and article introductions are used. If all the text types are included the precision measures a very low approximately  9\% compared to the approximately  48\% when only front page text is included. Similar differences can be seen for the recall score. These findings mirror what has been found in research by \cite{Oren1998}. A possible cause might be that titles, introductions and bylines are a better signifier of the content in the articles than the article text. It is also consistent with the observation that including too much text might harm the results rather than improve them. Titles, introductions, and bylines are shorter than the article body.
+Tests reveal that filtering the types of text to include in the snippet expansion phase can have a dramatic effect on the results. For the \citeauthor{Oren1998} algorithm design the \CTC algorithm performs very poorly when all text types are included (see Diagram~\ref{diag:texttypesetzioni}). Generally the algorithm performs better when only things such as titles, bylines and article introductions are used. If all the text types are included the precision measures a very low approximately  9\% compared to the approximately  48\% when only front page text is included. Similar differences can be seen for the recall score. These findings mirror what has been found in research by \cite{Oren1998}. A possible cause might be that titles, introductions and bylines are a better signifier of the content in the articles than the article text. It is also consistent with the observation that including too much text might harm the results rather than improve them. Titles, introductions, and bylines are shorter than the article body.
 
 % TEXT TYPE TESTS
 \begin{diagram}[H]
@@ -679,7 +679,7 @@ Tests reveal that filtering the types of text to include in the snippet expansio
   \label{diag:texttypesetzioni}
 \end{diagram}
 
-For the \citeauthor{Moe2014compact} algorithm design (Diagram~\ref{diag:texttypesrichard}) the results are not as conclusive. They show rather similar scores for those groups of text types where front page text, titles, bylines and article introductions are included. However, if only article text (body text) is included the recall drops to approximately  15\%. For the other groups of text types the recall is well above 60\%.
+For the \citeauthor{Moe2013compact} algorithm design (Diagram~\ref{diag:texttypesrichard}) the results are not as conclusive. They show rather similar scores for those groups of text types where front page text, titles, bylines and article introductions are included. However, if only article text (body text) is included the recall drops to approximately  15\%. For the other groups of text types the recall is well above 60\%.
 
 The results more than justify the inclusion of the text types parameter in the optimisation algorithm. Under the right circumstance the result can vary greatly depending on which text types one include.
 
@@ -688,7 +688,7 @@ In this section the four different similarity measures presented in Chapter~\ref
 
 \textbf{Similarity methods}
 
-The similarity methods, when using their default values, perform rather similarly for the \citeauthor{Oren1998} algorithm design (Diagram~\ref{diag:similaritymethodsetzioni}). The F-Measure is the same for all methods, but there are very small differences in precision. For the \citeauthor{Moe2014compact} algorithm design the differences in precision are greater (see Diagram~\ref{diag:similaritymethodsrichard}). Here the Cosine and Amendment similarity measures perform significantly better in terms of precision scoring respectively 9 and 11 percentile points better than the Etzioni and Jaccard measures. This could be a result of there being more base clusters to merge thus making the similarity measures a bigger factor in the overall result. All similarity methods should therefore be included.
+The similarity methods, when using their default values, perform rather similarly for the \citeauthor{Oren1998} algorithm design (Diagram~\ref{diag:similaritymethodsetzioni}). The F-Measure is the same for all methods, but there are very small differences in precision. For the \citeauthor{Moe2013compact} algorithm design the differences in precision are greater (see Diagram~\ref{diag:similaritymethodsrichard}). Here the Cosine and Amendment similarity measures perform significantly better in terms of precision scoring respectively 9 and 11 percentile points better than the Etzioni and Jaccard measures. This could be a result of there being more base clusters to merge thus making the similarity measures a bigger factor in the overall result. All similarity methods should therefore be included.
 
 % SIMILARITY METHODS TESTS
 \begin{diagram}[H]
@@ -728,13 +728,13 @@ The similarity methods, when using their default values, perform rather similarl
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different similarity methods using the \citeauthor{Moe2014compact} algorithm design as base.}
+  \caption{Performance of the \CTC algorithm for different similarity methods using the \citeauthor{Moe2013compact} algorithm design as base.}
   \label{diag:similaritymethodsrichard}
 \end{diagram}
 
 \textbf{Etzioni and Jaccard thresholds}
 
-The Etzioni and Jaccard similarity methods are very similar in nature and as such the results for the Etzioni similarity threshold and Jaccard Coefficient threshold are almost identical. They will therefore be discussed together. The \citeauthor{Oren1998} algorithm design show that the precision decreases as the Etzioni and Jaccard thresholds go up (Diagram~\ref{diag:etzionithresholdetzioni} and Diagram~\ref{diag:jaccardthresholdetzioni}). The graphs show a decreasing precision over the whole range, except from 0.9 to 1. The recall increases slightly with the ratio. For the \citeauthor{Moe2014compact} algorithm design the recall is quite different (Diagram~\ref{diag:etzionithresholdrichard} and Diagram~\ref{diag:jaccardthresholdrichard}. The recall increase from almost 0\% at a threshold of 0 to about 21\% at a threshold of 0.05. Increasing the threshold further to 0.5 gives a recall score of about 76\%. The precision however only vary about 10 percentile points throughout the threshold range. Essentially the similarity threshold can significantly impact the results and will therefore be used in the optimisation algorithm.
+The Etzioni and Jaccard similarity methods are very similar in nature and as such the results for the Etzioni similarity threshold and Jaccard Coefficient threshold are almost identical. They will therefore be discussed together. The \citeauthor{Oren1998} algorithm design show that the precision decreases as the Etzioni and Jaccard thresholds go up (Diagram~\ref{diag:etzionithresholdetzioni} and Diagram~\ref{diag:jaccardthresholdetzioni}). The graphs show a decreasing precision over the whole range, except from 0.9 to 1. The recall increases slightly with the ratio. For the \citeauthor{Moe2013compact} algorithm design the recall is quite different (Diagram~\ref{diag:etzionithresholdrichard} and Diagram~\ref{diag:jaccardthresholdrichard}. The recall increase from almost 0\% at a threshold of 0 to about 21\% at a threshold of 0.05. Increasing the threshold further to 0.5 gives a recall score of about 76\%. The precision however only vary about 10 percentile points throughout the threshold range. Essentially the similarity threshold can significantly impact the results and will therefore be used in the optimisation algorithm.
 
 % Etzioni THRESHOLD
 \begin{diagram}[H]
@@ -767,18 +767,18 @@ The Etzioni and Jaccard similarity methods are very similar in nature and as suc
   \end{axis}
 \end{tikzpicture}
   \end{center}
-  \caption{Performance of the \CTC algorithm for different Etzioni similarity thresholds using the \citeauthor{Moe2014compact} algorithm design as base.}
+  \caption{Performance of the \CTC algorithm for different Etzioni similarity thresholds using the \citeauthor{Moe2013compact} algorithm design as base.}
   \label{diag:etzionithresholdrichard}
 \end{diagram}
 
 \textbf{Cosine similarity threshold}
 
-Diagram~\ref{diag:cosinethresholdetzioni} and Diagram~\ref{diag:cosinethresholdrichard} show that the cosine threshold have a fairly small effect on the results of the algorithm for both algorithm designs. For the \citeauthor{Oren1998} algorithm design the precision hovers around 30\% while the recall remains quite stable at almost 10\%. The precision and recall seem to increase ever so slightly for the \citeauthor{Moe2014compact} algorithm design. The precision increase from approximately  49\% to approximately  54\%. So while the effect of the cosine threshold might be small, it can affect the result. The parameter should therefore definitely be included in the optimisation algorithm.
+Diagram~\ref{diag:cosinethresholdetzioni} and Diagram~\ref{diag:cosinethresholdrichard} show that the cosine threshold have a fairly small effect on the results of the algorithm for both algorithm designs. For the \citeauthor{Oren1998} algorithm design the precision hovers around 30\% while the recall remains quite stable at almost 10\%. The precision and recall seem to increase ever so slightly for the \citeauthor{Moe2013compact} algorithm design. The precision increase from approximately  49\% to approximately  54\%. So while the effect of the cosine threshold might be small, it can affect the result. The parameter should therefore definitely be included in the optimisation algorithm.
 
 
 \textbf{Corpus frequency limit and label intersection limit for the Amendment similarity measure}
 
-The average corpus frequency limit gives the best precision for the \citeauthor{Oren1998} algorithm design at around 150. At 150 the precision roofs out at approximately 31\% (Diagram~\ref{diag:avgcfamendment1etzioni}). The precision varies with a few percentile points throughout the test range from a limit of 0 to a limit of 500. The recall however stays the same. The \citeauthor{Moe2014compact} algorithm design produce a less varying result. Here both the precision and recall stays relatively stable, but decrease slightly as the average corpus frequency limit increase. The precision goes from 54\% to approximately 49\% (Diagram~\ref{diag:avgcfamendment1richard}). These changes are significant enough that the parameter should be included in the optimisation algorithm. A good parameter range is hard to determine because the performance results fluctuate around the same level throughout the tested range. The whole range is thus used in the optimisation problem.
+The average corpus frequency limit gives the best precision for the \citeauthor{Oren1998} algorithm design at around 150. At 150 the precision roofs out at approximately 31\% (Diagram~\ref{diag:avgcfamendment1etzioni}). The precision varies with a few percentile points throughout the test range from a limit of 0 to a limit of 500. The recall however stays the same. The \citeauthor{Moe2013compact} algorithm design produce a less varying result. Here both the precision and recall stays relatively stable, but decrease slightly as the average corpus frequency limit increase. The precision goes from 54\% to approximately 49\% (Diagram~\ref{diag:avgcfamendment1richard}). These changes are significant enough that the parameter should be included in the optimisation algorithm. A good parameter range is hard to determine because the performance results fluctuate around the same level throughout the tested range. The whole range is thus used in the optimisation problem.
 
 The label intersection limit does not seem to have any effect for either of the two algorithm designs at all (Diagram~\ref{diag:minintersectamendment1cetzioni} and Diagram~\ref{diag:minintersectamendment1crichard}). It is therefore hard to justify including it as a parameter. In this thesis work a limit between 0 and 50 has been adopted. One could however argue that this parameter could be dropped from the optimisation algorithm.
 
@@ -826,7 +826,7 @@ To explore point-wise tests as a semi-manual way of tuning and optimising the al
   \item Min limit intersect base cluster label: 1
 \end{itemize}
 
-Table~\ref{tab:incrementalparametersresults} below shows a not too surprising, but still striking result. The F-Measure score at no discrepancy is an impressive 64.2\%. This is better than the manually tuned \citeauthor{Moe2014compact} algorithm design which scored slightly less at 62.4\%, and much better than the average performance which clocked in at 18.8\%. It should be noted that the \citeauthor{Moe2014compact} algorithm design used here were chosen to produce a good balance between precision and recall, but \cite{Moe2014compact} have not necessarily tuned the parameters to achieve a good harmonious mean (F-Measure).
+Table~\ref{tab:incrementalparametersresults} below shows a not too surprising, but still striking result. The F-Measure score at no discrepancy is an impressive 64.2\%. This is better than the manually tuned \citeauthor{Moe2013compact} algorithm design which scored slightly less at 62.4\%, and much better than the average performance which clocked in at 18.8\%. It should be noted that the \citeauthor{Moe2013compact} algorithm design used here were chosen to produce a good balance between precision and recall, but \cite{Moe2013compact} primarily tuned the parameters to achieve good precision.
 
 \begin{table}[H]
 \setstretch{1}
@@ -849,7 +849,53 @@ Discrepancy & Number of gt to total & Precision & Recall & F-Measure\\
 \end{table}
 
 \section{Genetic Algorithm Test}
-This last test was run on the best algorithm design found with the genetic algorithm. Best here refers to the parameter set with the highest 0-discrepancy F-Measure score. The fitness score could have been used, but was not used because it also took into account the ratio of returned clusters to the number of ground truth clusters. The great impact on the fitness score of this ratio would unfairly exclude the highest performing algorithm design from being chosen.
+This last test was run on the best algorithm design found with the genetic algorithm. Best here refers to the parameter set with the highest 0-discrepancy F-Measure score. The fitness score could have been used, but was not used because it also took into account the ratio of returned clusters to the number of ground truth clusters. The great impact on the fitness score of this ratio would unfairly exclude the highest performing algorithm design from being chosen. Several tests were run wile developing the genetic optimisation algorithm. Two of them will be described in this section.
+
+\subsection{Large initial population}
+It was initially thought that the feature space of the algorithm would be quite large, and that as a result the initial population size would have be correspondingly big. In one test the population size was set to 5000. Because of the low keep rate, 0.5, and the high mutation rate the average fitness also fluctuated quite a bit in this test. The test had the puzzling effect of producing the best algorithm design in the zeroth generation. The most likely explanation is that the parameter value limits carefully determined by the point-wise tests severely shrink the feature space of the optimisation task. The ultimate effect is that it, at least for this corpus, is not necessary to run the genetic algorithm with large populations and many generations if a pre-test has been run.
+
+The test with a large initial population computed the following algorithm design:
+
+\begin{itemize}
+\setstretch{0.5}
+  \item Tree types: 4-gram
+  \item Top base clusters: 7937
+  \item Min term occurrence: 141
+  \item Max term ratio: 0.47
+  \item Min limit for base cluster score 11
+  \item Max limit for base cluster score 17
+  \item Drop singleton base clusters: 0
+  \item Drop one word clusters: 1
+  \item Sort descending: 0
+  \item Article text amount: 0.32
+  \item Text types: Frontpage introduction, Article heading, Article introduction
+  \item Similarity measures: Etzioni similarity, Etzioni threshold 0.99
+\end{itemize}
+
+It scores relatively well with a F-Measure of 63.8\% at zero disrepancy relevance (see Table~\ref{tab:geneticlargeparametersresults}). This is much better than the random algorithm designs which score on average 18.8\% in terms of F-Measure. It is also slightly higher than the manually tuned algorithm design from the ``Klimauken'' research. This might at first seem like a good result, but it is not without problems. The fact that the algorithm design is found in the zeroth generation means that the full effect of optimisation is likely not achieved. Additionally the large population size increase the running time of the algorithm into the area of days, even when distributed over a couple of computers. Because of this the genetic optimisation algorithm was also run with a smaller initial population size.
+
+\begin{table}[H]
+\setstretch{1}
+\begin{center}
+\begin{tabular}{|c|c|ccc|}
+\hline
+Discrepancy & Number of gt to total & Precision & Recall & F-Measure\\ 
+\hline
+0&   3030/4382&   0.584&    0.703&    0.638\\ 
+1&   23/4382&     0.016&    0.007&    0.010\\ 
+2&   13/4382&     0.007&    0.003&    0.004\\ 
+3&   12/4382&     0.005&    0.001&    0.002\\ 
+4&   10/4382&     0.006&    0.000&    0.000\\ 
+5&   1294/4382&   0.381&    0.286&    0.327\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Results for best algorithm design from genetic algorithm with large initial population.}
+\label{tab:geneticlargeparametersresults}
+\end{table}
+
+
+\subsection{Small initial population}
 
 \begin{itemize}
 \setstretch{0.5}
@@ -866,8 +912,6 @@ This last test was run on the best algorithm design found with the genetic algor
   \item Text types: Frontpage heading, Frontpage introduction, Article byline
   \item Similarity measures: Amendment similarity, Etzioni threshold 0.86, Average corpus frequency threshold: 0, label intersect min limit: 2
 \end{itemize}
-
-In early tests were a large population size were used the distributed nature of the algorithm was quite necessary in order to make the optimisation process faster. In one such test the population size was set to 5000. Because of the low keep rate, 0.5, and the high mutation rate the average fitness also fluctuated quite a bit in this test. The test had the puzzling effect of producing the best algorithm design in the zeroth generation. The most likely explanation is that the parameter value limits carefully determined by the point-wise tests severely shrink the feature space of the optimisation task. The end effect is that it, at least for this corpus, is not necessary to run the genetic algorithm with large populations and many generations if a pre-test has been run.
 
 The genetic algorithm was eventually run with a population size of 200, keep rate of 0.8 (keeping 80\% of the population for each generation), and a mutation rate of 0.01. The low population size and high keep rate were used because the feature space proved to be quite small. This had the added benefit of making it feasible to run the optimisation algorithm on a single computer.
 

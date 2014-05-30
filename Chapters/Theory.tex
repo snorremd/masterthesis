@@ -29,7 +29,7 @@ The \STC algorithm has three basic steps:
 
 \subsubsection{Document Cleaning}
 
-Document cleaning involves cleaning the strings representing each document. This is done by stemming each word, marking sentences, and removing non-word tokens such as HTML tags, numbers, and punctuation. Snippets are then extracted from the document strings where each snippet is a cleaned string from the original document. There are some possible parameters that can be identified here. For example, which parts of the documents should be extracted? Could using more of the text document for snippet extraction possibly yield better results? Existing research efforts by \cite{Oren1998} and \cite{Moe2014compact} indicate that this is likely not the case. It is non the less an interesting parameter to explore.
+Document cleaning involves cleaning the strings representing each document. This is done by stemming each word, marking sentences, and removing non-word tokens such as HTML tags, numbers, and punctuation. Snippets are then extracted from the document strings where each snippet is a cleaned string from the original document. There are some possible parameters that can be identified here. For example, which parts of the documents should be extracted? Could using more of the text document for snippet extraction possibly yield better results? Existing research efforts by \cite{Oren1998} and \cite{Moe2013compact} indicate that this is likely not the case. It is non the less an interesting parameter to explore.
 
 There is also the question of which parts of the documents that are the best signifier of the document's content. For news documents a parameter could determine which parts of the document to include, such as titles, headings, (image) captions, article introductions, main text and so forth. Two other possible parameters that have not been investigated are possible stemming techniques (lemmatisation vs. stemming) and different stop word lists.
 
@@ -66,7 +66,7 @@ The \STC algorithm uses a trie data structure. Trie data structures are trees th
 
 A trie data structure is a form of search tree which makes it possible to retrieve any string encoded within the tree in time proportional to the string's length, \parencite{Baeza-Yates2011c}.
 
-A suffix trie is a graph over a collection of all the suffixes from a set of strings where the root represents the initial empty string (no match), and each leaf node denotes a a specific suffix. Each edge that makes up the path from the root of the suffix trie to a leaf node is labeled with a letter from that suffix. Suffixes that start with the same letters will use the same edges. In essence the suffix trie forms a search tree over all suffixes expanded from a list of strings. So what is a suffix?
+A suffix trie is a tree over a collection of all the suffixes from a set of strings where the root represents the initial empty string (no match), and each leaf node denotes a a specific suffix. Each edge that makes up the path from the root of the suffix trie to a leaf node is labeled with a letter from that suffix. Suffixes that start with the same letters will use the same edges. In essence the suffix trie forms a search tree over all suffixes expanded from a list of strings. So what is a suffix?
 
 In context of a sequence of tokens (can be characters or words) \(T = c_{1}, ..., c_{n}\) a suffix is a subsequence of tokens \(S = c_{m}, \dots, c_{n}\) where \(0 \le m < n\).
 
